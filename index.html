@@ -296,6 +296,18 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 14px 1
 .reveal.vis{opacity:1;transform:none}
 @media(max-width:700px){.mt thead th:nth-child(7),.mt td:nth-child(7),.mt thead th:nth-child(8),.mt td:nth-child(8){display:none}}
 @media(max-width:480px){.mt thead th:nth-child(6),.mt td:nth-child(6){display:none}}
+
+/* === LANGUAGE SWITCHER === */
+.lang-btn{position:relative;display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:var(--wh);font-family:var(--fo);font-size:10px;font-weight:700;padding:5px 10px;border-radius:7px;cursor:pointer;transition:.15s;flex-shrink:0;letter-spacing:.5px}
+.lang-btn:hover{border-color:rgba(0,255,135,.35);background:rgba(0,255,135,.07)}
+.lang-arrow{font-size:8px;transition:transform .2s;margin-left:2px}
+.lang-btn.open .lang-arrow{transform:rotate(180deg)}
+.lang-dropdown{position:absolute;top:calc(100% + 8px);right:0;background:var(--bg3);border:1px solid rgba(0,255,135,.2);border-radius:10px;padding:6px;min-width:160px;box-shadow:0 8px 32px rgba(0,0,0,.5);z-index:500;display:none;grid-template-columns:1fr 1fr;gap:3px}
+.lang-btn.open .lang-dropdown{display:grid}
+.lang-opt{display:flex;align-items:center;gap:6px;padding:6px 9px;border-radius:6px;cursor:pointer;transition:.12s;font-size:11px;font-family:var(--fb);font-weight:600;color:var(--gy);white-space:nowrap}
+.lang-opt:hover{background:rgba(0,255,135,.1);color:var(--gr)}
+.lang-opt.active{background:rgba(0,255,135,.12);color:var(--gr);font-weight:700}
+.lang-flag{font-size:15px}
 </style>
 </head>
 <body>
@@ -318,6 +330,21 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 14px 1
       <a href="#values" class="nl">💰 Values</a>
       <a href="#squads" class="nl">👤 Squads</a>
     </nav>
+    <div class="lang-btn" id="langBtn" onclick="toggleLang(event)">
+      <span id="langFlag">🇬🇧</span><span id="langCode">EN</span><span class="lang-arrow">▾</span>
+      <div class="lang-dropdown" id="langDropdown">
+        <div class="lang-opt active" onclick="setLang('en',event)"><span class="lang-flag">🇬🇧</span>English</div>
+        <div class="lang-opt" onclick="setLang('vi',event)"><span class="lang-flag">🇻🇳</span>Tiếng Việt</div>
+        <div class="lang-opt" onclick="setLang('es',event)"><span class="lang-flag">🇪🇸</span>Español</div>
+        <div class="lang-opt" onclick="setLang('pt',event)"><span class="lang-flag">🇧🇷</span>Português</div>
+        <div class="lang-opt" onclick="setLang('fr',event)"><span class="lang-flag">🇫🇷</span>Français</div>
+        <div class="lang-opt" onclick="setLang('de',event)"><span class="lang-flag">🇩🇪</span>Deutsch</div>
+        <div class="lang-opt" onclick="setLang('ar',event)"><span class="lang-flag">🇸🇦</span>العربية</div>
+        <div class="lang-opt" onclick="setLang('zh',event)"><span class="lang-flag">🇨🇳</span>中文</div>
+        <div class="lang-opt" onclick="setLang('ja',event)"><span class="lang-flag">🇯🇵</span>日本語</div>
+        <div class="lang-opt" onclick="setLang('ko',event)"><span class="lang-flag">🇰🇷</span>한국어</div>
+      </div>
+    </div>
     <button class="dbtn" onclick="opD()">❤️ DONATE</button>
   </div>
 </div>
@@ -330,7 +357,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 14px 1
   <div style="position:relative;z-index:1">
     <div class="h-eye"><span class="edot"></span>FIFA World Cup 2026 — Live Coverage</div>
     <h1><span class="hw">WORLD CUP</span><span class="hy">2026</span></h1>
-    <p class="hsub">48 teams · 72 group stage matches · 12 groups · USA · Canada · Mexico</p>
+    <p class="hsub"><span data-i18n="heroSub">48 teams · 72 group stage matches · 12 groups · USA · Canada · Mexico</span></p>
     <div class="hf">
       <div class="hchip">🇺🇸 United States</div>
       <div class="hchip">🇨🇦 Canada</div>
@@ -358,7 +385,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 14px 1
 <!-- LIVE -->
 <section id="live" class="pw sec reveal">
   <div class="sh">
-    <div class="shline"></div><h2>LIVE SCORES</h2>
+    <div class="shline"></div><h2 data-i18n="liveTitle">LIVE SCORES</h2>
     <span class="pill plive">🔴 LIVE</span>
     <button onclick="buildLive()" style="margin-left:auto;background:rgba(255,59,59,.12);color:var(--rd);border:1px solid rgba(255,59,59,.25);padding:5px 11px;border-radius:7px;cursor:pointer;font-family:var(--fo);font-size:9px;letter-spacing:1px">↺ REFRESH</button>
   </div>
@@ -367,7 +394,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 14px 1
 
 <!-- FIXTURES -->
 <section id="fixtures" class="pw sec reveal">
-  <div class="sh"><div class="shline"></div><h2>GROUP STAGE — 72 MATCHES</h2></div>
+  <div class="sh"><div class="shline"></div><h2 data-i18n="fixturesTitle">GROUP STAGE — 72 MATCHES</h2></div>
   <div class="tz-wrap">
     <span class="tz-label">🌐 Timezone:</span>
     <select id="tzSel" class="tz-sel" onchange="buildSchedule()">
@@ -420,7 +447,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 14px 1
   </div>
   <div class="tw">
     <table class="mt">
-      <thead><tr><th>#</th><th>Round</th><th>Date &amp; Time</th><th>Home</th><th>Score</th><th>Away</th><th>Venue</th><th>Weather</th><th>Where to Watch</th><th>AI Pick</th></tr></thead>
+      <thead><tr><th>#</th><th data-i18n="thRound">Round</th><th data-i18n="thDateTime">Date &amp; Time</th><th data-i18n="thHome">Home</th><th data-i18n="thScore">Score</th><th data-i18n="thAway">Away</th><th data-i18n="thVenue">Venue</th><th data-i18n="thWeather">Weather</th><th data-i18n="thWTW">Where to Watch</th><th data-i18n="thAIPick">AI Pick</th></tr></thead>
       <tbody id="schBody"></tbody>
     </table>
   </div>
@@ -428,7 +455,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 14px 1
 
 <!-- AI -->
 <section id="ai" class="pw sec reveal">
-  <div class="sh"><div class="shline"></div><h2>AI PREDICTIONS</h2><span class="pill pai">5 FREE MODELS</span></div>
+  <div class="sh"><div class="shline"></div><h2 data-i18n="aiTitle">AI PREDICTIONS</h2><span class="pill pai">5 FREE MODELS</span></div>
   <div class="aig">
     <!-- ① GPT — Rank 1 -->
     <div class="amc sc" style="--ai-c:#00FF87" onclick="selAI(this,'#00FF87');setAITab('g',document.querySelector('#aiMTabs .tb:nth-child(1)'))">
@@ -477,7 +504,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 14px 1
     </div>
   </div>
 
-  <div class="sh" style="margin-top:20px"><h2 style="font-size:18px">MATCH PREDICTIONS — ALL 5 AI MODELS</h2></div>
+  <div class="sh" style="margin-top:20px"><h2 style="font-size:18px" data-i18n="matchPredTitle">MATCH PREDICTIONS — ALL 5 AI MODELS</h2></div>
   <p style="font-size:11px;color:var(--gy);margin-bottom:14px;font-family:var(--fb)">
     72 group stage matches · 5 AI models each · score prediction + total goals
   </p>
@@ -503,7 +530,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 14px 1
 
 <!-- CHAMPIONS TOP 10 -->
 <section id="champions" class="pw sec reveal">
-  <div class="sh"><div class="shline"></div><h2>CHAMPION ODDS — TOP 10</h2><span class="pill ptm">5-AI CONSENSUS</span></div>
+  <div class="sh"><div class="shline"></div><h2 data-i18n="champTitle">CHAMPION ODDS — TOP 10</h2><span class="pill ptm"><span data-i18n="aiConsensus">5-AI CONSENSUS</span></span></div>
   <div class="cg" id="champGrid"></div>
   <div class="cons reveal">
     <div style="font-family:var(--fo);font-size:13px;letter-spacing:2px;margin-bottom:14px;color:var(--wh)">📊 5-AI Aggregate — Championship Probability</div>
@@ -522,7 +549,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 14px 1
 
 <!-- VALUES -->
 <section id="values" class="pw sec reveal">
-  <div class="sh"><div class="shline"></div><h2>SQUAD VALUES</h2><span class="pill ptm">Transfermarkt Jun 2026</span></div>
+  <div class="sh"><div class="shline"></div><h2 data-i18n="valuesTitle">SQUAD VALUES</h2><span class="pill ptm">Transfermarkt Jun 2026</span></div>
   <div class="sh" style="margin-bottom:10px"><h2 style="font-size:18px">TOP 20 MOST VALUABLE PLAYERS</h2></div>
   <div class="p20g" id="p20grid"></div>
   <div class="sh" style="margin-bottom:10px"><h2 style="font-size:18px">SQUAD VALUE RANKING</h2></div>
@@ -536,7 +563,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 14px 1
 
 <!-- SQUADS -->
 <section id="squads" class="pw sec reveal">
-  <div class="sh"><div class="shline"></div><h2>SQUAD LISTS &amp; PLAYER VALUES</h2></div>
+  <div class="sh"><div class="shline"></div><h2 data-i18n="squadsTitle">SQUAD LISTS &amp; PLAYER VALUES</h2></div>
   <div class="sqtabs" id="sqTabs"></div>
   <div id="sqContent"></div>
 </section>
@@ -545,7 +572,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 14px 1
 
 <div class="pw">
   <div class="dstrip reveal">
-    <div class="dst"><h3>❤️ SUPPORT LiveAIScore</h3><p>Free · No ads · No paywalls. Keep this running all World Cup 2026!</p></div>
+    <div class="dst"><h3 data-i18n="donateTitle">❤️ SUPPORT LiveAIScore</h3><p data-i18n="donateSub">Free · No ads · No paywalls. Keep this running all World Cup 2026!</p></div>
     <button class="dbtn" onclick="opD()">DONATE VIA PAYPAL →</button>
   </div>
 </div>
@@ -567,8 +594,8 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 14px 1
   <div class="mbox">
     <button class="mcl" onclick="clD()">✕</button>
     <div id="dForm">
-      <h3>❤️ SUPPORT</h3>
-      <p class="msub">Keep LiveAIScore.com free for everyone during World Cup 2026!</p>
+      <h3 data-i18n="donateTitle">❤️ SUPPORT</h3>
+      <p class="msub" data-i18n="donateSub">Keep LiveAIScore.com free for everyone during World Cup 2026!</p>
       <div class="ag">
         <button class="ab on" onclick="pickAmt(this)">$2</button>
         <button class="ab" onclick="pickAmt(this)">$5</button>
@@ -1064,6 +1091,286 @@ buildSquadTabs();showSq('FRA',document.querySelector('.sqt'));
 function opD(){document.getElementById('dMod').classList.add('op');}
 function clD(){document.getElementById('dMod').classList.remove('op');setTimeout(function(){document.getElementById('dForm').style.display='block';document.getElementById('dThx').style.display='none';},300);}
 function pickAmt(btn){document.querySelectorAll('.ab').forEach(function(b){b.classList.remove('on');});btn.classList.add('on');}
+
+
+// ============================================================
+// LANGUAGE SWITCHER
+// ============================================================
+var LANG = {
+  en: {
+    flag:'🇬🇧', code:'EN',
+    heroSub:'48 teams · 72 group stage matches · 12 groups · USA · Canada · Mexico',
+    liveTitle:'LIVE SCORES', fixturesTitle:'GROUP STAGE — 72 MATCHES',
+    aiTitle:'AI PREDICTIONS', matchPredTitle:'MATCH PREDICTIONS — ALL 5 AI MODELS',
+    champTitle:'CHAMPION ODDS — TOP 10', valuesTitle:'SQUAD VALUES',
+    squadsTitle:'SQUAD LISTS & PLAYER VALUES',
+    thRound:'Round', thDateTime:'Date & Time', thHome:'Home', thScore:'Score',
+    thAway:'Away', thVenue:'Venue', thWeather:'Weather', thWTW:'Where to Watch', thAIPick:'AI Pick',
+    donateTitle:'❤️ SUPPORT LiveAIScore',
+    donateSub:'Free · No ads · No paywalls. Keep this running all World Cup 2026!',
+    aiConsensus:'5-AI CONSENSUS', allTab:'All 72 Matches',
+    nowLabel:'Now', navLive:'🔴 Live', navFixtures:'📅 Group Stage',
+    navAI:'🤖 AI Picks', navOdds:'🏆 Odds', navValues:'💰 Values', navSquads:'👤 Squads',
+    rank:'RANK', confidence:'Confidence', predictedChamp:'Predicted Champion',
+    top4:'Top 4', bestResult:'BEST', squadValue:'SQUAD VALUE', coach:'Coach',
+    donateBtn:'DONATE',
+  },
+  vi: {
+    flag:'🇻🇳', code:'VI',
+    heroSub:'48 đội · 72 trận vòng bảng · 12 bảng đấu · Mỹ · Canada · Mexico',
+    liveTitle:'TỶ SỐ TRỰC TIẾP', fixturesTitle:'VÒNG BẢNG — 72 TRẬN',
+    aiTitle:'DỰ ĐOÁN AI', matchPredTitle:'DỰ ĐOÁN TỪNG TRẬN — 5 MÔ HÌNH AI',
+    champTitle:'TỶ LỆ VÔ ĐỊCH — TOP 10', valuesTitle:'GIÁ TRỊ ĐỘI HÌNH',
+    squadsTitle:'DANH SÁCH CẦU THỦ & GIÁ TRỊ',
+    thRound:'Vòng', thDateTime:'Ngày & Giờ', thHome:'Đội nhà', thScore:'Tỷ số',
+    thAway:'Đội khách', thVenue:'Sân vận động', thWeather:'Thời tiết', thWTW:'Kênh xem', thAIPick:'AI Dự đoán',
+    donateTitle:'❤️ ỦNG HỘ LiveAIScore',
+    donateSub:'Miễn phí · Không quảng cáo. Ủng hộ để duy trì suốt World Cup 2026!',
+    aiConsensus:'ĐỒNG THUẬN 5 AI', allTab:'Tất cả 72 trận',
+    nowLabel:'Hiện tại', navLive:'🔴 Trực tiếp', navFixtures:'📅 Vòng bảng',
+    navAI:'🤖 Dự đoán AI', navOdds:'🏆 Tỷ lệ', navValues:'💰 Giá trị', navSquads:'👤 Đội hình',
+    rank:'HẠNG', confidence:'Độ tin cậy', predictedChamp:'Nhà vô địch dự đoán',
+    top4:'Top 4', bestResult:'THÀNH TÍCH TỐT NHẤT', squadValue:'TỔNG GIÁ TRỊ', coach:'HLV',
+    donateBtn:'ỦNG HỘ',
+  },
+  es: {
+    flag:'🇪🇸', code:'ES',
+    heroSub:'48 equipos · 72 partidos fase de grupos · 12 grupos · EE.UU. · Canadá · México',
+    liveTitle:'MARCADORES EN VIVO', fixturesTitle:'FASE DE GRUPOS — 72 PARTIDOS',
+    aiTitle:'PREDICCIONES IA', matchPredTitle:'PREDICCIONES — 5 MODELOS IA',
+    champTitle:'PRONÓSTICO CAMPEÓN — TOP 10', valuesTitle:'VALOR DE PLANTILLAS',
+    squadsTitle:'PLANTILLAS & VALORES DE JUGADORES',
+    thRound:'Ronda', thDateTime:'Fecha y Hora', thHome:'Local', thScore:'Marcador',
+    thAway:'Visitante', thVenue:'Estadio', thWeather:'Clima', thWTW:'Dónde Ver', thAIPick:'IA Pred.',
+    donateTitle:'❤️ APOYA LiveAIScore',
+    donateSub:'Gratis · Sin anuncios. ¡Ayúdanos a seguir durante la Copa del Mundo 2026!',
+    aiConsensus:'CONSENSO 5-IA', allTab:'72 Partidos',
+    nowLabel:'Ahora', navLive:'🔴 En Vivo', navFixtures:'📅 Fase Grupos',
+    navAI:'🤖 IA Picks', navOdds:'🏆 Cuotas', navValues:'💰 Valores', navSquads:'👤 Plantillas',
+    rank:'POSICIÓN', confidence:'Confianza', predictedChamp:'Campeón Predicho',
+    top4:'Top 4', bestResult:'MEJOR RESULTADO', squadValue:'VALOR PLANTILLA', coach:'Entrenador',
+    donateBtn:'DONAR',
+  },
+  pt: {
+    flag:'🇧🇷', code:'PT',
+    heroSub:'48 seleções · 72 jogos fase de grupos · 12 grupos · EUA · Canadá · México',
+    liveTitle:'PLACARES AO VIVO', fixturesTitle:'FASE DE GRUPOS — 72 JOGOS',
+    aiTitle:'PREVISÕES IA', matchPredTitle:'PREVISÕES — 5 MODELOS IA',
+    champTitle:'ODDS CAMPEÃO — TOP 10', valuesTitle:'VALOR DOS ELENCOS',
+    squadsTitle:'ELENCOS & VALORES DOS JOGADORES',
+    thRound:'Rodada', thDateTime:'Data e Hora', thHome:'Mandante', thScore:'Placar',
+    thAway:'Visitante', thVenue:'Estádio', thWeather:'Clima', thWTW:'Onde Assistir', thAIPick:'Previsão IA',
+    donateTitle:'❤️ APOIE LiveAIScore',
+    donateSub:'Grátis · Sem anúncios. Ajude a manter durante a Copa do Mundo 2026!',
+    aiConsensus:'CONSENSO 5-IA', allTab:'72 Jogos',
+    nowLabel:'Agora', navLive:'🔴 Ao Vivo', navFixtures:'📅 Fase Grupos',
+    navAI:'🤖 IA Picks', navOdds:'🏆 Odds', navValues:'💰 Valores', navSquads:'👤 Elencos',
+    rank:'RANKING', confidence:'Confiança', predictedChamp:'Campeão Previsto',
+    top4:'Top 4', bestResult:'MELHOR RESULTADO', squadValue:'VALOR DO ELENCO', coach:'Técnico',
+    donateBtn:'DOAR',
+  },
+  fr: {
+    flag:'🇫🇷', code:'FR',
+    heroSub:'48 équipes · 72 matchs phase de groupes · 12 groupes · USA · Canada · Mexique',
+    liveTitle:'SCORES EN DIRECT', fixturesTitle:'PHASE DE GROUPES — 72 MATCHS',
+    aiTitle:'PRÉDICTIONS IA', matchPredTitle:'PRÉDICTIONS — 5 MODÈLES IA',
+    champTitle:'COTES CHAMPION — TOP 10', valuesTitle:'VALEUR DES EFFECTIFS',
+    squadsTitle:'EFFECTIFS & VALEURS DES JOUEURS',
+    thRound:'Tour', thDateTime:'Date & Heure', thHome:'Domicile', thScore:'Score',
+    thAway:'Extérieur', thVenue:'Stade', thWeather:'Météo', thWTW:'Où regarder', thAIPick:'Préd. IA',
+    donateTitle:'❤️ SOUTENEZ LiveAIScore',
+    donateSub:'Gratuit · Sans pub. Aidez-nous pendant la Coupe du Monde 2026!',
+    aiConsensus:'CONSENSUS 5-IA', allTab:'72 Matchs',
+    nowLabel:'Maintenant', navLive:'🔴 Direct', navFixtures:'📅 Groupes',
+    navAI:'🤖 IA Picks', navOdds:'🏆 Cotes', navValues:'💰 Valeurs', navSquads:'👤 Effectifs',
+    rank:'RANG', confidence:'Confiance', predictedChamp:'Champion Prédit',
+    top4:'Top 4', bestResult:'MEILLEUR RÉSULTAT', squadValue:'VALEUR EFFECTIF', coach:'Entraîneur',
+    donateBtn:'FAIRE UN DON',
+  },
+  de: {
+    flag:'🇩🇪', code:'DE',
+    heroSub:'48 Teams · 72 Gruppenspiele · 12 Gruppen · USA · Kanada · Mexiko',
+    liveTitle:'LIVE ERGEBNISSE', fixturesTitle:'GRUPPENPHASE — 72 SPIELE',
+    aiTitle:'KI-PROGNOSEN', matchPredTitle:'SPIELPROGNOSEN — 5 KI-MODELLE',
+    champTitle:'SIEGCHANCEN — TOP 10', valuesTitle:'KADERWERTE',
+    squadsTitle:'KADER & SPIELERWERTE',
+    thRound:'Runde', thDateTime:'Datum & Zeit', thHome:'Heim', thScore:'Ergebnis',
+    thAway:'Gast', thVenue:'Stadion', thWeather:'Wetter', thWTW:'Wo schauen', thAIPick:'KI-Tipp',
+    donateTitle:'❤️ UNTERSTÜTZE LiveAIScore',
+    donateSub:'Kostenlos · Keine Werbung. Hilf uns durch die WM 2026!',
+    aiConsensus:'5-KI-KONSENS', allTab:'72 Spiele',
+    nowLabel:'Jetzt', navLive:'🔴 Live', navFixtures:'📅 Gruppenphase',
+    navAI:'🤖 KI-Tipps', navOdds:'🏆 Quoten', navValues:'💰 Werte', navSquads:'👤 Kader',
+    rank:'RANG', confidence:'Konfidenz', predictedChamp:'Vorhergesagter Sieger',
+    top4:'Top 4', bestResult:'BESTES ERGEBNIS', squadValue:'KADERWERT', coach:'Trainer',
+    donateBtn:'SPENDEN',
+  },
+  ar: {
+    flag:'🇸🇦', code:'AR',
+    heroSub:'٤٨ منتخباً · ٧٢ مباراة في دور المجموعات · ١٢ مجموعة · أمريكا · كندا · المكسيك',
+    liveTitle:'النتائج المباشرة', fixturesTitle:'دور المجموعات — ٧٢ مباراة',
+    aiTitle:'توقعات الذكاء الاصطناعي', matchPredTitle:'توقعات المباريات — ٥ نماذج',
+    champTitle:'احتمالات الفوز بالبطولة — أفضل ١٠', valuesTitle:'قيمة الفرق',
+    squadsTitle:'التشكيلات وقيم اللاعبين',
+    thRound:'الجولة', thDateTime:'التاريخ والوقت', thHome:'المضيف', thScore:'النتيجة',
+    thAway:'الضيف', thVenue:'الملعب', thWeather:'الطقس', thWTW:'أين تشاهد', thAIPick:'توقع AI',
+    donateTitle:'❤️ ادعم LiveAIScore',
+    donateSub:'مجاني · بدون إعلانات. ساعدنا خلال كأس العالم 2026!',
+    aiConsensus:'إجماع ٥ نماذج', allTab:'٧٢ مباراة',
+    nowLabel:'الآن', navLive:'🔴 مباشر', navFixtures:'📅 المجموعات',
+    navAI:'🤖 توقعات', navOdds:'🏆 الاحتمالات', navValues:'💰 القيم', navSquads:'👤 التشكيلات',
+    rank:'المرتبة', confidence:'الثقة', predictedChamp:'البطل المتوقع',
+    top4:'أفضل 4', bestResult:'أفضل نتيجة', squadValue:'قيمة الفريق', coach:'المدرب',
+    donateBtn:'تبرع',
+  },
+  zh: {
+    flag:'🇨🇳', code:'中',
+    heroSub:'48支球队 · 72场小组赛 · 12个组 · 美国 · 加拿大 · 墨西哥',
+    liveTitle:'实时比分', fixturesTitle:'小组赛 — 72场',
+    aiTitle:'AI预测', matchPredTitle:'比赛预测 — 5个AI模型',
+    champTitle:'夺冠赔率 — 前10名', valuesTitle:'球队总身价',
+    squadsTitle:'阵容与球员身价',
+    thRound:'轮次', thDateTime:'日期时间', thHome:'主队', thScore:'比分',
+    thAway:'客队', thVenue:'场馆', thWeather:'天气', thWTW:'转播渠道', thAIPick:'AI预测',
+    donateTitle:'❤️ 支持 LiveAIScore',
+    donateSub:'免费 · 无广告。帮助我们在2026世界杯期间持续运营！',
+    aiConsensus:'5AI综合预测', allTab:'全部72场',
+    nowLabel:'现在', navLive:'🔴 直播', navFixtures:'📅 小组赛',
+    navAI:'🤖 AI预测', navOdds:'🏆 赔率', navValues:'💰 身价', navSquads:'👤 阵容',
+    rank:'排名', confidence:'置信度', predictedChamp:'预测冠军',
+    top4:'前4名', bestResult:'最佳成绩', squadValue:'阵容总价', coach:'主教练',
+    donateBtn:'捐赠',
+  },
+  ja: {
+    flag:'🇯🇵', code:'JP',
+    heroSub:'48チーム · グループステージ72試合 · 12グループ · 米国 · カナダ · メキシコ',
+    liveTitle:'ライブスコア', fixturesTitle:'グループステージ — 72試合',
+    aiTitle:'AI予測', matchPredTitle:'試合予測 — 5 AIモデル',
+    champTitle:'優勝オッズ — TOP 10', valuesTitle:'チーム市場価値',
+    squadsTitle:'スタメン & 選手価値',
+    thRound:'ラウンド', thDateTime:'日時', thHome:'ホーム', thScore:'スコア',
+    thAway:'アウェイ', thVenue:'スタジアム', thWeather:'天気', thWTW:'放送局', thAIPick:'AI予測',
+    donateTitle:'❤️ LiveAIScoreを支援',
+    donateSub:'無料 · 広告なし。ワールドカップ2026を通じてサポートをお願いします！',
+    aiConsensus:'5AI総合予測', allTab:'全72試合',
+    nowLabel:'現在', navLive:'🔴 ライブ', navFixtures:'📅 グループ',
+    navAI:'🤖 AI予測', navOdds:'🏆 オッズ', navValues:'💰 価値', navSquads:'👤 スタメン',
+    rank:'ランク', confidence:'信頼度', predictedChamp:'優勝予測',
+    top4:'トップ4', bestResult:'最高成績', squadValue:'チーム総額', coach:'監督',
+    donateBtn:'寄付',
+  },
+  ko: {
+    flag:'🇰🇷', code:'KR',
+    heroSub:'48개국 · 조별리그 72경기 · 12개조 · 미국 · 캐나다 · 멕시코',
+    liveTitle:'실시간 스코어', fixturesTitle:'조별리그 — 72경기',
+    aiTitle:'AI 예측', matchPredTitle:'경기 예측 — 5개 AI 모델',
+    champTitle:'우승 확률 — TOP 10', valuesTitle:'팀 시장 가치',
+    squadsTitle:'선수 명단 & 이적료',
+    thRound:'라운드', thDateTime:'날짜·시간', thHome:'홈', thScore:'스코어',
+    thAway:'어웨이', thVenue:'경기장', thWeather:'날씨', thWTW:'중계 채널', thAIPick:'AI 예측',
+    donateTitle:'❤️ LiveAIScore 후원',
+    donateSub:'무료 · 광고 없음. 2026 월드컵 내내 운영을 도와주세요!',
+    aiConsensus:'5AI 종합 예측', allTab:'전체 72경기',
+    nowLabel:'현재', navLive:'🔴 라이브', navFixtures:'📅 조별리그',
+    navAI:'🤖 AI 예측', navOdds:'🏆 확률', navValues:'💰 가치', navSquads:'👤 선수단',
+    rank:'순위', confidence:'신뢰도', predictedChamp:'우승 예측',
+    top4:'톱 4', bestResult:'최고 성적', squadValue:'팀 총액', coach:'감독',
+    donateBtn:'후원하기',
+  }
+};
+
+var curLang = 'en';
+
+function toggleLang(e){
+  e.stopPropagation();
+  var btn=document.getElementById('langBtn');
+  btn.classList.toggle('open');
+}
+document.addEventListener('click', function(e){
+  var btn=document.getElementById('langBtn');
+  if(btn && !btn.contains(e.target)) btn.classList.remove('open');
+});
+
+function setLang(code, e){
+  if(e) e.stopPropagation();
+  curLang = code;
+  var L = LANG[code];
+  if(!L) return;
+
+  // Update flag/code in button
+  document.getElementById('langFlag').textContent = L.flag;
+  document.getElementById('langCode').textContent = L.code;
+
+  // Highlight active option
+  document.querySelectorAll('.lang-opt').forEach(function(o){
+    o.classList.remove('active');
+    if(o.textContent.trim().indexOf(L.code) >= 0 ||
+       (code==='vi' && o.textContent.indexOf('Tiếng')>=0) ||
+       (code==='en' && o.textContent.indexOf('English')>=0) ||
+       (code==='es' && o.textContent.indexOf('Español')>=0) ||
+       (code==='pt' && o.textContent.indexOf('Portu')>=0) ||
+       (code==='fr' && o.textContent.indexOf('Franç')>=0) ||
+       (code==='de' && o.textContent.indexOf('Deutsch')>=0) ||
+       (code==='ar' && o.textContent.indexOf('العربية')>=0) ||
+       (code==='zh' && o.textContent.indexOf('中文')>=0) ||
+       (code==='ja' && o.textContent.indexOf('日本語')>=0) ||
+       (code==='ko' && o.textContent.indexOf('한국어')>=0)
+    ) o.classList.add('active');
+  });
+
+  // Translate all data-i18n elements
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var key = el.getAttribute('data-i18n');
+    if(L[key] !== undefined) el.innerHTML = L[key];
+  });
+
+  // Update nav links
+  var navMap = [
+    ['.nl[href="#live"]', 'navLive'],
+    ['.nl[href="#fixtures"]', 'navFixtures'],
+    ['.nl[href="#ai"]', 'navAI'],
+    ['.nl[href="#champions"]', 'navOdds'],
+    ['.nl[href="#values"]', 'navValues'],
+    ['.nl[href="#squads"]', 'navSquads']
+  ];
+  navMap.forEach(function(item){
+    var el = document.querySelector(item[0]);
+    if(el && L[item[1]]) el.textContent = L[item[1]];
+  });
+
+  // Update donate button
+  var dbtn = document.querySelector('.dbtn');
+  if(dbtn) dbtn.innerHTML = '❤️ ' + L.donateBtn;
+
+  // Update "All 72 Matches" tab
+  var allTab = document.querySelector('#phTabs .tb.on, #phTabs .tb:first-child');
+  if(allTab && L.allTab) allTab.textContent = L.allTab;
+
+  // Update timezone "Now" label
+  updateTzNow();
+
+  // RTL support for Arabic
+  document.documentElement.setAttribute('dir', code === 'ar' ? 'rtl' : 'ltr');
+
+  // Close dropdown
+  document.getElementById('langBtn').classList.remove('open');
+
+  // Rebuild dynamic content with new language context
+  buildSchedule();
+}
+
+// Override updateTzNow to use translation
+var _origUpdateTzNow = updateTzNow;
+updateTzNow = function(){
+  var tz=parseFloat(document.getElementById('tzSel').value||7);
+  var now=new Date();
+  var localMs=now.getTime()+tz*3600000;
+  var local=new Date(localMs);
+  var L = LANG[curLang] || LANG.en;
+  document.getElementById('tzNow').textContent = L.nowLabel+': '+
+    String(local.getUTCHours()).padStart(2,'0')+':'+
+    String(local.getUTCMinutes()).padStart(2,'0');
+};
 
 // EXPOSE
 window.setPhase=setPhase;window.setAITab=setAITab;window.selAI=selAI;window.buildSchedule=buildSchedule;window.buildLive=buildLive;window.showSq=showSq;window.opD=opD;window.clD=clD;window.pickAmt=pickAmt;window.showAllModels=showAllModels;
