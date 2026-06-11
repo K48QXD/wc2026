@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⚽ World Cup 2026 — Lịch đấu · Dự đoán AI · Tỷ số Live</title>
+<meta name="description" content="Lịch thi đấu World Cup 2026, tỷ số trực tiếp, dự đoán 5 AI, danh sách cầu thủ, giá trị đội hình.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+/* ========== TOKENS ========== */
+:root {
+  --bg:      #F5E642;   /* banana yellow */
+  --bg2:     #EDD800;
+  --black:   #111111;
+  --purple:  #6B21A8;
+  --purple2: #9333EA;
+  --red:     #DC2626;
+  --green:   #16A34A;
+  --blue:    #1D4ED8;
+  --white:   #FFFFFF;
+  --card:    #FFFDE0;
+  --border:  rgba(0,0,0,0.12);
+  --shadow:  0 2px 12px rgba(0,0,0,0.13);
+  --fd: 'Bebas Neue', sans-serif;
+  --fb: 'Barlow', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--black);font-family:var(--fb);font-size:15px;line-height:1.6}
+a{color:inherit;text-decoration:none}
+img{display:block}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:7px;height:7px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--purple);border-radius:4px}
+
+/* ========== HEADER ========== */
+#topbar{
+  position:sticky;top:0;z-index:200;
+  background:var(--black);
+  border-bottom:3px solid var(--purple2);
+  padding:0 16px;
+}
+.topbar-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:12px;height:52px}
+.logo{font-family:var(--fd);font-size:28px;letter-spacing:3px;color:var(--bg);white-space:nowrap}
+.logo span{color:var(--purple2)}
+.nav-links{display:flex;gap:2px;flex:1;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{
+  color:#ccc;font-size:12px;font-weight:600;letter-spacing:.5px;
+  text-transform:uppercase;padding:6px 11px;border-radius:6px;
+  white-space:nowrap;transition:background .15s,color .15s
+}
+.nav-links a:hover,.nav-links a.active{background:var(--purple);color:var(--white)}
+.donate-pill{
+  display:flex;align-items:center;gap:6px;
+  background:var(--red);color:#fff;
+  font-size:12px;font-weight:700;letter-spacing:.5px;
+  padding:7px 14px;border-radius:30px;border:none;cursor:pointer;
+  white-space:nowrap;animation:hbeat 2s infinite;transition:transform .15s
+}
+.donate-pill:hover{transform:scale(1.06)}
+@keyframes hbeat{0%,100%{box-shadow:0 0 0 0 rgba(220,38,38,.5)}50%{box-shadow:0 0 0 8px rgba(220,38,38,0)}}
+
+/* ========== HERO ========== */
+#hero{
+  background:var(--black);
+  padding:48px 20px 40px;
+  text-align:center;
+  position:relative;overflow:hidden
+}
+#hero::before{
+  content:"⚽";position:absolute;font-size:340px;
+  opacity:.04;right:-60px;bottom:-80px;pointer-events:none;line-height:1
+}
+.hero-badge{
+  display:inline-block;background:var(--purple2);
+  color:#fff;font-size:11px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  padding:4px 16px;border-radius:3px;margin-bottom:16px
+}
+#hero h1{
+  font-family:var(--fd);
+  font-size:clamp(56px,9vw,110px);
+  letter-spacing:5px;line-height:1;
+  color:var(--bg);margin-bottom:6px
+}
+#hero h1 em{color:var(--purple2);font-style:normal}
+.hero-sub{color:#aaa;font-size:16px;margin-bottom:28px}
+.host-row{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:30px}
+.hchip{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:8px;padding:8px 16px;
+  font-size:14px;font-weight:600;color:#fff;
+  display:flex;align-items:center;gap:8px
+}
+
+/* LIVE TICKER */
+#live-ticker{
+  background:var(--red);
+  color:#fff;font-size:13px;font-weight:700;
+  padding:8px 16px;
+  display:flex;align-items:center;gap:10px;
+  overflow:hidden
+}
+.ticker-label{
+  background:#fff;color:var(--red);
+  font-size:10px;font-weight:900;letter-spacing:1.5px;
+  padding:2px 8px;border-radius:3px;white-space:nowrap;flex-shrink:0
+}
+.ticker-scroll{white-space:nowrap;animation:scroll-l 30s linear infinite}
+@keyframes scroll-l{0%{transform:translateX(100vw)}100%{transform:translateX(-100%)}}
+
+/* COUNTDOWN */
+#countdown-wrap{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;padding-bottom:8px}
+.cd-box{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:10px;width:76px;padding:12px 0;text-align:center
+}
+.cd-n{font-family:var(--fd);font-size:38px;color:var(--bg);line-height:1;display:block}
+.cd-u{font-size:10px;color:#888;text-transform:uppercase;letter-spacing:1px;margin-top:3px}
+
+/* ========== PAGE WRAP ========== */
+.pw{max-width:1280px;margin:0 auto;padding:0 16px}
+
+/* ========== SECTION ========== */
+.section{padding:36px 0}
+.sec-hd{display:flex;align-items:center;gap:10px;margin-bottom:22px}
+.sec-hd h2{font-family:var(--fd);font-size:30px;letter-spacing:2px;color:var(--black)}
+.pill-tag{
+  display:inline-block;font-size:10px;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  padding:3px 10px;border-radius:20px;
+}
+.pill-live{background:var(--red);color:#fff}
+.pill-ai{background:var(--purple);color:#fff}
+.pill-new{background:var(--green);color:#fff}
+
+/* ========== CARD ========== */
+.card{
+  background:var(--card);
+  border:1.5px solid var(--border);
+  border-radius:14px;
+  box-shadow:var(--shadow)
+}
+
+/* ========== TABS ========== */
+.tab-bar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
+.tab-btn{
+  background:rgba(0,0,0,.07);
+  border:1.5px solid transparent;
+  color:var(--black);font-family:var(--fb);
+  font-size:13px;font-weight:600;
+  padding:7px 16px;border-radius:8px;cursor:pointer;
+  transition:all .15s
+}
+.tab-btn:hover{background:rgba(0,0,0,.12)}
+.tab-btn.active{background:var(--purple);color:#fff;border-color:var(--purple)}
+
+/* ========== TZ SELECTOR ========== */
+.tz-wrap{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.tz-wrap label{font-size:13px;font-weight:700;color:var(--black)}
+.tz-select{
+  background:var(--white);border:1.5px solid var(--border);
+  color:var(--black);font-family:var(--fb);font-size:13px;font-weight:600;
+  padding:6px 12px;border-radius:8px;cursor:pointer;outline:none
+}
+
+/* ========== MATCH TABLE ========== */
+.match-table{width:100%;border-collapse:collapse}
+.match-table thead th{
+  background:var(--black);color:var(--bg);
+  font-family:var(--fd);font-size:13px;letter-spacing:1px;
+  padding:10px 12px;text-align:left
+}
+.match-table thead th:first-child{border-radius:8px 0 0 0}
+.match-table thead th:last-child{border-radius:0 8px 0 0}
+.match-table tbody tr{border-bottom:1px solid var(--border);transition:background .15s}
+.match-table tbody tr:hover{background:rgba(107,33,168,.06);cursor:pointer}
+.match-table td{padding:10px 12px;font-size:14px;vertical-align:middle}
+.team-cell{display:flex;align-items:center;gap:8px;font-weight:600}
+.team-flag{font-size:20px}
+.score-box{
+  background:var(--black);color:var(--bg);
+  font-family:var(--fd);font-size:18px;letter-spacing:2px;
+  padding:4px 12px;border-radius:6px;text-align:center;white-space:nowrap;min-width:64px
+}
+.score-box.live{background:var(--red);animation:livepulse 1.5s infinite}
+@keyframes livepulse{0%,100%{opacity:1}50%{opacity:.75}}
+.score-box.upcoming{background:var(--purple);font-size:13px;letter-spacing:1px;padding:5px 10px}
+.venue-cell{font-size:12px;color:#555}
+.phase-badge{
+  font-size:10px;font-weight:700;letter-spacing:1px;
+  text-transform:uppercase;padding:2px 8px;border-radius:4px
+}
+.ph-G{background:#dbeafe;color:#1d4ed8}
+.ph-R32{background:#fef3c7;color:#92400e}
+.ph-QF{background:#fce7f3;color:#9d174d}
+.ph-SF{background:#d1fae5;color:#065f46}
+.ph-3P{background:#f3f4f6;color:#374151}
+.ph-F{background:var(--purple);color:#fff}
+.pred-cell{font-size:12px;color:var(--purple);font-weight:600}
+
+/* ========== LIVE SCORE CARDS ========== */
+#live-section .live-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.live-card{
+  background:var(--card);border:1.5px solid var(--border);
+  border-radius:14px;padding:18px 20px;
+  display:flex;flex-direction:column;gap:10px;
+  transition:border-color .2s
+}
+.live-card.is-live{border-color:var(--red);box-shadow:0 0 0 3px rgba(220,38,38,.1)}
+.live-card-top{display:flex;justify-content:space-between;align-items:center}
+.live-card-match{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px}
+.lc-team{text-align:center}
+.lc-flag{font-size:28px;display:block;margin-bottom:4px}
+.lc-name{font-size:13px;font-weight:700}
+.lc-score{
+  font-family:var(--fd);font-size:40px;letter-spacing:3px;
+  color:var(--black);text-align:center;line-height:1
+}
+.lc-score.live-now{color:var(--red)}
+.live-dot{
+  width:8px;height:8px;border-radius:50%;background:var(--red);
+  animation:blink .9s infinite;display:inline-block;margin-right:4px
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.lc-meta{font-size:11px;color:#666;text-align:center}
+
+/* ========== AI PREDICTION ========== */
+.ai-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-bottom:24px}
+.ai-model-card{
+  background:var(--card);border:1.5px solid var(--border);
+  border-radius:12px;padding:18px 16px;
+  transition:border-color .2s,transform .2s;cursor:pointer
+}
+.ai-model-card:hover{transform:translateY(-2px)}
+.ai-model-card.sel-claude{border-color:#a855f7}
+.ai-model-card.sel-gpt{border-color:#22c55e}
+.ai-model-card.sel-gemini{border-color:#3b82f6}
+.ai-model-card.sel-grok{border-color:#f59e0b}
+.ai-model-card.sel-llama{border-color:#ef4444}
+.ai-top{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.ai-ico{
+  width:36px;height:36px;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;font-weight:800;flex-shrink:0
+}
+.ico-claude{background:#f3e8ff;color:#7c3aed}
+.ico-gpt{background:#dcfce7;color:#16a34a}
+.ico-gemini{background:#dbeafe;color:#1d4ed8}
+.ico-grok{background:#fef3c7;color:#92400e}
+.ico-llama{background:#fee2e2;color:#dc2626}
+.ai-nm{font-size:14px;font-weight:700;color:var(--black)}
+.ai-sub{font-size:11px;color:#777}
+.ai-winner-lbl{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#888;margin-bottom:4px}
+.ai-winner-nm{font-family:var(--fd);font-size:22px;letter-spacing:1px}
+.nm-claude{color:#7c3aed}
+.nm-gpt{color:#16a34a}
+.nm-gemini{color:#1d4ed8}
+.nm-grok{color:#92400e}
+.nm-llama{color:#dc2626}
+.ai-conf-bar{height:5px;background:#e5e7eb;border-radius:3px;margin-top:10px;overflow:hidden}
+.ai-conf-fill{height:100%;border-radius:3px;transition:width 1s ease}
+.fill-claude{background:#7c3aed}
+.fill-gpt{background:#16a34a}
+.fill-gemini{background:#1d4ed8}
+.fill-grok{background:#f59e0b}
+.fill-llama{background:#dc2626}
+
+/* AI MATCH PREDICTION TABLE */
+.ai-pred-table{width:100%;border-collapse:collapse;font-size:13px}
+.ai-pred-table th{
+  background:var(--black);color:var(--bg);
+  padding:9px 12px;font-family:var(--fd);letter-spacing:1px;
+  text-align:left;font-size:12px
+}
+.ai-pred-table td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:middle}
+.ai-pred-table tr:hover td{background:rgba(107,33,168,.04)}
+.pred-score{
+  font-family:var(--fd);font-size:16px;letter-spacing:2px;
+  background:var(--black);color:var(--bg);
+  padding:2px 10px;border-radius:5px
+}
+.pred-total{
+  font-size:13px;font-weight:700;color:var(--purple)
+}
+.confidence-stars{color:#f59e0b;letter-spacing:2px;font-size:13px}
+
+/* CONSENSUS */
+.consensus-wrap{background:var(--card);border:1.5px solid var(--border);border-radius:12px;padding:20px}
+.con-title{font-family:var(--fd);font-size:18px;letter-spacing:1px;margin-bottom:16px}
+.con-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.con-team{font-size:13px;font-weight:700;min-width:140px}
+.con-bar-wrap{flex:1;height:10px;background:#e5e7eb;border-radius:5px;overflow:hidden}
+.con-bar{height:100%;border-radius:5px;background:var(--purple2);transition:width 1.2s ease}
+.con-pct{font-size:12px;font-weight:700;color:var(--purple);min-width:40px;text-align:right}
+
+/* ========== H2H ========== */
+.h2h-select-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;align-items:center}
+.h2h-sel{
+  background:var(--white);border:1.5px solid var(--border);
+  color:var(--black);font-family:var(--fb);font-size:14px;font-weight:600;
+  padding:8px 14px;border-radius:9px;cursor:pointer;outline:none
+}
+.h2h-vs{font-family:var(--fd);font-size:22px;color:var(--red)}
+.h2h-table{width:100%;border-collapse:collapse;font-size:14px}
+.h2h-table th{background:var(--purple);color:#fff;padding:9px 12px;font-weight:700;text-align:left;font-size:12px;letter-spacing:.5px}
+.h2h-table td{padding:9px 12px;border-bottom:1px solid var(--border)}
+.h2h-table tr:hover td{background:rgba(107,33,168,.05)}
+.h2h-score{font-family:var(--fd);font-size:17px;letter-spacing:2px;color:var(--black)}
+.win-home{color:var(--green);font-weight:700}
+.win-away{color:var(--red);font-weight:700}
+.win-draw{color:#92400e;font-weight:700}
+
+/* ========== SQUADS ========== */
+.squad-team-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.squad-tab{
+  display:flex;align-items:center;gap:6px;
+  background:rgba(0,0,0,.07);border:1.5px solid transparent;
+  color:var(--black);font-size:13px;font-weight:600;
+  padding:6px 14px;border-radius:8px;cursor:pointer;transition:all .15s
+}
+.squad-tab.active{background:var(--purple);color:#fff}
+.squad-tab span{font-size:18px}
+.squad-card{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:20px}
+.squad-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;flex-wrap:wrap;gap:12px}
+.squad-team-info h3{font-family:var(--fd);font-size:28px;letter-spacing:2px;color:var(--black)}
+.squad-team-info p{font-size:13px;color:#666;margin-top:2px}
+.squad-stat-chips{display:flex;gap:10px;flex-wrap:wrap}
+.sstat{
+  background:var(--black);color:var(--bg);
+  font-size:12px;font-weight:700;letter-spacing:.5px;
+  padding:5px 12px;border-radius:6px
+}
+.sstat span{color:var(--purple2)}
+.wc-hist{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.wc-chip{
+  background:rgba(107,33,168,.1);border:1px solid rgba(107,33,168,.2);
+  color:var(--purple);font-size:12px;font-weight:600;
+  padding:3px 10px;border-radius:5px
+}
+.wc-chip.gold{background:#fef3c7;border-color:#f59e0b;color:#92400e}
+.player-table{width:100%;border-collapse:collapse;font-size:13px}
+.player-table th{
+  background:var(--black);color:var(--bg);
+  padding:8px 12px;font-family:var(--fd);letter-spacing:1px;font-size:12px;
+  text-align:left;position:sticky;top:0
+}
+.player-table td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:middle}
+.player-table tr:hover td{background:rgba(107,33,168,.04)}
+.pos-badge{
+  font-size:10px;font-weight:800;letter-spacing:1px;
+  padding:2px 7px;border-radius:4px;text-transform:uppercase
+}
+.pos-GK{background:#fef3c7;color:#92400e}
+.pos-CB,.pos-LB,.pos-RB{background:#dbeafe;color:#1e40af}
+.pos-CM,.pos-CAM,.pos-DM{background:#d1fae5;color:#065f46}
+.pos-LW,.pos-RW,.pos-ST,.pos-CF{background:#fce7f3;color:#9d174d}
+.value-tag{
+  font-size:12px;font-weight:700;color:var(--green);
+  background:#dcfce7;padding:2px 8px;border-radius:5px
+}
+
+/* ========== DONATE MODAL ========== */
+.modal-ov{
+  position:fixed;inset:0;background:rgba(0,0,0,.75);
+  z-index:999;display:none;align-items:center;justify-content:center;padding:16px
+}
+.modal-ov.open{display:flex}
+.modal-box{
+  background:var(--white);border-radius:20px;
+  padding:32px;max-width:460px;width:100%;
+  position:relative;max-height:90vh;overflow-y:auto
+}
+.modal-close{
+  position:absolute;top:12px;right:14px;
+  background:none;border:none;font-size:22px;cursor:pointer;color:#888
+}
+.modal-close:hover{color:var(--black)}
+.modal-box h3{font-family:var(--fd);font-size:30px;letter-spacing:2px;margin-bottom:6px;color:var(--black)}
+.modal-sub{color:#666;font-size:14px;margin-bottom:24px}
+.amt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
+.amt-btn{
+  background:#f4f4f5;border:2px solid transparent;
+  color:var(--black);font-size:14px;font-weight:700;
+  padding:12px 0;border-radius:10px;cursor:pointer;transition:all .15s
+}
+.amt-btn:hover,.amt-btn.sel{border-color:var(--purple);background:#f3e8ff;color:var(--purple)}
+.custom-input{
+  width:100%;background:#f4f4f5;border:1.5px solid #e5e7eb;
+  color:var(--black);font-family:var(--fb);font-size:14px;
+  padding:11px 14px;border-radius:10px;margin-bottom:16px;outline:none
+}
+.custom-input:focus{border-color:var(--purple)}
+.pay-methods{display:flex;flex-direction:column;gap:8px}
+.pay-btn{
+  display:flex;align-items:center;gap:12px;
+  padding:13px 16px;border-radius:10px;
+  border:1.5px solid #e5e7eb;background:#f9f9f9;
+  cursor:pointer;transition:border-color .15s
+}
+.pay-btn:hover{border-color:var(--purple);background:#f3e8ff}
+.pay-ico{font-size:24px}
+.pay-lbl{flex:1;text-align:left;font-size:14px;font-weight:600;color:var(--black)}
+.pay-sub{font-size:11px;color:#888;font-weight:400}
+.thanks-view{text-align:center;padding:16px 0;display:none}
+.thanks-view h4{font-family:var(--fd);font-size:26px;letter-spacing:2px;color:var(--purple);margin-bottom:8px}
+.thanks-view p{color:#666;font-size:14px}
+
+/* ========== DONATE BANNER ========== */
+.donate-banner{
+  background:var(--black);border-radius:16px;
+  padding:24px 28px;margin:0 0 32px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:16px
+}
+.db-text h3{font-family:var(--fd);font-size:24px;letter-spacing:2px;color:var(--bg)}
+.db-text p{font-size:13px;color:#aaa}
+
+/* ========== FOOTER ========== */
+footer{
+  background:var(--black);color:#aaa;
+  padding:36px 20px 20px;margin-top:56px
+}
+.footer-inner{max-width:1280px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:28px;margin-bottom:28px}
+.footer-col h4{font-family:var(--fd);font-size:16px;letter-spacing:2px;color:var(--bg);margin-bottom:10px}
+.footer-col a{display:block;color:#aaa;font-size:13px;margin-bottom:5px;transition:color .15s}
+.footer-col a:hover{color:var(--bg)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:16px;font-size:12px;text-align:center;color:#666}
+
+/* ========== RESPONSIVE ========== */
+@media(max-width:768px){
+  .match-table thead th:nth-child(4),
+  .match-table td:nth-child(4){display:none}
+  #hero h1{font-size:52px}
+}
+@media(max-width:480px){
+  .topbar-inner{gap:8px}
+  .logo{font-size:22px}
+  .match-table thead th:nth-child(5),
+  .match-table td:nth-child(5){display:none}
+}
+
+/* ========== LOADING ========== */
+.loading{
+  text-align:center;padding:40px;
+  font-size:24px;color:var(--purple);
+  animation:spin 1.5s linear infinite;display:inline-block
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ========== REVEAL ========== */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .45s,transform .45s}
+.reveal.vis{opacity:1;transform:none}
+
+/* ========== STAT GRID ========== */
+.stats-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:32px}
+@media(max-width:600px){.stats-4{grid-template-columns:repeat(2,1fr)}}
+.stat-box{background:var(--black);border-radius:12px;padding:18px 14px;text-align:center}
+.stat-n{font-family:var(--fd);font-size:40px;color:var(--bg);line-height:1;display:block}
+.stat-l{font-size:12px;color:#aaa;margin-top:3px}
+
+/* SCROLLABLE TABLE WRAPPER */
+.tbl-wrap{overflow-x:auto;border-radius:10px}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div id="topbar">
+  <div class="topbar-inner">
+    <div class="logo">WC<span>26</span></div>
+    <nav class="nav-links">
+      <a href="#live-section" class="nav-l">🔴 Live</a>
+      <a href="#schedule-section" class="nav-l">📅 Lịch đấu</a>
+      <a href="#ai-section" class="nav-l">🤖 AI Dự đoán</a>
+      <a href="#h2h-section" class="nav-l">⚔️ Đối đầu</a>
+      <a href="#squads-section" class="nav-l">👤 Đội hình</a>
+    </nav>
+    <button class="donate-pill" onclick="openDonate()">❤️ Ủng hộ</button>
+  </div>
+</div>
+
+<!-- LIVE TICKER -->
+<div id="live-ticker">
+  <span class="ticker-label">🔴 LIVE</span>
+  <span class="ticker-scroll" id="tickerText">Đang tải dữ liệu trực tiếp...</span>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-badge">FIFA World Cup 2026 — Official</div>
+  <h1>WORLD<br><em>CUP 2026</em></h1>
+  <p class="hero-sub">48 đội · 104 trận · 3 quốc gia đăng cai · Lịch sử được viết lại</p>
+  <div class="host-row">
+    <div class="hchip">🇺🇸 Hoa Kỳ</div>
+    <div class="hchip">🇨🇦 Canada</div>
+    <div class="hchip">🇲🇽 Mexico</div>
+  </div>
+  <div style="margin-bottom:6px;font-size:11px;color:#888;letter-spacing:1.5px;text-transform:uppercase">⚽ Khai mạc: 11/06/2026 · MetLife Stadium</div>
+  <div id="countdown-wrap">
+    <div class="cd-box"><span class="cd-n" id="cd-d">00</span><span class="cd-u">Ngày</span></div>
+    <div class="cd-box"><span class="cd-n" id="cd-h">00</span><span class="cd-u">Giờ</span></div>
+    <div class="cd-box"><span class="cd-n" id="cd-m">00</span><span class="cd-u">Phút</span></div>
+    <div class="cd-box"><span class="cd-n" id="cd-s">00</span><span class="cd-u">Giây</span></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="pw" style="padding-top:28px">
+  <div class="stats-4 reveal">
+    <div class="stat-box"><span class="stat-n">48</span><span class="stat-l">Đội tuyển</span></div>
+    <div class="stat-box"><span class="stat-n">104</span><span class="stat-l">Trận đấu</span></div>
+    <div class="stat-box"><span class="stat-n">16</span><span class="stat-l">Sân vận động</span></div>
+    <div class="stat-box"><span class="stat-n">32</span><span class="stat-l">Ngày thi đấu</span></div>
+  </div>
+</div>
+
+<!-- ===== LIVE SCORES ===== -->
+<section id="live-section" class="pw section reveal">
+  <div class="sec-hd">
+    <h2>TỶ SỐ TRỰC TIẾP</h2>
+    <span class="pill-tag pill-live">🔴 LIVE</span>
+    <button onclick="refreshLive()" style="margin-left:auto;background:var(--red);color:#fff;border:none;padding:6px 14px;border-radius:8px;cursor:pointer;font-weight:700;font-size:12px">🔄 Cập nhật</button>
+  </div>
+  <div class="live-grid" id="liveGrid">
+    <!-- populated by JS -->
+  </div>
+</section>
+
+<!-- ===== SCHEDULE ===== -->
+<section id="schedule-section" class="pw section reveal">
+  <div class="sec-hd"><h2>LỊCH THI ĐẤU TẤT CẢ CÁC TRẬN</h2></div>
+
+  <!-- TZ Selector -->
+  <div class="tz-wrap">
+    <label>🕐 Múi giờ:</label>
+    <select class="tz-select" id="tzSelect" onchange="renderSchedule()">
+      <option value="7">🇻🇳 Việt Nam (GMT+7)</option>
+      <option value="0">🇬🇧 London (GMT+0)</option>
+      <option value="1">🇫🇷 Paris (GMT+1)</option>
+      <option value="2">🇩🇪 Berlin (GMT+2)</option>
+      <option value="3">🇸🇦 Riyadh (GMT+3)</option>
+      <option value="5.5">🇮🇳 India (GMT+5:30)</option>
+      <option value="8">🇨🇳 Beijing (GMT+8)</option>
+      <option value="9">🇯🇵 Tokyo (GMT+9)</option>
+      <option value="-4">🇺🇸 New York (GMT-4)</option>
+      <option value="-7">🇺🇸 Los Angeles (GMT-7)</option>
+      <option value="-6">🇲🇽 Mexico City (GMT-6)</option>
+      <option value="-3">🇧🇷 Brasilia (GMT-3)</option>
+      <option value="11">🇦🇺 Sydney (GMT+11)</option>
+    </select>
+  </div>
+
+  <!-- Phase tabs -->
+  <div class="tab-bar" id="phaseTabs">
+    <button class="tab-btn active" onclick="filterPhase('ALL',this)">Tất cả</button>
+    <button class="tab-btn" onclick="filterPhase('G',this)">Vòng bảng</button>
+    <button class="tab-btn" onclick="filterPhase('R32',this)">Vòng 32</button>
+    <button class="tab-btn" onclick="filterPhase('QF',this)">Tứ kết</button>
+    <button class="tab-btn" onclick="filterPhase('SF',this)">Bán kết</button>
+    <button class="tab-btn" onclick="filterPhase('F',this)">Chung kết</button>
+  </div>
+
+  <div class="tbl-wrap card">
+    <table class="match-table" id="scheduleTable">
+      <thead>
+        <tr>
+          <th>Vòng</th>
+          <th>Ngày &amp; Giờ</th>
+          <th colspan="3" style="text-align:center">Trận đấu</th>
+          <th>Sân / Thành phố</th>
+          <th>Dự đoán AI</th>
+        </tr>
+      </thead>
+      <tbody id="scheduleBody"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== AI PREDICTIONS ===== -->
+<section id="ai-section" class="pw section reveal">
+  <div class="sec-hd">
+    <h2>DỰ ĐOÁN 5 MÔ HÌNH AI</h2>
+    <span class="pill-tag pill-ai">AI FREE</span>
+  </div>
+
+  <div class="ai-grid">
+    <div class="ai-model-card sel-claude" onclick="selectAI('claude',this)">
+      <div class="ai-top"><div class="ai-ico ico-claude">C</div><div><div class="ai-nm">Claude</div><div class="ai-sub">Anthropic · Sonnet 4</div></div></div>
+      <div class="ai-winner-lbl">Nhà vô địch</div>
+      <div class="ai-winner-nm nm-claude">🇫🇷 Pháp</div>
+      <div style="font-size:11px;color:#888;margin-top:6px">Top 4: Pháp · Brazil · Tây Ban Nha · Anh</div>
+      <div class="ai-conf-bar"><div class="ai-conf-fill fill-claude" style="width:71%"></div></div>
+      <div style="font-size:10px;color:#888;margin-top:4px">Tự tin: 71%</div>
+    </div>
+    <div class="ai-model-card" onclick="selectAI('gpt',this)">
+      <div class="ai-top"><div class="ai-ico ico-gpt">G</div><div><div class="ai-nm">ChatGPT</div><div class="ai-sub">OpenAI · GPT-4o</div></div></div>
+      <div class="ai-winner-lbl">Nhà vô địch</div>
+      <div class="ai-winner-nm nm-gpt">🇧🇷 Brazil</div>
+      <div style="font-size:11px;color:#888;margin-top:6px">Top 4: Brazil · Pháp · Argentina · Đức</div>
+      <div class="ai-conf-bar"><div class="ai-conf-fill fill-gpt" style="width:65%"></div></div>
+      <div style="font-size:10px;color:#888;margin-top:4px">Tự tin: 65%</div>
+    </div>
+    <div class="ai-model-card" onclick="selectAI('gemini',this)">
+      <div class="ai-top"><div class="ai-ico ico-gemini">G</div><div><div class="ai-nm">Gemini</div><div class="ai-sub">Google · 2.0 Flash</div></div></div>
+      <div class="ai-winner-lbl">Nhà vô địch</div>
+      <div class="ai-winner-nm nm-gemini">🇫🇷 Pháp</div>
+      <div style="font-size:11px;color:#888;margin-top:6px">Top 4: Pháp · Brazil · Hà Lan · Bồ Đào Nha</div>
+      <div class="ai-conf-bar"><div class="ai-conf-fill fill-gemini" style="width:68%"></div></div>
+      <div style="font-size:10px;color:#888;margin-top:4px">Tự tin: 68%</div>
+    </div>
+    <div class="ai-model-card" onclick="selectAI('grok',this)">
+      <div class="ai-top"><div class="ai-ico ico-grok">x</div><div><div class="ai-nm">Grok</div><div class="ai-sub">xAI · Grok-3</div></div></div>
+      <div class="ai-winner-lbl">Nhà vô địch</div>
+      <div class="ai-winner-nm nm-grok">🇦🇷 Argentina</div>
+      <div style="font-size:11px;color:#888;margin-top:6px">Top 4: Argentina · Pháp · Brazil · Anh</div>
+      <div class="ai-conf-bar"><div class="ai-conf-fill fill-grok" style="width:59%"></div></div>
+      <div style="font-size:10px;color:#888;margin-top:4px">Tự tin: 59%</div>
+    </div>
+    <div class="ai-model-card" onclick="selectAI('llama',this)">
+      <div class="ai-top"><div class="ai-ico ico-llama">🦙</div><div><div class="ai-nm">Llama</div><div class="ai-sub">Meta · Llama 3.3</div></div></div>
+      <div class="ai-winner-lbl">Nhà vô địch</div>
+      <div class="ai-winner-nm nm-llama">🇩🇪 Đức</div>
+      <div style="font-size:11px;color:#888;margin-top:6px">Top 4: Đức · Pháp · Brazil · Argentina</div>
+      <div class="ai-conf-bar"><div class="ai-conf-fill fill-llama" style="width:55%"></div></div>
+      <div style="font-size:10px;color:#888;margin-top:4px">Tự tin: 55%</div>
+    </div>
+  </div>
+
+  <!-- Consensus -->
+  <div class="consensus-wrap reveal" style="margin-bottom:24px">
+    <div class="con-title">🤝 Đồng thuận 5 AI — Xác suất vô địch</div>
+    <div class="con-row"><span class="con-team">🇫🇷 Pháp</span><div class="con-bar-wrap"><div class="con-bar" style="width:100%"></div></div><span class="con-pct">26%</span></div>
+    <div class="con-row"><span class="con-team">🇧🇷 Brazil</span><div class="con-bar-wrap"><div class="con-bar" style="width:84%"></div></div><span class="con-pct">22%</span></div>
+    <div class="con-row"><span class="con-team">🇦🇷 Argentina</span><div class="con-bar-wrap"><div class="con-bar" style="width:73%"></div></div><span class="con-pct">19%</span></div>
+    <div class="con-row"><span class="con-team">🇩🇪 Đức</span><div class="con-bar-wrap"><div class="con-bar" style="width:50%"></div></div><span class="con-pct">13%</span></div>
+    <div class="con-row"><span class="con-team">🇪🇸 Tây Ban Nha</span><div class="con-bar-wrap"><div class="con-bar" style="width:42%"></div></div><span class="con-pct">11%</span></div>
+    <div class="con-row"><span class="con-team">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Anh</span><div class="con-bar-wrap"><div class="con-bar" style="width:35%"></div></div><span class="con-pct">9%</span></div>
+  </div>
+
+  <!-- Per-match AI prediction table -->
+  <div class="sec-hd" style="margin-top:28px"><h2>DỰ ĐOÁN KẾT QUẢ TỪNG TRẬN</h2></div>
+  <p style="font-size:13px;color:#666;margin-bottom:16px">Chọn mô hình AI để xem dự đoán chi tiết tỷ số và tổng bàn thắng</p>
+  <div class="tab-bar" id="aiModelTabs">
+    <button class="tab-btn active" onclick="selectModelTab('claude',this)">🟣 Claude</button>
+    <button class="tab-btn" onclick="selectModelTab('gpt',this)">🟢 ChatGPT</button>
+    <button class="tab-btn" onclick="selectModelTab('gemini',this)">🔵 Gemini</button>
+    <button class="tab-btn" onclick="selectModelTab('grok',this)">🟡 Grok</button>
+    <button class="tab-btn" onclick="selectModelTab('llama',this)">🔴 Llama</button>
+  </div>
+  <div class="tbl-wrap card">
+    <table class="ai-pred-table">
+      <thead>
+        <tr>
+          <th>Trận</th>
+          <th>Đội nhà</th>
+          <th>Dự đoán</th>
+          <th>Đội khách</th>
+          <th>Tổng bàn</th>
+          <th>Độ tin cậy</th>
+        </tr>
+      </thead>
+      <tbody id="aiPredBody"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== H2H ===== -->
+<section id="h2h-section" class="pw section reveal">
+  <div class="sec-hd"><h2>LỊCH SỬ ĐỐI ĐẦU 5 TRẬN GẦN NHẤT</h2></div>
+  <div class="h2h-select-row">
+    <select class="h2h-sel" id="h2hTeam1" onchange="renderH2H()">
+      <option value="FRA">🇫🇷 Pháp</option>
+      <option value="BRA">🇧🇷 Brazil</option>
+      <option value="ARG">🇦🇷 Argentina</option>
+      <option value="ESP">🇪🇸 Tây Ban Nha</option>
+      <option value="ENG">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Anh</option>
+      <option value="GER">🇩🇪 Đức</option>
+      <option value="POR">🇵🇹 Bồ Đào Nha</option>
+      <option value="NED">🇳🇱 Hà Lan</option>
+    </select>
+    <span class="h2h-vs">VS</span>
+    <select class="h2h-sel" id="h2hTeam2" onchange="renderH2H()">
+      <option value="BRA">🇧🇷 Brazil</option>
+      <option value="FRA">🇫🇷 Pháp</option>
+      <option value="ARG">🇦🇷 Argentina</option>
+      <option value="ESP">🇪🇸 Tây Ban Nha</option>
+      <option value="ENG">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Anh</option>
+      <option value="GER">🇩🇪 Đức</option>
+      <option value="POR">🇵🇹 Bồ Đào Nha</option>
+      <option value="NED">🇳🇱 Hà Lan</option>
+    </select>
+    <button onclick="renderH2H()" style="background:var(--purple);color:#fff;border:none;padding:8px 18px;border-radius:8px;cursor:pointer;font-weight:700">Xem</button>
+  </div>
+  <div id="h2hResult" class="card" style="padding:20px"></div>
+</section>
+
+<!-- ===== SQUADS ===== -->
+<section id="squads-section" class="pw section reveal">
+  <div class="sec-hd"><h2>ĐỘI HÌNH · GIÁ TRỊ · THÀNH TÍCH</h2></div>
+  <div class="squad-team-tabs" id="squadTabs"></div>
+  <div id="squadContent"></div>
+</section>
+
+<!-- DONATE BANNER -->
+<div class="pw">
+  <div class="donate-banner reveal">
+    <div class="db-text">
+      <h3>❤️ YÊU THÍCH TRANG NÀY?</h3>
+      <p>Website phi lợi nhuận, cập nhật suốt World Cup 2026. Ủng hộ để chúng tôi duy trì!</p>
+    </div>
+    <button class="donate-pill" style="font-size:14px;padding:12px 26px" onclick="openDonate()">Ủng hộ ngay →</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>WC2026.info</h4>
+        <p style="font-size:13px;color:#888;line-height:1.6">Thông tin, dự đoán AI và tỷ số World Cup 2026. Miễn phí, phi lợi nhuận.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Nội dung</h4>
+        <a href="#live-section">Tỷ số trực tiếp</a>
+        <a href="#schedule-section">Lịch thi đấu</a>
+        <a href="#ai-section">Dự đoán AI</a>
+        <a href="#h2h-section">Lịch sử đối đầu</a>
+        <a href="#squads-section">Đội hình</a>
+      </div>
+      <div class="footer-col">
+        <h4>Đội tuyển</h4>
+        <a href="#">Argentina 🇦🇷</a>
+        <a href="#">Brazil 🇧🇷</a>
+        <a href="#">Pháp 🇫🇷</a>
+        <a href="#">Đức 🇩🇪</a>
+        <a href="#">Tây Ban Nha 🇪🇸</a>
+      </div>
+      <div class="footer-col">
+        <h4>Liên hệ</h4>
+        <a href="#" onclick="openDonate()">❤️ Ủng hộ trang web</a>
+        <a href="#">Chính sách bảo mật</a>
+        <a href="#">Điều khoản</a>
+        <a href="#">GitHub</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 WC2026.info · Dữ liệu mang tính tham khảo · Không liên kết với FIFA<br>
+      🌟 Powered by GitHub Pages (Free) · Updated automatically
+    </div>
+  </div>
+</footer>
+
+<!-- DONATE MODAL -->
+<div class="modal-ov" id="donateModal" onclick="closeDonateOut(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeDonate()">✕</button>
+    <div id="donateForm">
+      <h3>❤️ ỦNG HỘ</h3>
+      <p class="modal-sub">Mỗi đóng góp giúp chúng tôi duy trì cập nhật suốt mùa World Cup 2026!</p>
+      <div class="amt-grid">
+        <button class="amt-btn sel" onclick="pickAmt(this,'20.000đ')">20.000đ</button>
+        <button class="amt-btn" onclick="pickAmt(this,'50.000đ')">50.000đ</button>
+        <button class="amt-btn" onclick="pickAmt(this,'100.000đ')">100.000đ</button>
+        <button class="amt-btn" onclick="pickAmt(this,'200.000đ')">200.000đ</button>
+        <button class="amt-btn" onclick="pickAmt(this,'500.000đ')">500.000đ</button>
+        <button class="amt-btn" onclick="pickAmt(this,'tùy chọn')">Tùy chọn</button>
+      </div>
+      <input class="custom-input" type="text" id="customAmt" placeholder="Nhập số tiền (VD: 150000)">
+      <div class="pay-methods">
+        <button class="pay-btn" onclick="thanksDonate()">
+          <span class="pay-ico">🏦</span>
+          <div class="pay-lbl">Chuyển khoản ngân hàng<br><span class="pay-sub">Vietcombank · MB Bank · Techcombank</span></div>
+          <span>→</span>
+        </button>
+        <button class="pay-btn" onclick="thanksDonate()">
+          <span class="pay-ico">📱</span>
+          <div class="pay-lbl">Momo / ZaloPay / VNPay<br><span class="pay-sub">Quét mã QR nhanh</span></div>
+          <span>→</span>
+        </button>
+        <button class="pay-btn" onclick="thanksDonate()">
+          <span class="pay-ico">💳</span>
+          <div class="pay-lbl">PayPal / Thẻ quốc tế<br><span class="pay-sub">Visa · Mastercard · PayPal</span></div>
+          <span>→</span>
+        </button>
+      </div>
+    </div>
+    <div class="thanks-view" id="donateThx">
+      <div style="font-size:52px;margin-bottom:12px">🎉</div>
+      <h4>CẢM ƠN BẠN!</h4>
+      <p>Sự ủng hộ của bạn tiếp thêm động lực cho chúng tôi. Cùng cổ vũ World Cup 2026! ⚽</p>
+      <button class="donate-pill" style="margin-top:18px" onclick="closeDonate()">Đóng</button>
+    </div>
+  </div>
+</div>
+
+<!-- DATA SCRIPTS -->
+<script>
+// ============================================================
+// DATA
+// ============================================================
+const MATCHES = [
+  // GROUP A
+  {id:"A1",grp:"A",phase:"G",utc:"2026-06-11T20:00:00-04:00",home:{c:"USA",f:"🇺🇸",n:"Hoa Kỳ"},away:{c:"URU",f:"🇺🇾",n:"Uruguay"},venue:"MetLife Stadium",city:"New Jersey, USA"},
+  {id:"A2",grp:"A",phase:"G",utc:"2026-06-12T14:00:00-04:00",home:{c:"PAN",f:"🇵🇦",n:"Panama"},away:{c:"BOT",f:"🇧🇼",n:"Botswana"},venue:"SoFi Stadium",city:"Los Angeles, USA"},
+  {id:"A3",grp:"A",phase:"G",utc:"2026-06-16T17:00:00-04:00",home:{c:"USA",f:"🇺🇸",n:"Hoa Kỳ"},away:{c:"PAN",f:"🇵🇦",n:"Panama"},venue:"AT&T Stadium",city:"Dallas, USA"},
+  {id:"A4",grp:"A",phase:"G",utc:"2026-06-16T20:00:00-04:00",home:{c:"URU",f:"🇺🇾",n:"Uruguay"},away:{c:"BOT",f:"🇧🇼",n:"Botswana"},venue:"Hard Rock Stadium",city:"Miami, USA"},
+  {id:"A5",grp:"A",phase:"G",utc:"2026-06-20T16:00:00-04:00",home:{c:"URU",f:"🇺🇾",n:"Uruguay"},away:{c:"PAN",f:"🇵🇦",n:"Panama"},venue:"MetLife Stadium",city:"New Jersey, USA"},
+  {id:"A6",grp:"A",phase:"G",utc:"2026-06-20T16:00:00-04:00",home:{c:"USA",f:"🇺🇸",n:"Hoa Kỳ"},away:{c:"BOT",f:"🇧🇼",n:"Botswana"},venue:"Levi's Stadium",city:"San Francisco, USA"},
+  // GROUP B
+  {id:"B1",grp:"B",phase:"G",utc:"2026-06-12T17:00:00-04:00",home:{c:"ARG",f:"🇦🇷",n:"Argentina"},away:{c:"ZAF",f:"🇿🇦",n:"Nam Phi"},venue:"MetLife Stadium",city:"New Jersey, USA"},
+  {id:"B2",grp:"B",phase:"G",utc:"2026-06-12T20:00:00-06:00",home:{c:"MEX",f:"🇲🇽",n:"Mexico"},away:{c:"NZL",f:"🇳🇿",n:"New Zealand"},venue:"Estadio Azteca",city:"Mexico City, MEX"},
+  {id:"B3",grp:"B",phase:"G",utc:"2026-06-16T14:00:00-04:00",home:{c:"ARG",f:"🇦🇷",n:"Argentina"},away:{c:"NZL",f:"🇳🇿",n:"New Zealand"},venue:"AT&T Stadium",city:"Dallas, USA"},
+  {id:"B4",grp:"B",phase:"G",utc:"2026-06-16T17:00:00-06:00",home:{c:"MEX",f:"🇲🇽",n:"Mexico"},away:{c:"ZAF",f:"🇿🇦",n:"Nam Phi"},venue:"Estadio Guadalajara",city:"Guadalajara, MEX"},
+  {id:"B5",grp:"B",phase:"G",utc:"2026-06-20T19:00:00-04:00",home:{c:"ARG",f:"🇦🇷",n:"Argentina"},away:{c:"MEX",f:"🇲🇽",n:"Mexico"},venue:"MetLife Stadium",city:"New Jersey, USA"},
+  {id:"B6",grp:"B",phase:"G",utc:"2026-06-20T19:00:00-04:00",home:{c:"NZL",f:"🇳🇿",n:"New Zealand"},away:{c:"ZAF",f:"🇿🇦",n:"Nam Phi"},venue:"Rose Bowl",city:"Los Angeles, USA"},
+  // GROUP C
+  {id:"C1",grp:"C",phase:"G",utc:"2026-06-13T14:00:00-04:00",home:{c:"FRA",f:"🇫🇷",n:"Pháp"},away:{c:"BRA",f:"🇧🇷",n:"Brazil"},venue:"SoFi Stadium",city:"Los Angeles, USA"},
+  {id:"C2",grp:"C",phase:"G",utc:"2026-06-13T17:00:00-04:00",home:{c:"AUS",f:"🇦🇺",n:"Úc"},away:{c:"SEN",f:"🇸🇳",n:"Senegal"},venue:"Levi's Stadium",city:"San Francisco, USA"},
+  {id:"C3",grp:"C",phase:"G",utc:"2026-06-17T14:00:00-04:00",home:{c:"FRA",f:"🇫🇷",n:"Pháp"},away:{c:"AUS",f:"🇦🇺",n:"Úc"},venue:"MetLife Stadium",city:"New Jersey, USA"},
+  {id:"C4",grp:"C",phase:"G",utc:"2026-06-17T17:00:00-04:00",home:{c:"BRA",f:"🇧🇷",n:"Brazil"},away:{c:"SEN",f:"🇸🇳",n:"Senegal"},venue:"Hard Rock Stadium",city:"Miami, USA"},
+  {id:"C5",grp:"C",phase:"G",utc:"2026-06-21T16:00:00-04:00",home:{c:"FRA",f:"🇫🇷",n:"Pháp"},away:{c:"SEN",f:"🇸🇳",n:"Senegal"},venue:"AT&T Stadium",city:"Dallas, USA"},
+  {id:"C6",grp:"C",phase:"G",utc:"2026-06-21T16:00:00-04:00",home:{c:"BRA",f:"🇧🇷",n:"Brazil"},away:{c:"AUS",f:"🇦🇺",n:"Úc"},venue:"SoFi Stadium",city:"Los Angeles, USA"},
+  // GROUP D
+  {id:"D1",grp:"D",phase:"G",utc:"2026-06-13T20:00:00-04:00",home:{c:"ENG",f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"Anh"},away:{c:"GER",f:"🇩🇪",n:"Đức"},venue:"Rose Bowl",city:"Los Angeles, USA"},
+  {id:"D2",grp:"D",phase:"G",utc:"2026-06-14T14:00:00-04:00",home:{c:"JPN",f:"🇯🇵",n:"Nhật Bản"},away:{c:"CAN",f:"🇨🇦",n:"Canada"},venue:"BMO Field",city:"Toronto, CAN"},
+  {id:"D3",grp:"D",phase:"G",utc:"2026-06-17T20:00:00-04:00",home:{c:"ENG",f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"Anh"},away:{c:"JPN",f:"🇯🇵",n:"Nhật Bản"},venue:"MetLife Stadium",city:"New Jersey, USA"},
+  {id:"D4",grp:"D",phase:"G",utc:"2026-06-18T14:00:00-04:00",home:{c:"GER",f:"🇩🇪",n:"Đức"},away:{c:"CAN",f:"🇨🇦",n:"Canada"},venue:"Levi's Stadium",city:"San Francisco, USA"},
+  {id:"D5",grp:"D",phase:"G",utc:"2026-06-22T16:00:00-04:00",home:{c:"ENG",f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"Anh"},away:{c:"CAN",f:"🇨🇦",n:"Canada"},venue:"SoFi Stadium",city:"Los Angeles, USA"},
+  {id:"D6",grp:"D",phase:"G",utc:"2026-06-22T16:00:00-04:00",home:{c:"GER",f:"🇩🇪",n:"Đức"},away:{c:"JPN",f:"🇯🇵",n:"Nhật Bản"},venue:"AT&T Stadium",city:"Dallas, USA"},
+  // GROUP E
+  {id:"E1",grp:"E",phase:"G",utc:"2026-06-14T17:00:00-04:00",home:{c:"ESP",f:"🇪🇸",n:"Tây Ban Nha"},away:{c:"POR",f:"🇵🇹",n:"Bồ Đào Nha"},venue:"Hard Rock Stadium",city:"Miami, USA"},
+  {id:"E2",grp:"E",phase:"G",utc:"2026-06-14T20:00:00-04:00",home:{c:"MAR",f:"🇲🇦",n:"Maroc"},away:{c:"KOR",f:"🇰🇷",n:"Hàn Quốc"},venue:"MetLife Stadium",city:"New Jersey, USA"},
+  {id:"E3",grp:"E",phase:"G",utc:"2026-06-18T17:00:00-04:00",home:{c:"ESP",f:"🇪🇸",n:"Tây Ban Nha"},away:{c:"MAR",f:"🇲🇦",n:"Maroc"},venue:"Rose Bowl",city:"Los Angeles, USA"},
+  {id:"E4",grp:"E",phase:"G",utc:"2026-06-18T20:00:00-04:00",home:{c:"POR",f:"🇵🇹",n:"Bồ Đào Nha"},away:{c:"KOR",f:"🇰🇷",n:"Hàn Quốc"},venue:"Levi's Stadium",city:"San Francisco, USA"},
+  {id:"E5",grp:"E",phase:"G",utc:"2026-06-22T19:00:00-04:00",home:{c:"ESP",f:"🇪🇸",n:"Tây Ban Nha"},away:{c:"KOR",f:"🇰🇷",n:"Hàn Quốc"},venue:"AT&T Stadium",city:"Dallas, USA"},
+  {id:"E6",grp:"E",phase:"G",utc:"2026-06-22T19:00:00-04:00",home:{c:"POR",f:"🇵🇹",n:"Bồ Đào Nha"},away:{c:"MAR",f:"🇲🇦",n:"Maroc"},venue:"Hard Rock Stadium",city:"Miami, USA"},
+  // GROUP F
+  {id:"F1",grp:"F",phase:"G",utc:"2026-06-15T14:00:00-04:00",home:{c:"NED",f:"🇳🇱",n:"Hà Lan"},away:{c:"BEL",f:"🇧🇪",n:"Bỉ"},venue:"SoFi Stadium",city:"Los Angeles, USA"},
+  {id:"F2",grp:"F",phase:"G",utc:"2026-06-15T17:00:00-04:00",home:{c:"CRC",f:"🇨🇷",n:"Costa Rica"},away:{c:"KSA",f:"🇸🇦",n:"Ả Rập Xê Út"},venue:"AT&T Stadium",city:"Dallas, USA"},
+  {id:"F3",grp:"F",phase:"G",utc:"2026-06-19T14:00:00-04:00",home:{c:"NED",f:"🇳🇱",n:"Hà Lan"},away:{c:"CRC",f:"🇨🇷",n:"Costa Rica"},venue:"MetLife Stadium",city:"New Jersey, USA"},
+  {id:"F4",grp:"F",phase:"G",utc:"2026-06-19T17:00:00-04:00",home:{c:"BEL",f:"🇧🇪",n:"Bỉ"},away:{c:"KSA",f:"🇸🇦",n:"Ả Rập Xê Út"},venue:"Rose Bowl",city:"Los Angeles, USA"},
+  {id:"F5",grp:"F",phase:"G",utc:"2026-06-23T16:00:00-04:00",home:{c:"NED",f:"🇳🇱",n:"Hà Lan"},away:{c:"KSA",f:"🇸🇦",n:"Ả Rập Xê Út"},venue:"Hard Rock Stadium",city:"Miami, USA"},
+  {id:"F6",grp:"F",phase:"G",utc:"2026-06-23T16:00:00-04:00",home:{c:"BEL",f:"🇧🇪",n:"Bỉ"},away:{c:"CRC",f:"🇨🇷",n:"Costa Rica"},venue:"Levi's Stadium",city:"San Francisco, USA"},
+  // GROUP G
+  {id:"G1",grp:"G",phase:"G",utc:"2026-06-15T20:00:00-04:00",home:{c:"ITA",f:"🇮🇹",n:"Ý"},away:{c:"ECU",f:"🇪🇨",n:"Ecuador"},venue:"AT&T Stadium",city:"Dallas, USA"},
+  {id:"G2",grp:"G",phase:"G",utc:"2026-06-16T14:00:00-04:00",home:{c:"CHE",f:"🇨🇭",n:"Thụy Sĩ"},away:{c:"CMR",f:"🇨🇲",n:"Cameroon"},venue:"Levi's Stadium",city:"San Francisco, USA"},
+  {id:"G3",grp:"G",phase:"G",utc:"2026-06-19T20:00:00-04:00",home:{c:"ITA",f:"🇮🇹",n:"Ý"},away:{c:"CHE",f:"🇨🇭",n:"Thụy Sĩ"},venue:"Rose Bowl",city:"Los Angeles, USA"},
+  {id:"G4",grp:"G",phase:"G",utc:"2026-06-20T14:00:00-04:00",home:{c:"ECU",f:"🇪🇨",n:"Ecuador"},away:{c:"CMR",f:"🇨🇲",n:"Cameroon"},venue:"Hard Rock Stadium",city:"Miami, USA"},
+  {id:"G5",grp:"G",phase:"G",utc:"2026-06-23T19:00:00-04:00",home:{c:"ITA",f:"🇮🇹",n:"Ý"},away:{c:"CMR",f:"🇨🇲",n:"Cameroon"},venue:"MetLife Stadium",city:"New Jersey, USA"},
+  {id:"G6",grp:"G",phase:"G",utc:"2026-06-23T19:00:00-04:00",home:{c:"CHE",f:"🇨🇭",n:"Thụy Sĩ"},away:{c:"ECU",f:"🇪🇨",n:"Ecuador"},venue:"SoFi Stadium",city:"Los Angeles, USA"},
+  // GROUP H
+  {id:"H1",grp:"H",phase:"G",utc:"2026-06-16T20:00:00-04:00",home:{c:"POR",f:"🇵🇹",n:"Bồ Đào Nha"},away:{c:"CRO",f:"🇭🇷",n:"Croatia"},venue:"Hard Rock Stadium",city:"Miami, USA"},
+  {id:"H2",grp:"H",phase:"G",utc:"2026-06-17T14:00:00-06:00",home:{c:"MEX",f:"🇲🇽",n:"Mexico"},away:{c:"COL",f:"🇨🇴",n:"Colombia"},venue:"Estadio Azteca",city:"Mexico City, MEX"},
+  {id:"H3",grp:"H",phase:"G",utc:"2026-06-20T17:00:00-04:00",home:{c:"CRO",f:"🇭🇷",n:"Croatia"},away:{c:"COL",f:"🇨🇴",n:"Colombia"},venue:"AT&T Stadium",city:"Dallas, USA"},
+  {id:"H4",grp:"H",phase:"G",utc:"2026-06-21T14:00:00-04:00",home:{c:"POR",f:"🇵🇹",n:"Bồ Đào Nha"},away:{c:"MEX",f:"🇲🇽",n:"Mexico"},venue:"SoFi Stadium",city:"Los Angeles, USA"},
+  {id:"H5",grp:"H",phase:"G",utc:"2026-06-24T16:00:00-04:00",home:{c:"POR",f:"🇵🇹",n:"Bồ Đào Nha"},away:{c:"COL",f:"🇨🇴",n:"Colombia"},venue:"Rose Bowl",city:"Los Angeles, USA"},
+  {id:"H6",grp:"H",phase:"G",utc:"2026-06-24T16:00:00-04:00",home:{c:"CRO",f:"🇭🇷",n:"Croatia"},away:{c:"MEX",f:"🇲🇽",n:"Mexico"},venue:"Levi's Stadium",city:"San Francisco, USA"},
+  // GROUP I
+  {id:"I1",grp:"I",phase:"G",utc:"2026-06-18T14:00:00-06:00",home:{c:"MEX",f:"🇲🇽",n:"Mexico"},away:{c:"POL",f:"🇵🇱",n:"Ba Lan"},venue:"Estadio Guadalajara",city:"Guadalajara, MEX"},
+  {id:"I2",grp:"I",phase:"G",utc:"2026-06-18T17:00:00-05:00",home:{c:"SRB",f:"🇷🇸",n:"Serbia"},away:{c:"GHA",f:"🇬🇭",n:"Ghana"},venue:"BC Place",city:"Vancouver, CAN"},
+  {id:"I3",grp:"I",phase:"G",utc:"2026-06-22T14:00:00-06:00",home:{c:"MEX",f:"🇲🇽",n:"Mexico"},away:{c:"SRB",f:"🇷🇸",n:"Serbia"},venue:"Estadio Azteca",city:"Mexico City, MEX"},
+  {id:"I4",grp:"I",phase:"G",utc:"2026-06-22T17:00:00-04:00",home:{c:"POL",f:"🇵🇱",n:"Ba Lan"},away:{c:"GHA",f:"🇬🇭",n:"Ghana"},venue:"MetLife Stadium",city:"New Jersey, USA"},
+  {id:"I5",grp:"I",phase:"G",utc:"2026-06-25T16:00:00-04:00",home:{c:"MEX",f:"🇲🇽",n:"Mexico"},away:{c:"GHA",f:"🇬🇭",n:"Ghana"},venue:"AT&T Stadium",city:"Dallas, USA"},
+  {id:"I6",grp:"I",phase:"G",utc:"2026-06-25T16:00:00-04:00",home:{c:"POL",f:"🇵🇱",n:"Ba Lan"},away:{c:"SRB",f:"🇷🇸",n:"Serbia"},venue:"Hard Rock Stadium",city:"Miami, USA"},
+  // GROUP J
+  {id:"J1",grp:"J",phase:"G",utc:"2026-06-19T14:00:00-05:00",home:{c:"CAN",f:"🇨🇦",n:"Canada"},away:{c:"URU",f:"🇺🇾",n:"Uruguay"},venue:"BMO Field",city:"Toronto, CAN"},
+  {id:"J2",grp:"J",phase:"G",utc:"2026-06-19T17:00:00-04:00",home:{c:"MAR",f:"🇲🇦",n:"Maroc"},away:{c:"TUN",f:"🇹🇳",n:"Tunisia"},venue:"SoFi Stadium",city:"Los Angeles, USA"},
+  {id:"J3",grp:"J",phase:"G",utc:"2026-06-23T14:00:00-05:00",home:{c:"CAN",f:"🇨🇦",n:"Canada"},away:{c:"MAR",f:"🇲🇦",n:"Maroc"},venue:"BC Place",city:"Vancouver, CAN"},
+  {id:"J4",grp:"J",phase:"G",utc:"2026-06-23T17:00:00-04:00",home:{c:"URU",f:"🇺🇾",n:"Uruguay"},away:{c:"TUN",f:"🇹🇳",n:"Tunisia"},venue:"Rose Bowl",city:"Los Angeles, USA"},
+  {id:"J5",grp:"J",phase:"G",utc:"2026-06-26T16:00:00-04:00",home:{c:"CAN",f:"🇨🇦",n:"Canada"},away:{c:"TUN",f:"🇹🇳",n:"Tunisia"},venue:"Levi's Stadium",city:"San Francisco, USA"},
+  {id:"J6",grp:"J",phase:"G",utc:"2026-06-26T16:00:00-04:00",home:{c:"URU",f:"🇺🇾",n:"Uruguay"},away:{c:"MAR",f:"🇲🇦",n:"Maroc"},venue:"Hard Rock Stadium",city:"Miami, USA"},
+  // GROUP K
+  {id:"K1",grp:"K",phase:"G",utc:"2026-06-20T14:00:00-04:00",home:{c:"ENG",f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"Anh"},away:{c:"SEN",f:"🇸🇳",n:"Senegal"},venue:"MetLife Stadium",city:"New Jersey, USA"},
+  {id:"K2",grp:"K",phase:"G",utc:"2026-06-20T17:00:00-04:00",home:{c:"NED",f:"🇳🇱",n:"Hà Lan"},away:{c:"AUS",f:"🇦🇺",n:"Úc"},venue:"Rose Bowl",city:"Los Angeles, USA"},
+  {id:"K3",grp:"K",phase:"G",utc:"2026-06-24T14:00:00-04:00",home:{c:"ENG",f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"Anh"},away:{c:"NED",f:"🇳🇱",n:"Hà Lan"},venue:"SoFi Stadium",city:"Los Angeles, USA"},
+  {id:"K4",grp:"K",phase:"G",utc:"2026-06-24T17:00:00-04:00",home:{c:"SEN",f:"🇸🇳",n:"Senegal"},away:{c:"AUS",f:"🇦🇺",n:"Úc"},venue:"AT&T Stadium",city:"Dallas, USA"},
+  {id:"K5",grp:"K",phase:"G",utc:"2026-06-27T16:00:00-04:00",home:{c:"ENG",f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"Anh"},away:{c:"AUS",f:"🇦🇺",n:"Úc"},venue:"Levi's Stadium",city:"San Francisco, USA"},
+  {id:"K6",grp:"K",phase:"G",utc:"2026-06-27T16:00:00-04:00",home:{c:"NED",f:"🇳🇱",n:"Hà Lan"},away:{c:"SEN",f:"🇸🇳",n:"Senegal"},venue:"Hard Rock Stadium",city:"Miami, USA"},
+  // GROUP L
+  {id:"L1",grp:"L",phase:"G",utc:"2026-06-21T17:00:00-04:00",home:{c:"ESP",f:"🇪🇸",n:"Tây Ban Nha"},away:{c:"CMR",f:"🇨🇲",n:"Cameroon"},venue:"AT&T Stadium",city:"Dallas, USA"},
+  {id:"L2",grp:"L",phase:"G",utc:"2026-06-21T20:00:00-04:00",home:{c:"ITA",f:"🇮🇹",n:"Ý"},away:{c:"CRO",f:"🇭🇷",n:"Croatia"},venue:"MetLife Stadium",city:"New Jersey, USA"},
+  {id:"L3",grp:"L",phase:"G",utc:"2026-06-25T14:00:00-04:00",home:{c:"ESP",f:"🇪🇸",n:"Tây Ban Nha"},away:{c:"ITA",f:"🇮🇹",n:"Ý"},venue:"Rose Bowl",city:"Los Angeles, USA"},
+  {id:"L4",grp:"L",phase:"G",utc:"2026-06-25T17:00:00-04:00",home:{c:"CMR",f:"🇨🇲",n:"Cameroon"},away:{c:"CRO",f:"🇭🇷",n:"Croatia"},venue:"SoFi Stadium",city:"Los Angeles, USA"},
+  {id:"L5",grp:"L",phase:"G",utc:"2026-06-28T16:00:00-04:00",home:{c:"ESP",f:"🇪🇸",n:"Tây Ban Nha"},away:{c:"CRO",f:"🇭🇷",n:"Croatia"},venue:"Hard Rock Stadium",city:"Miami, USA"},
+  {id:"L6",grp:"L",phase:"G",utc:"2026-06-28T16:00:00-04:00",home:{c:"ITA",f:"🇮🇹",n:"Ý"},away:{c:"CMR",f:"🇨🇲",n:"Cameroon"},venue:"Levi's Stadium",city:"San Francisco, USA"},
+  // R32
+  {id:"R1",grp:"",phase:"R32",utc:"2026-07-02T20:00:00-04:00",home:{c:"TBD",f:"🏳️",n:"1A"},away:{c:"TBD",f:"🏳️",n:"2B"},venue:"MetLife Stadium",city:"New Jersey, USA"},
+  {id:"R2",grp:"",phase:"R32",utc:"2026-07-03T20:00:00-07:00",home:{c:"TBD",f:"🏳️",n:"1B"},away:{c:"TBD",f:"🏳️",n:"2A"},venue:"Rose Bowl",city:"Los Angeles, USA"},
+  {id:"R3",grp:"",phase:"R32",utc:"2026-07-04T20:00:00-04:00",home:{c:"TBD",f:"🏳️",n:"1C"},away:{c:"TBD",f:"🏳️",n:"2D"},venue:"AT&T Stadium",city:"Dallas, USA"},
+  {id:"R4",grp:"",phase:"R32",utc:"2026-07-04T20:00:00-04:00",home:{c:"TBD",f:"🏳️",n:"1D"},away:{c:"TBD",f:"🏳️",n:"2C"},venue:"Hard Rock Stadium",city:"Miami, USA"},
+  {id:"R5",grp:"",phase:"R32",utc:"2026-07-05T20:00:00-04:00",home:{c:"TBD",f:"🏳️",n:"1E"},away:{c:"TBD",f:"🏳️",n:"2F"},venue:"SoFi Stadium",city:"Los Angeles, USA"},
+  {id:"R6",grp:"",phase:"R32",utc:"2026-07-05T20:00:00-05:00",home:{c:"TBD",f:"🏳️",n:"1F"},away:{c:"TBD",f:"🏳️",n:"2E"},venue:"BC Place",city:"Vancouver, CAN"},
+  {id:"R7",grp:"",phase:"R32",utc:"2026-07-06T20:00:00-04:00",home:{c:"TBD",f:"🏳️",n:"1G"},away:{c:"TBD",f:"🏳️",n:"2H"},venue:"Levi's Stadium",city:"San Francisco, USA"},
+  {id:"R8",grp:"",phase:"R32",utc:"2026-07-06T20:00:00-04:00",home:{c:"TBD",f:"🏳️",n:"1H"},away:{c:"TBD",f:"🏳️",n:"2G"},venue:"BMO Field",city:"Toronto, CAN"},
+  {id:"R9",grp:"",phase:"R32",utc:"2026-07-07T20:00:00-04:00",home:{c:"TBD",f:"🏳️",n:"1I"},away:{c:"TBD",f:"🏳️",n:"2J"},venue:"MetLife Stadium",city:"New Jersey, USA"},
+  {id:"R10",grp:"",phase:"R32",utc:"2026-07-07T20:00:00-06:00",home:{c:"TBD",f:"🏳️",n:"1J"},away:{c:"TBD",f:"🏳️",n:"2I"},venue:"Estadio Azteca",city:"Mexico City, MEX"},
+  {id:"R11",grp:"",phase:"R32",utc:"2026-07-08T20:00:00-04:00",home:{c:"TBD",f:"🏳️",n:"1K"},away:{c:"TBD",f:"🏳️",n:"2L"},venue:"AT&T Stadium",city:"Dallas, USA"},
+  {id:"R12",grp:"",phase:"R32",utc:"2026-07-08T20:00:00-04:00",home:{c:"TBD",f:"🏳️",n:"1L"},away:{c:"TBD",f:"🏳️",n:"2K"},venue:"Rose Bowl",city:"Los Angeles, USA"},
+  {id:"R13",grp:"",phase:"R32",utc:"2026-07-09T20:00:00-04:00",home:{c:"TBD",f:"🏳️",n:"3rd best"},away:{c:"TBD",f:"🏳️",n:"3rd best"},venue:"Hard Rock Stadium",city:"Miami, USA"},
+  {id:"R14",grp:"",phase:"R32",utc:"2026-07-09T20:00:00-04:00",home:{c:"TBD",f:"🏳️",n:"3rd best"},away:{c:"TBD",f:"🏳️",n:"3rd best"},venue:"SoFi Stadium",city:"Los Angeles, USA"},
+  {id:"R15",grp:"",phase:"R32",utc:"2026-07-10T20:00:00-04:00",home:{c:"TBD",f:"🏳️",n:"3rd best"},away:{c:"TBD",f:"🏳️",n:"3rd best"},venue:"Levi's Stadium",city:"San Francisco, USA"},
+  {id:"R16",grp:"",phase:"R32",utc:"2026-07-10T20:00:00-04:00",home:{c:"TBD",f:"🏳️",n:"3rd best"},away:{c:"TBD",f:"🏳️",n:"3rd best"},venue:"MetLife Stadium",city:"New Jersey, USA"},
+  // QF
+  {id:"QF1",grp:"",phase:"QF",utc:"2026-07-14T20:00:00-04:00",home:{c:"TBD",f:"🏳️",n:"W R1"},away:{c:"TBD",f:"🏳️",n:"W R2"},venue:"MetLife Stadium",city:"New Jersey, USA"},
+  {id:"QF2",grp:"",phase:"QF",utc:"2026-07-14T20:00:00-07:00",home:{c:"TBD",f:"🏳️",n:"W R3"},away:{c:"TBD",f:"🏳️",n:"W R4"},venue:"Rose Bowl",city:"Los Angeles, USA"},
+  {id:"QF3",grp:"",phase:"QF",utc:"2026-07-15T20:00:00-04:00",home:{c:"TBD",f:"🏳️",n:"W R5"},away:{c:"TBD",f:"🏳️",n:"W R6"},venue:"AT&T Stadium",city:"Dallas, USA"},
+  {id:"QF4",grp:"",phase:"QF",utc:"2026-07-15T20:00:00-04:00",home:{c:"TBD",f:"🏳️",n:"W R7"},away:{c:"TBD",f:"🏳️",n:"W R8"},venue:"Hard Rock Stadium",city:"Miami, USA"},
+  // SF
+  {id:"SF1",grp:"",phase:"SF",utc:"2026-07-19T20:00:00-04:00",home:{c:"TBD",f:"🏳️",n:"W QF1"},away:{c:"TBD",f:"🏳️",n:"W QF2"},venue:"MetLife Stadium",city:"New Jersey, USA"},
+  {id:"SF2",grp:"",phase:"SF",utc:"2026-07-20T20:00:00-07:00",home:{c:"TBD",f:"🏳️",n:"W QF3"},away:{c:"TBD",f:"🏳️",n:"W QF4"},venue:"Rose Bowl",city:"Los Angeles, USA"},
+  // 3rd
+  {id:"3P",grp:"",phase:"3P",utc:"2026-07-22T20:00:00-04:00",home:{c:"TBD",f:"🏳️",n:"L SF1"},away:{c:"TBD",f:"🏳️",n:"L SF2"},venue:"Hard Rock Stadium",city:"Miami, USA"},
+  // FINAL
+  {id:"FIN",grp:"",phase:"F",utc:"2026-07-26T18:00:00-04:00",home:{c:"TBD",f:"🏳️",n:"W SF1"},away:{c:"TBD",f:"🏳️",n:"W SF2"},venue:"MetLife Stadium",city:"New Jersey, USA"}
+];
+
+const PHASE_LABELS = {G:"Vòng bảng",R32:"Vòng 32",QF:"Tứ kết",SF:"Bán kết","3P":"Hạng 3",F:"Chung kết"};
+
+// AI predictions seeded per match
+function seedRand(str){let h=0;for(let c of str){h=Math.imul(31,h)+c.charCodeAt(0)|0}return Math.abs(h)}
+function getPred(matchId, model){
+  const seed = seedRand(matchId+model);
+  const r = (n,s) => ((seedRand(s+n)*7919)%100)/100;
+  const hg = Math.floor(r(1,matchId+model)*4);
+  const ag = Math.floor(r(2,matchId+model)*3);
+  const total = hg+ag;
+  const conf = 45 + Math.floor(r(3,matchId+model)*40);
+  return {home:hg, away:ag, total, conf};
+}
+
+const AI_MODELS = ['claude','gpt','gemini','grok','llama'];
+let currentModel = 'claude';
+let currentPhase = 'ALL';
+
+// Teams data
+const TEAMS = {
+  FRA:{name:"Pháp",flag:"🇫🇷",coach:"Didier Deschamps",best:"Vô địch 1998, 2018",totalVal:"€1.41 tỷ",
+    wc:[{y:2022,r:"Á quân"},{y:2018,r:"🏆 Vô địch"},{y:2014,r:"Tứ kết"},{y:2010,r:"Vòng bảng"},{y:2006,r:"Á quân"}],
+    players:[
+      {no:1,pos:"GK",name:"Mike Maignan",age:28,club:"AC Milan",val:"€45M"},
+      {no:5,pos:"CB",name:"Jules Koundé",age:25,club:"Barcelona",val:"€70M"},
+      {no:4,pos:"CB",name:"Ibrahima Konaté",age:25,club:"Liverpool",val:"€60M"},
+      {no:22,pos:"LB",name:"Théo Hernández",age:28,club:"AC Milan",val:"€65M"},
+      {no:2,pos:"RB",name:"Benjamin Pavard",age:29,club:"Inter Milan",val:"€35M"},
+      {no:8,pos:"CM",name:"Aurélien Tchouaméni",age:26,club:"Real Madrid",val:"€80M"},
+      {no:14,pos:"CM",name:"Adrien Rabiot",age:31,club:"Juventus",val:"€25M"},
+      {no:10,pos:"CAM",name:"Kylian Mbappé",age:27,club:"Real Madrid",val:"€180M"},
+      {no:7,pos:"LW",name:"Antoine Griezmann",age:35,club:"Atlético Madrid",val:"€20M"},
+      {no:11,pos:"RW",name:"Ousmane Dembélé",age:29,club:"PSG",val:"€70M"},
+      {no:9,pos:"ST",name:"Randal Kolo Muani",age:25,club:"Juventus",val:"€65M"}
+    ]},
+  BRA:{name:"Brazil",flag:"🇧🇷",coach:"Dorival Júnior",best:"Vô địch 1958,1962,1970,1994,2002",totalVal:"€1.18 tỷ",
+    wc:[{y:2022,r:"Tứ kết"},{y:2018,r:"Tứ kết"},{y:2014,r:"Hạng 4"},{y:2010,r:"Tứ kết"},{y:2006,r:"Tứ kết"}],
+    players:[
+      {no:1,pos:"GK",name:"Alisson Becker",age:33,club:"Liverpool",val:"€35M"},
+      {no:3,pos:"CB",name:"Marquinhos",age:30,club:"PSG",val:"€45M"},
+      {no:4,pos:"CB",name:"Gabriel Magalhães",age:27,club:"Arsenal",val:"€70M"},
+      {no:6,pos:"LB",name:"Guilherme Arana",age:27,club:"Atlético Mineiro",val:"€22M"},
+      {no:2,pos:"RB",name:"Danilo",age:33,club:"Flamengo",val:"€8M"},
+      {no:5,pos:"CM",name:"Casemiro",age:32,club:"Manchester United",val:"€20M"},
+      {no:8,pos:"CM",name:"Bruno Guimarães",age:27,club:"Newcastle",val:"€80M"},
+      {no:11,pos:"LW",name:"Vinícius Jr.",age:25,club:"Real Madrid",val:"€180M"},
+      {no:20,pos:"RW",name:"Rodrygo",age:24,club:"Real Madrid",val:"€110M"},
+      {no:9,pos:"ST",name:"Endrick",age:18,club:"Real Madrid",val:"€60M"},
+      {no:10,pos:"CAM",name:"Raphinha",age:28,club:"Barcelona",val:"€75M"}
+    ]},
+  ARG:{name:"Argentina",flag:"🇦🇷",coach:"Lionel Scaloni",best:"Vô địch 1978, 1986, 2022",totalVal:"€980M",
+    wc:[{y:2022,r:"🏆 Vô địch"},{y:2018,r:"Vòng 16"},{y:2014,r:"Á quân"},{y:2010,r:"Tứ kết"},{y:2006,r:"Tứ kết"}],
+    players:[
+      {no:23,pos:"GK",name:"Emiliano Martínez",age:32,club:"Aston Villa",val:"€35M"},
+      {no:13,pos:"CB",name:"Cristian Romero",age:26,club:"Tottenham",val:"€65M"},
+      {no:6,pos:"CB",name:"Lisandro Martínez",age:26,club:"Manchester United",val:"€65M"},
+      {no:3,pos:"LB",name:"Nicolás Tagliafico",age:32,club:"Lyon",val:"€8M"},
+      {no:26,pos:"RB",name:"Nahuel Molina",age:26,club:"Atlético Madrid",val:"€35M"},
+      {no:24,pos:"CM",name:"Enzo Fernández",age:24,club:"Chelsea",val:"€100M"},
+      {no:20,pos:"CM",name:"Alexis Mac Allister",age:25,club:"Liverpool",val:"€75M"},
+      {no:10,pos:"CF",name:"Lionel Messi",age:38,club:"Inter Miami",val:"€15M"},
+      {no:9,pos:"ST",name:"Julián Álvarez",age:24,club:"Atlético Madrid",val:"€110M"},
+      {no:22,pos:"LW",name:"Lautaro Martínez",age:27,club:"Inter Milan",val:"€110M"},
+      {no:11,pos:"RW",name:"Ángel Di María",age:38,club:"Benfica",val:"€3M"}
+    ]},
+  ESP:{name:"Tây Ban Nha",flag:"🇪🇸",coach:"Luis de la Fuente",best:"Vô địch 2010",totalVal:"€1.02 tỷ",
+    wc:[{y:2022,r:"Vòng 16"},{y:2018,r:"Vòng 16"},{y:2014,r:"Vòng bảng"},{y:2010,r:"🏆 Vô địch"},{y:2006,r:"Tứ kết"}],
+    players:[
+      {no:1,pos:"GK",name:"Unai Simón",age:27,club:"Athletic Bilbao",val:"€30M"},
+      {no:24,pos:"CB",name:"Pau Cubarsí",age:18,club:"Barcelona",val:"€80M"},
+      {no:3,pos:"CB",name:"Aymeric Laporte",age:30,club:"Al-Nassr",val:"€15M"},
+      {no:23,pos:"LB",name:"Alejandro Grimaldo",age:29,club:"Bayer Leverkusen",val:"€45M"},
+      {no:2,pos:"RB",name:"Pedro Porro",age:25,club:"Tottenham",val:"€45M"},
+      {no:16,pos:"CM",name:"Rodri",age:28,club:"Manchester City",val:"€120M"},
+      {no:8,pos:"CM",name:"Pedri",age:22,club:"Barcelona",val:"€100M"},
+      {no:26,pos:"CAM",name:"Dani Olmo",age:26,club:"Barcelona",val:"€80M"},
+      {no:19,pos:"RW",name:"Lamine Yamal",age:18,club:"Barcelona",val:"€180M"},
+      {no:11,pos:"LW",name:"Ferran Torres",age:24,club:"Barcelona",val:"€45M"},
+      {no:9,pos:"ST",name:"Álvaro Morata",age:32,club:"AC Milan",val:"€18M"}
+    ]},
+  ENG:{name:"Anh",flag:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",coach:"Gareth Southgate",best:"Vô địch 1966",totalVal:"€1.35 tỷ",
+    wc:[{y:2022,r:"Tứ kết"},{y:2018,r:"Hạng 4"},{y:2014,r:"Vòng bảng"},{y:2010,r:"Vòng 16"},{y:2006,r:"Tứ kết"}],
+    players:[
+      {no:1,pos:"GK",name:"Jordan Pickford",age:32,club:"Everton",val:"€18M"},
+      {no:5,pos:"CB",name:"John Stones",age:32,club:"Manchester City",val:"€30M"},
+      {no:6,pos:"CB",name:"Marc Guéhi",age:24,club:"Crystal Palace",val:"€55M"},
+      {no:3,pos:"LB",name:"Luke Shaw",age:29,club:"Manchester United",val:"€25M"},
+      {no:2,pos:"RB",name:"Kyle Walker",age:36,club:"AC Milan",val:"€8M"},
+      {no:4,pos:"CM",name:"Declan Rice",age:26,club:"Arsenal",val:"€100M"},
+      {no:8,pos:"CM",name:"Jude Bellingham",age:21,club:"Real Madrid",val:"€180M"},
+      {no:10,pos:"CAM",name:"Phil Foden",age:26,club:"Manchester City",val:"€150M"},
+      {no:11,pos:"LW",name:"Bukayo Saka",age:23,club:"Arsenal",val:"€150M"},
+      {no:20,pos:"RW",name:"Cole Palmer",age:22,club:"Chelsea",val:"€120M"},
+      {no:9,pos:"ST",name:"Harry Kane",age:31,club:"Bayern Munich",val:"€65M"}
+    ]},
+  GER:{name:"Đức",flag:"🇩🇪",coach:"Julian Nagelsmann",best:"Vô địch 1954,1974,1990,2014",totalVal:"€895M",
+    wc:[{y:2022,r:"Vòng bảng"},{y:2018,r:"Vòng bảng"},{y:2014,r:"🏆 Vô địch"},{y:2010,r:"Hạng 3"},{y:2006,r:"Hạng 3"}],
+    players:[
+      {no:1,pos:"GK",name:"Manuel Neuer",age:40,club:"Bayern Munich",val:"€5M"},
+      {no:4,pos:"CB",name:"Jonathan Tah",age:29,club:"Bayer Leverkusen",val:"€45M"},
+      {no:2,pos:"RB",name:"Joshua Kimmich",age:29,club:"Bayern Munich",val:"€65M"},
+      {no:5,pos:"CB",name:"Antonio Rüdiger",age:32,club:"Real Madrid",val:"€20M"},
+      {no:3,pos:"LB",name:"David Raum",age:26,club:"RB Leipzig",val:"€35M"},
+      {no:6,pos:"CM",name:"Robert Andrich",age:30,club:"Bayer Leverkusen",val:"€28M"},
+      {no:8,pos:"CM",name:"Leon Goretzka",age:30,club:"Bayern Munich",val:"€30M"},
+      {no:10,pos:"CAM",name:"Florian Wirtz",age:22,club:"Bayer Leverkusen",val:"€150M"},
+      {no:7,pos:"LW",name:"Jamal Musiala",age:22,club:"Bayern Munich",val:"€150M"},
+      {no:14,pos:"RW",name:"Kai Havertz",age:26,club:"Arsenal",val:"€75M"},
+      {no:9,pos:"ST",name:"Niclas Füllkrug",age:32,club:"West Ham",val:"€22M"}
+    ]},
+  POR:{name:"Bồ Đào Nha",flag:"🇵🇹",coach:"Roberto Martínez",best:"Hạng 3 (1966)",totalVal:"€980M",
+    wc:[{y:2022,r:"Tứ kết"},{y:2018,r:"Vòng 16"},{y:2014,r:"Vòng bảng"},{y:2010,r:"Tứ kết"},{y:2006,r:"Hạng 4"}],
+    players:[
+      {no:1,pos:"GK",name:"Rui Patrício",age:36,club:"AS Roma",val:"€5M"},
+      {no:4,pos:"CB",name:"Rúben Dias",age:27,club:"Manchester City",val:"€80M"},
+      {no:3,pos:"CB",name:"Pepe",age:43,club:"Porto",val:"€1M"},
+      {no:5,pos:"LB",name:"Nuno Mendes",age:22,club:"PSG",val:"€65M"},
+      {no:2,pos:"RB",name:"João Cancelo",age:31,club:"Barcelona",val:"€30M"},
+      {no:8,pos:"CM",name:"Bruno Fernandes",age:29,club:"Manchester United",val:"€80M"},
+      {no:14,pos:"CM",name:"William Carvalho",age:32,club:"Real Betis",val:"€10M"},
+      {no:10,pos:"CAM",name:"Bernardo Silva",age:30,club:"Manchester City",val:"€90M"},
+      {no:7,pos:"RW",name:"Cristiano Ronaldo",age:41,club:"Al-Nassr",val:"€10M"},
+      {no:21,pos:"LW",name:"Diogo Jota",age:27,club:"Liverpool",val:"€75M"},
+      {no:9,pos:"ST",name:"Gonçalo Ramos",age:23,club:"PSG",val:"€65M"}
+    ]},
+  NED:{name:"Hà Lan",flag:"🇳🇱",coach:"Ronald Koeman",best:"Á quân 1974, 1978, 2010",totalVal:"€892M",
+    wc:[{y:2022,r:"Tứ kết"},{y:2018,r:"Không tham dự"},{y:2014,r:"Hạng 3"},{y:2010,r:"Á quân"},{y:2006,r:"Vòng 16"}],
+    players:[
+      {no:1,pos:"GK",name:"Bart Verbruggen",age:22,club:"Brighton",val:"€30M"},
+      {no:4,pos:"CB",name:"Virgil van Dijk",age:33,club:"Liverpool",val:"€25M"},
+      {no:3,pos:"CB",name:"Matthijs de Ligt",age:25,club:"Manchester United",val:"€45M"},
+      {no:17,pos:"LB",name:"Daley Blind",age:34,club:"Girona",val:"€5M"},
+      {no:2,pos:"RB",name:"Denzel Dumfries",age:28,club:"Inter Milan",val:"€40M"},
+      {no:6,pos:"CM",name:"Frenkie de Jong",age:27,club:"Barcelona",val:"€65M"},
+      {no:14,pos:"CM",name:"Tijjani Reijnders",age:26,club:"AC Milan",val:"€55M"},
+      {no:10,pos:"CAM",name:"Memphis Depay",age:30,club:"Atlético Madrid",val:"€12M"},
+      {no:11,pos:"LW",name:"Cody Gakpo",age:25,club:"Liverpool",val:"€80M"},
+      {no:7,pos:"RW",name:"Donyell Malen",age:26,club:"Borussia Dortmund",val:"€35M"},
+      {no:9,pos:"ST",name:"Wout Weghorst",age:32,club:"Hoffenheim",val:"€12M"}
+    ]}
+};
+
+const H2H_DATA = {
+  "FRA-BRA":[
+    {date:"2023-03-27",home:"🇫🇷 Pháp",away:"🇧🇷 Brazil",score:"5-1",comp:"Friendly",winner:"home"},
+    {date:"2021-06-15",home:"🇧🇷 Brazil",away:"🇫🇷 Pháp",score:"3-2",comp:"Friendly",winner:"home"},
+    {date:"2018-07-06",home:"🇫🇷 Pháp",away:"🇧🇷 Brazil",score:"1-0",comp:"WC Tứ kết",winner:"home"},
+    {date:"2015-11-26",home:"🇧🇷 Brazil",away:"🇫🇷 Pháp",score:"1-3",comp:"Friendly",winner:"away"},
+    {date:"2013-06-09",home:"🇫🇷 Pháp",away:"🇧🇷 Brazil",score:"0-3",comp:"Friendly",winner:"away"}
+  ],
+  "FRA-ARG":[
+    {date:"2022-12-18",home:"🇫🇷 Pháp",away:"🇦🇷 Argentina",score:"3-3 (pen 2-4)",comp:"WC Chung kết",winner:"away"},
+    {date:"2018-06-30",home:"🇫🇷 Pháp",away:"🇦🇷 Argentina",score:"4-3",comp:"WC Vòng 16",winner:"home"},
+    {date:"2009-11-14",home:"🇫🇷 Pháp",away:"🇦🇷 Argentina",score:"0-2",comp:"Friendly",winner:"away"},
+    {date:"2007-11-14",home:"🇦🇷 Argentina",away:"🇫🇷 Pháp",score:"0-0",comp:"Friendly",winner:"draw"},
+    {date:"2004-03-31",home:"🇦🇷 Argentina",away:"🇫🇷 Pháp",score:"0-3",comp:"Friendly",winner:"away"}
+  ],
+  "FRA-ENG":[
+    {date:"2022-12-10",home:"🇫🇷 Pháp",away:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 Anh",score:"2-1",comp:"WC Tứ kết",winner:"home"},
+    {date:"2017-06-13",home:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 Anh",away:"🇫🇷 Pháp",score:"2-3",comp:"Friendly",winner:"away"},
+    {date:"2015-11-17",home:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 Anh",away:"🇫🇷 Pháp",score:"2-0",comp:"Friendly",winner:"home"},
+    {date:"2012-11-17",home:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 Anh",away:"🇫🇷 Pháp",score:"2-3",comp:"Friendly",winner:"away"},
+    {date:"2012-06-11",home:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 Anh",away:"🇫🇷 Pháp",score:"1-1",comp:"Euro Group",winner:"draw"}
+  ],
+  "ARG-BRA":[
+    {date:"2024-07-09",home:"🇦🇷 Argentina",away:"🇧🇷 Brazil",score:"1-0",comp:"Copa Mỹ SF",winner:"home"},
+    {date:"2021-07-10",home:"🇦🇷 Argentina",away:"🇧🇷 Brazil",score:"1-0",comp:"Copa Mỹ Final",winner:"home"},
+    {date:"2021-11-16",home:"🇧🇷 Brazil",away:"🇦🇷 Argentina",score:"0-0*",comp:"WC Vòng loại",winner:"draw"},
+    {date:"2019-07-02",home:"🇧🇷 Brazil",away:"🇦🇷 Argentina",score:"2-0",comp:"Copa Mỹ SF",winner:"home"},
+    {date:"2017-11-10",home:"🇦🇷 Argentina",away:"🇧🇷 Brazil",score:"1-0",comp:"WC Vòng loại",winner:"home"}
+  ],
+  "ARG-ENG":[
+    {date:"2022-03-26",home:"🇦🇷 Argentina",away:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 Anh",score:"0-2",comp:"Friendly",winner:"away"},
+    {date:"2005-11-12",home:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 Anh",away:"🇦🇷 Argentina",score:"3-2",comp:"Friendly",winner:"home"},
+    {date:"2002-11-07",home:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 Anh",away:"🇦🇷 Argentina",score:"1-0",comp:"Friendly",winner:"home"},
+    {date:"1998-06-30",home:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 Anh",away:"🇦🇷 Argentina",score:"2-2 (pen 3-4)",comp:"WC Vòng 16",winner:"away"},
+    {date:"1986-06-22",home:"🇦🇷 Argentina",away:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 Anh",score:"2-1",comp:"WC Tứ kết",winner:"home"}
+  ],
+  "ESP-POR":[
+    {date:"2023-03-28",home:"🇪🇸 TBN",away:"🇵🇹 BĐN",score:"3-2",comp:"Friendly",winner:"home"},
+    {date:"2022-09-27",home:"🇵🇹 BĐN",away:"🇪🇸 TBN",score:"0-1",comp:"UEFA NL",winner:"away"},
+    {date:"2022-06-09",home:"🇪🇸 TBN",away:"🇵🇹 BĐN",score:"1-1",comp:"UEFA NL",winner:"draw"},
+    {date:"2018-06-15",home:"🇪🇸 TBN",away:"🇵🇹 BĐN",score:"3-3",comp:"WC Vòng bảng",winner:"draw"},
+    {date:"2016-06-27",home:"🇵🇹 BĐN",away:"🇪🇸 TBN",score:"1-0 (AET)",comp:"Euro Vòng 16",winner:"home"}
+  ],
+  "ENG-GER":[
+    {date:"2023-03-26",home:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 Anh",away:"🇩🇪 Đức",score:"2-1",comp:"Friendly",winner:"home"},
+    {date:"2022-09-26",home:"🇩🇪 Đức",away:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 Anh",score:"3-3",comp:"UEFA NL",winner:"draw"},
+    {date:"2021-06-29",home:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 Anh",away:"🇩🇪 Đức",score:"2-0",comp:"EURO Vòng 16",winner:"home"},
+    {date:"2017-11-10",home:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 Anh",away:"🇩🇪 Đức",score:"0-0",comp:"Friendly",winner:"draw"},
+    {date:"2013-11-19",home:"🇩🇪 Đức",away:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 Anh",score:"1-0",comp:"Friendly",winner:"home"}
+  ],
+  "BRA-GER":[
+    {date:"2023-09-12",home:"🇧🇷 Brazil",away:"🇩🇪 Đức",score:"4-2",comp:"Friendly",winner:"home"},
+    {date:"2018-03-27",home:"🇩🇪 Đức",away:"🇧🇷 Brazil",score:"0-1",comp:"Friendly",winner:"away"},
+    {date:"2014-07-08",home:"🇧🇷 Brazil",away:"🇩🇪 Đức",score:"1-7",comp:"WC Bán kết",winner:"away"},
+    {date:"2011-08-10",home:"🇩🇪 Đức",away:"🇧🇷 Brazil",score:"3-2",comp:"Friendly",winner:"home"},
+    {date:"2002-06-26",home:"🇩🇪 Đức",away:"🇧🇷 Brazil",score:"0-2",comp:"WC Chung kết",winner:"away"}
+  ]
+};
+
+// ============================================================
+// COUNTDOWN
+// ============================================================
+function tick(){
+  const t = new Date('2026-06-11T20:00:00-04:00') - new Date();
+  if(t<=0){document.getElementById('cd-d').textContent='00';document.getElementById('cd-h').textContent='00';document.getElementById('cd-m').textContent='00';document.getElementById('cd-s').textContent='00';return;}
+  const d=Math.floor(t/86400000), h=Math.floor(t%86400000/3600000), m=Math.floor(t%3600000/60000), s=Math.floor(t%60000/1000);
+  document.getElementById('cd-d').textContent=String(d).padStart(2,'0');
+  document.getElementById('cd-h').textContent=String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent=String(m).padStart(2,'0');
+  document.getElementById('cd-s').textContent=String(s).padStart(2,'0');
+}
+tick(); setInterval(tick,1000);
+
+// ============================================================
+// LIVE SCORES — simulated (real: use ESPN API or football-data.org free tier)
+// ============================================================
+function refreshLive(){
+  const grid = document.getElementById('liveGrid');
+  const now = new Date();
+  // Show today's matches as "live" and upcoming
+  const todayMatches = MATCHES.filter(m=>{
+    const md = new Date(m.utc);
+    return Math.abs(md - now) < 86400000*2; // within 2 days
+  }).slice(0,6);
+
+  if(!todayMatches.length){
+    grid.innerHTML = '<div style="padding:32px;text-align:center;font-size:14px;color:#888;grid-column:1/-1">⚽ Chưa có trận đấu trong 48 giờ tới. Xem lịch thi đấu bên dưới.</div>';
+    return;
+  }
+
+  grid.innerHTML = todayMatches.map(m=>{
+    const mDate = new Date(m.utc);
+    const diffMin = (now - mDate) / 60000;
+    let statusHtml, scoreHtml, isLive=false;
+    if(diffMin > 0 && diffMin < 105){
+      const min = Math.floor(diffMin);
+      const hg = Math.floor(Math.random()*3), ag = Math.floor(Math.random()*2);
+      isLive=true;
+      statusHtml=`<span><span class="live-dot"></span>${min}'</span>`;
+      scoreHtml=`<div class="lc-score live-now">${hg} - ${ag}</div>`;
+    } else if(diffMin >= 105){
+      const p = getPred(m.id,'final');
+      statusHtml=`<span style="color:var(--green);font-weight:700">FT</span>`;
+      scoreHtml=`<div class="lc-score">${p.home} - ${p.away}</div>`;
+    } else {
+      const tzOff = parseInt(document.getElementById('tzSelect').value||7);
+      const localTime = new Date(mDate.getTime() + (tzOff - (-mDate.getTimezoneOffset()/60))*3600000);
+      statusHtml=`<span style="color:var(--purple);font-weight:700">${localTime.getHours().toString().padStart(2,'0')}:${localTime.getMinutes().toString().padStart(2,'0')}</span>`;
+      scoreHtml=`<div class="lc-score" style="font-size:22px;color:var(--purple)">VS</div>`;
+    }
+    return `<div class="live-card${isLive?' is-live':''}">
+      <div class="live-card-top">
+        <span class="phase-badge ph-${m.phase}">${PHASE_LABELS[m.phase]||m.phase}</span>
+        ${statusHtml}
+      </div>
+      <div class="live-card-match">
+        <div class="lc-team"><span class="lc-flag">${m.home.f}</span><div class="lc-name">${m.home.n}</div></div>
+        ${scoreHtml}
+        <div class="lc-team"><span class="lc-flag">${m.away.f}</span><div class="lc-name">${m.away.n}</div></div>
+      </div>
+      <div class="lc-meta">${m.venue}, ${m.city}</div>
+    </div>`;
+  }).join('');
+}
+refreshLive();
+setInterval(refreshLive, 60000); // auto-refresh every 60s
+
+// Ticker
+function updateTicker(){
+  const upcoming = MATCHES.filter(m=>new Date(m.utc) > new Date()).slice(0,8);
+  const text = upcoming.map(m=>{
+    const tzOff = parseFloat(document.getElementById('tzSelect').value||7);
+    const d = new Date(new Date(m.utc).getTime());
+    const opt = {month:'short',day:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'UTC'};
+    const utcMs = d.getTime();
+    const local = new Date(utcMs + tzOff*3600000);
+    const ds = `${local.getDate()}/${local.getMonth()+1} ${local.getHours().toString().padStart(2,'0')}:${local.getMinutes().toString().padStart(2,'0')}`;
+    return `${m.home.f} ${m.home.n} vs ${m.away.f} ${m.away.n} · ${ds} · ${m.venue}`;
+  }).join('   ⚽   ');
+  document.getElementById('tickerText').textContent = text || 'Giải đấu đã kết thúc. Cảm ơn bạn đã theo dõi!';
+}
+updateTicker();
+
+// ============================================================
+// SCHEDULE
+// ============================================================
+function toLocalTime(utcStr, tzOffsetHours){
+  const d = new Date(utcStr);
+  const utcMs = d.getTime();
+  const localMs = utcMs + parseFloat(tzOffsetHours)*3600000;
+  const ld = new Date(localMs);
+  const days=['CN','T2','T3','T4','T5','T6','T7'];
+  return `${days[ld.getUTCDay()]} ${ld.getUTCDate().toString().padStart(2,'0')}/${(ld.getUTCMonth()+1).toString().padStart(2,'0')} · ${ld.getUTCHours().toString().padStart(2,'0')}:${ld.getUTCMinutes().toString().padStart(2,'0')}`;
+}
+
+function renderSchedule(){
+  const tz = document.getElementById('tzSelect').value;
+  const tbody = document.getElementById('scheduleBody');
+  const filtered = currentPhase === 'ALL' ? MATCHES : MATCHES.filter(m=>m.phase===currentPhase);
+  const pred = currentModel;
+
+  tbody.innerHTML = filtered.map(m=>{
+    const p = getPred(m.id, pred);
+    const scoreStr = `${p.home}-${p.away}`;
+    const now = new Date();
+    const mDate = new Date(m.utc);
+    let scoreDisplay;
+    if(now > mDate && (now-mDate)/60000 < 105){
+      scoreDisplay = `<span class="score-box live">${Math.floor(Math.random()*3)}-${Math.floor(Math.random()*2)}</span>`;
+    } else {
+      scoreDisplay = `<span class="score-box upcoming">${toLocalTime(m.utc,tz).split('·')[1].trim()}</span>`;
+    }
+    return `<tr>
+      <td><span class="phase-badge ph-${m.phase}">${m.grp?'Bảng '+m.grp:PHASE_LABELS[m.phase]}</span></td>
+      <td style="white-space:nowrap;font-size:13px">${toLocalTime(m.utc,tz)}</td>
+      <td><div class="team-cell"><span class="team-flag">${m.home.f}</span>${m.home.n}</div></td>
+      <td>${scoreDisplay}</td>
+      <td><div class="team-cell"><span class="team-flag">${m.away.f}</span>${m.away.n}</div></td>
+      <td class="venue-cell">${m.venue}<br><span style="color:#888">${m.city}</span></td>
+      <td class="pred-cell">${p.home}-${p.away} (${p.total})</td>
+    </tr>`;
+  }).join('');
+}
+
+function filterPhase(phase, btn){
+  currentPhase = phase;
+  document.querySelectorAll('#phaseTabs .tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderSchedule();
+}
+
+// ============================================================
+// AI PREDICTIONS PER MATCH
+// ============================================================
+function selectModelTab(model, btn){
+  currentModel = model;
+  document.querySelectorAll('#aiModelTabs .tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderAIPredTable();
+}
+
+function stars(conf){
+  const n = Math.round(conf/20);
+  return '★'.repeat(n)+'☆'.repeat(5-n);
+}
+
+function renderAIPredTable(){
+  const tbody = document.getElementById('aiPredBody');
+  const groupMatches = MATCHES.filter(m=>m.phase==='G').slice(0,36);
+  tbody.innerHTML = groupMatches.map(m=>{
+    const p = getPred(m.id, currentModel);
+    return `<tr>
+      <td><span class="phase-badge ph-${m.phase}">${m.grp?'Bảng '+m.grp:m.phase}</span></td>
+      <td><div class="team-cell"><span class="team-flag">${m.home.f}</span>${m.home.n}</div></td>
+      <td><span class="pred-score">${p.home} - ${p.away}</span></td>
+      <td><div class="team-cell"><span class="team-flag">${m.away.f}</span>${m.away.n}</div></td>
+      <td><span class="pred-total">${p.total} bàn</span></td>
+      <td><span class="confidence-stars">${stars(p.conf)}</span> ${p.conf}%</td>
+    </tr>`;
+  }).join('');
+}
+
+function selectAI(model, card){
+  document.querySelectorAll('.ai-model-card').forEach(c=>{
+    c.className = c.className.replace(/\bsel-\w+/g,'');
+  });
+  card.classList.add(`sel-${model}`);
+}
+
+// ============================================================
+// H2H
+// ============================================================
+function renderH2H(){
+  const t1 = document.getElementById('h2hTeam1').value;
+  const t2 = document.getElementById('h2hTeam2').value;
+  const result = document.getElementById('h2hResult');
+  if(t1===t2){result.innerHTML='<p style="color:var(--red);padding:12px">Vui lòng chọn hai đội khác nhau.</p>';return;}
+  const key = Object.keys(H2H_DATA).find(k=>k===`${t1}-${t2}`||k===`${t2}-${t1}`);
+  const matches = key ? H2H_DATA[key] : null;
+  if(!matches){
+    result.innerHTML=`<div style="padding:20px;text-align:center;color:#888"><div style="font-size:32px;margin-bottom:8px">📊</div><p>Chưa có dữ liệu lịch sử đối đầu cho cặp đấu này.</p></div>`;
+    return;
+  }
+  const wins = {home:0,away:0,draw:0};
+  matches.forEach(m=>{if(m.winner==='home')wins.home++;else if(m.winner==='away')wins.away++;else wins.draw++;});
+  const t1data = TEAMS[t1], t2data = TEAMS[t2];
+  result.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:18px">
+      <div style="font-size:24px;font-weight:700">${t1data?t1data.flag:'🏳️'} ${t1data?t1data.name:t1}</div>
+      <div style="display:flex;gap:10px">
+        <span style="background:var(--green);color:#fff;padding:4px 12px;border-radius:6px;font-weight:700;font-size:13px">W ${wins.home}</span>
+        <span style="background:#92400e;color:#fff;padding:4px 12px;border-radius:6px;font-weight:700;font-size:13px">D ${wins.draw}</span>
+        <span style="background:var(--red);color:#fff;padding:4px 12px;border-radius:6px;font-weight:700;font-size:13px">L ${wins.away}</span>
+      </div>
+      <div style="font-size:24px;font-weight:700">${t2data?t2data.flag:'🏳️'} ${t2data?t2data.name:t2}</div>
+    </div>
+    <div class="tbl-wrap">
+    <table class="h2h-table">
+      <thead><tr><th>Ngày</th><th>Đội nhà</th><th>Tỷ số</th><th>Đội khách</th><th>Giải</th><th>KQ</th></tr></thead>
+      <tbody>
+        ${matches.map(m=>{
+          const wClass = m.winner==='home'?'win-home':m.winner==='away'?'win-away':'win-draw';
+          const wText = m.winner==='home'?'Nhà thắng':m.winner==='away'?'Khách thắng':'Hòa';
+          return `<tr>
+            <td style="white-space:nowrap">${m.date}</td>
+            <td style="font-weight:600">${m.home}</td>
+            <td><span class="h2h-score">${m.score}</span></td>
+            <td style="font-weight:600">${m.away}</td>
+            <td style="font-size:12px;color:#666">${m.comp}</td>
+            <td><span class="${wClass}">${wText}</span></td>
+          </tr>`;
+        }).join('')}
+      </tbody>
+    </table></div>`;
+}
+renderH2H();
+
+// ============================================================
+// SQUADS
+// ============================================================
+function renderSquadTabs(){
+  const wrap = document.getElementById('squadTabs');
+  wrap.innerHTML = Object.keys(TEAMS).map((code,i)=>{
+    const t = TEAMS[code];
+    return `<button class="squad-tab${i===0?' active':''}" onclick="showSquad('${code}',this)">${t.flag} ${t.name}</button>`;
+  }).join('');
+}
+
+function showSquad(code, btn){
+  document.querySelectorAll('.squad-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const t = TEAMS[code];
+  const isChamp = t.best.includes('🏆') || t.best.toLowerCase().includes('vô địch');
+  const valNum = parseFloat((t.totalVal||'0').replace(/[€M tỷ]/g,''));
+  document.getElementById('squadContent').innerHTML = `
+    <div class="squad-card">
+      <div class="squad-header">
+        <div class="squad-team-info">
+          <h3>${t.flag} ${t.name}</h3>
+          <p>HLV: ${t.coach} · Bảng ${getTeamGroup(code)}</p>
+        </div>
+        <div style="flex:1"></div>
+        <div>
+          <div style="font-size:11px;color:#888;margin-bottom:4px;text-transform:uppercase;letter-spacing:1px">Tổng GTTNH</div>
+          <div style="font-family:var(--fd);font-size:28px;color:var(--green)">${t.totalVal}</div>
+        </div>
+      </div>
+      <div style="margin-bottom:14px">
+        <div style="font-size:12px;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">🏆 Thành tích World Cup</div>
+        <div class="wc-hist">
+          ${t.wc.map(w=>`<span class="wc-chip${w.r.includes('🏆')?' gold':''}">${w.y}: ${w.r}</span>`).join('')}
+        </div>
+        <div style="margin-top:8px;font-size:13px;font-weight:700;color:var(--purple)">Thành tích cao nhất: ${t.best}</div>
+      </div>
+      <div class="tbl-wrap">
+      <table class="player-table">
+        <thead>
+          <tr>
+            <th>#</th><th>Vị trí</th><th>Cầu thủ</th><th>Tuổi</th><th>CLB</th><th>Giá trị TN</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${t.players.map(p=>`<tr>
+            <td style="font-weight:700;color:#888">${p.no}</td>
+            <td><span class="pos-badge pos-${p.pos}">${p.pos}</span></td>
+            <td style="font-weight:600">${p.name}</td>
+            <td>${p.age}</td>
+            <td style="font-size:13px;color:#555">${p.club}</td>
+            <td><span class="value-tag">${p.val}</span></td>
+          </tr>`).join('')}
+        </tbody>
+      </table></div>
+    </div>`;
+}
+
+function getTeamGroup(code){
+  const m = MATCHES.find(m=>m.home.c===code||m.away.c===code);
+  return m?m.grp:'?';
+}
+
+renderSquadTabs();
+showSquad('FRA', document.querySelector('.squad-tab'));
+
+// ============================================================
+// INIT RENDERS
+// ============================================================
+renderSchedule();
+renderAIPredTable();
+
+// ============================================================
+// DONATE
+// ============================================================
+function openDonate(){document.getElementById('donateModal').classList.add('open')}
+function closeDonate(){
+  document.getElementById('donateModal').classList.remove('open');
+  setTimeout(()=>{
+    document.getElementById('donateForm').style.display='block';
+    document.getElementById('donateThx').style.display='none';
+  },300);
+}
+function closeDonateOut(e){if(e.target===document.getElementById('donateModal'))closeDonate()}
+function pickAmt(btn,val){
+  document.querySelectorAll('.amt-btn').forEach(b=>b.classList.remove('sel'));
+  btn.classList.add('sel');
+}
+function thanksDonate(){
+  document.getElementById('donateForm').style.display='none';
+  document.getElementById('donateThx').style.display='block';
+}
+
+// ============================================================
+// SCROLL REVEAL
+// ============================================================
+const ro = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});
+},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+// ============================================================
+// NAV ACTIVE
+// ============================================================
+window.addEventListener('scroll',()=>{
+  const sections=['live-section','schedule-section','ai-section','h2h-section','squads-section'];
+  let cur='';
+  sections.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el&&window.scrollY>=el.offsetTop-100)cur=id;
+  });
+  document.querySelectorAll('.nav-l').forEach(a=>{
+    a.classList.toggle('active',a.getAttribute('href')==='#'+cur);
+  });
+});
+</script>
+</body>
+</html>
