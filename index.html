@@ -3,263 +3,260 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>⚽ World Cup 2026 — Fixtures · Live · AI Predictions · Squads</title>
-<meta name="description" content="All 104 World Cup 2026 fixtures, live scores, AI predictions, squad values, weather — free, no ads.">
+<title>⚽ World Cup 2026 — Fixtures · Live · AI Picks · Squad Values</title>
+<meta name="description" content="All 104 WC2026 fixtures, live scores, 5-AI predictions, squad values (Transfermarkt), weather per stadium. Free.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* ===== TOKENS ===== */
 :root{
-  --y:#F5E642;--y2:#EDD800;--bk:#111;--pu:#7C3AED;--pu2:#A855F7;
-  --rd:#DC2626;--gr:#16A34A;--bl:#1D4ED8;--wh:#fff;
-  --card:#FFFDE0;--card2:#FFF9C4;--bdr:rgba(0,0,0,.12);
-  --sh:0 2px 14px rgba(0,0,0,.13);
+  --y:#F5E642;--y2:#EDD800;--bk:#111111;
+  --pu:#7C3AED;--pu2:#A855F7;
+  --rd:#DC2626;--gr:#16A34A;--bl:#1D4ED8;
+  --wh:#ffffff;--card:#FFFDE0;--bdr:rgba(0,0,0,.12);
   --fd:'Bebas Neue',sans-serif;--fb:'Inter',sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--y);color:var(--bk);font-family:var(--fb);font-size:15px;line-height:1.6}
+body{background:var(--y);color:var(--bk);font-family:var(--fb);font-size:14px;line-height:1.6}
 a{color:inherit;text-decoration:none}
 ::-webkit-scrollbar{width:6px;height:6px}
 ::-webkit-scrollbar-track{background:var(--y2)}
 ::-webkit-scrollbar-thumb{background:var(--pu);border-radius:3px}
 
-/* ===== HEADER ===== */
+/* HEADER */
 #hdr{position:sticky;top:0;z-index:300;background:var(--bk);border-bottom:3px solid var(--pu2)}
-.hdr-i{max-width:1300px;margin:0 auto;padding:0 14px;height:52px;display:flex;align-items:center;gap:10px}
-.logo{font-family:var(--fd);font-size:26px;letter-spacing:3px;color:var(--y);white-space:nowrap}
+.hi{max-width:1280px;margin:0 auto;padding:0 12px;height:52px;display:flex;align-items:center;gap:8px}
+.logo{font-family:var(--fd);font-size:25px;letter-spacing:3px;color:var(--y);white-space:nowrap;flex-shrink:0}
 .logo em{color:var(--pu2);font-style:normal}
 .nav{display:flex;gap:2px;flex:1;overflow-x:auto;scrollbar-width:none}
 .nav::-webkit-scrollbar{display:none}
-.nav a{color:#bbb;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:5px 10px;border-radius:6px;white-space:nowrap;transition:.15s}
+.nav a{color:#bbb;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:5px 9px;border-radius:6px;white-space:nowrap;transition:.15s}
 .nav a:hover,.nav a.on{background:var(--pu);color:#fff}
-.dbtn{display:flex;align-items:center;gap:5px;background:var(--rd);color:#fff;font-size:12px;font-weight:700;padding:7px 14px;border-radius:30px;border:none;cursor:pointer;white-space:nowrap;animation:hb 2.4s infinite;transition:transform .15s}
-.dbtn:hover{transform:scale(1.06)}
-@keyframes hb{0%,100%{box-shadow:0 0 0 0 rgba(220,38,38,.45)}55%{box-shadow:0 0 0 9px rgba(220,38,38,0)}}
+.dbtn{display:flex;align-items:center;gap:5px;background:var(--rd);color:#fff;font-size:12px;font-weight:700;padding:6px 12px;border-radius:30px;border:none;cursor:pointer;white-space:nowrap;animation:hb 2.4s infinite;flex-shrink:0}
+.dbtn:hover{transform:scale(1.05)}
+@keyframes hb{0%,100%{box-shadow:0 0 0 0 rgba(220,38,38,.45)}55%{box-shadow:0 0 0 8px rgba(220,38,38,0)}}
 
-/* ===== TICKER ===== */
-#ticker{background:var(--rd);color:#fff;font-size:13px;font-weight:700;padding:7px 14px;display:flex;align-items:center;gap:10px;overflow:hidden}
-.tk-lbl{background:#fff;color:var(--rd);font-size:10px;font-weight:900;letter-spacing:1.5px;padding:2px 8px;border-radius:3px;white-space:nowrap;flex-shrink:0}
-.tk-txt{white-space:nowrap;animation:scrolll 35s linear infinite}
-@keyframes scrolll{0%{transform:translateX(100vw)}100%{transform:translateX(-100%)}}
+/* TICKER */
+#ticker{background:var(--rd);color:#fff;font-size:13px;font-weight:700;padding:7px 12px;display:flex;align-items:center;gap:10px;overflow:hidden}
+.tlbl{background:#fff;color:var(--rd);font-size:10px;font-weight:900;letter-spacing:1.5px;padding:2px 8px;border-radius:3px;white-space:nowrap;flex-shrink:0}
+.ttxt{white-space:nowrap;animation:scrollL 40s linear infinite}
+@keyframes scrollL{0%{transform:translateX(100vw)}100%{transform:translateX(-100%)}}
 
-/* ===== HERO ===== */
-#hero{background:var(--bk);padding:50px 20px 44px;text-align:center;position:relative;overflow:hidden}
-#hero::after{content:"⚽";position:absolute;font-size:320px;opacity:.035;right:-50px;bottom:-70px;pointer-events:none;line-height:1}
-.h-badge{display:inline-block;background:var(--pu2);color:#fff;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 16px;border-radius:3px;margin-bottom:16px}
-#hero h1{font-family:var(--fd);font-size:clamp(54px,9vw,108px);letter-spacing:5px;line-height:1;color:var(--y);margin-bottom:6px}
+/* HERO */
+#hero{background:var(--bk);padding:48px 16px 40px;text-align:center;position:relative;overflow:hidden}
+#hero::after{content:"⚽";position:absolute;font-size:300px;opacity:.04;right:-50px;bottom:-60px;pointer-events:none;line-height:1}
+.hbadge{display:inline-block;background:var(--pu2);color:#fff;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:3px 14px;border-radius:3px;margin-bottom:14px}
+#hero h1{font-family:var(--fd);font-size:clamp(52px,9vw,100px);letter-spacing:4px;line-height:1;color:var(--y);margin-bottom:6px}
 #hero h1 em{color:var(--pu2);font-style:normal}
-.h-sub{color:#aaa;font-size:16px;margin-bottom:28px}
-.hf{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:28px}
-.hchip{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:8px 16px;font-size:14px;font-weight:600;color:#fff;display:flex;align-items:center;gap:8px}
-.cd-lbl{font-size:11px;color:#888;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
-.cds{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-.cdbox{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:10px;width:74px;padding:12px 0;text-align:center}
-.cdn{font-family:var(--fd);font-size:38px;color:var(--y);line-height:1;display:block}
-.cdu{font-size:10px;color:#888;text-transform:uppercase;letter-spacing:1px;margin-top:3px}
+.hsub{color:#aaa;font-size:15px;margin-bottom:24px}
+.hf{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+.hchip{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:7px 14px;font-size:13px;font-weight:600;color:#fff}
+.cdlbl{font-size:11px;color:#888;letter-spacing:2px;text-transform:uppercase;margin-bottom:9px}
+.cds{display:flex;justify-content:center;gap:11px;flex-wrap:wrap}
+.cdbox{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:10px;width:72px;padding:11px 0;text-align:center}
+.cdn{font-family:var(--fd);font-size:36px;color:var(--y);line-height:1;display:block}
+.cdu{font-size:10px;color:#888;text-transform:uppercase;letter-spacing:1px;margin-top:2px}
 
-/* ===== LAYOUT ===== */
-.pw{max-width:1300px;margin:0 auto;padding:0 14px}
-.sec{padding:36px 0}
-.sh{display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap}
-.sh h2{font-family:var(--fd);font-size:28px;letter-spacing:2px;color:var(--bk)}
-.pill{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:20px}
-.p-live{background:var(--rd);color:#fff}
-.p-ai{background:var(--pu);color:#fff}
-.p-tm{background:var(--gr);color:#fff}
-.p-wx{background:var(--bl);color:#fff}
+/* LAYOUT */
+.pw{max-width:1280px;margin:0 auto;padding:0 12px}
+.sec{padding:32px 0}
+.sh{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+.sh h2{font-family:var(--fd);font-size:26px;letter-spacing:2px}
+.pill{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 9px;border-radius:20px}
+.plive{background:var(--rd);color:#fff}
+.pai{background:var(--pu);color:#fff}
+.ptm{background:var(--gr);color:#fff}
+.pwx{background:var(--bl);color:#fff}
 
-/* ===== CARDS ===== */
-.card{background:var(--card);border:1.5px solid var(--bdr);border-radius:14px;box-shadow:var(--sh)}
-.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
-.tb{background:rgba(0,0,0,.07);border:1.5px solid transparent;color:var(--bk);font-size:12px;font-weight:700;padding:6px 14px;border-radius:8px;cursor:pointer;transition:.15s}
-.tb:hover{background:rgba(0,0,0,.12)}
+/* STATS */
+.s4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:26px}
+@media(max-width:580px){.s4{grid-template-columns:repeat(2,1fr)}}
+.sbox{background:var(--bk);border-radius:12px;padding:16px 10px;text-align:center}
+.sn{font-family:var(--fd);font-size:36px;color:var(--y);line-height:1;display:block}
+.sl{font-size:11px;color:#aaa;margin-top:2px}
+
+/* TABS */
+.tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:16px}
+.tb{background:rgba(0,0,0,.08);border:1.5px solid transparent;color:var(--bk);font-size:12px;font-weight:700;padding:5px 12px;border-radius:7px;cursor:pointer;transition:.13s}
+.tb:hover{background:rgba(0,0,0,.13)}
 .tb.on{background:var(--pu);color:#fff;border-color:var(--pu)}
-.tw{overflow-x:auto;border-radius:10px}
 
-/* ===== STATS ===== */
-.s4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
-@media(max-width:600px){.s4{grid-template-columns:repeat(2,1fr)}}
-.sbox{background:var(--bk);border-radius:12px;padding:16px 12px;text-align:center}
-.sn{font-family:var(--fd);font-size:38px;color:var(--y);line-height:1;display:block}
-.sl{font-size:11px;color:#aaa;margin-top:3px}
-
-/* ===== TZ SELECTOR ===== */
-.tz-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px}
-.tz-row label{font-size:13px;font-weight:700}
-select.tz,.h2h-sel{background:#fff;border:1.5px solid var(--bdr);color:var(--bk);font-family:var(--fb);font-size:13px;font-weight:600;padding:6px 12px;border-radius:8px;cursor:pointer;outline:none}
-
-/* ===== MATCH TABLE ===== */
-.mt{width:100%;border-collapse:collapse}
-.mt thead th{background:var(--bk);color:var(--y);font-family:var(--fd);font-size:12px;letter-spacing:1px;padding:10px 10px;text-align:left}
-.mt tbody tr{border-bottom:1px solid var(--bdr);transition:.12s}
-.mt tbody tr:hover{background:rgba(124,58,237,.06)}
-.mt td{padding:9px 10px;font-size:13px;vertical-align:middle}
-.tc{display:flex;align-items:center;gap:7px;font-weight:600}
-.tf{font-size:19px}
-.sb{background:var(--bk);color:var(--y);font-family:var(--fd);font-size:17px;letter-spacing:2px;padding:3px 11px;border-radius:5px;text-align:center;white-space:nowrap;min-width:58px}
-.sb.lv{background:var(--rd);animation:lp .9s infinite}
-.sb.up{background:var(--pu);font-size:12px;letter-spacing:1px;padding:4px 9px}
-@keyframes lp{0%,100%{opacity:1}50%{opacity:.7}}
-.pb{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;border-radius:4px}
-.ph-G{background:#dbeafe;color:#1d4ed8}
-.ph-R32{background:#fef3c7;color:#92400e}
-.ph-QF{background:#fce7f3;color:#9d174d}
-.ph-SF{background:#d1fae5;color:#065f46}
-.ph-3P{background:#f3f4f6;color:#374151}
-.ph-F{background:var(--pu);color:#fff}
-.vc{font-size:12px;color:#555}
-
-/* ===== WHERE TO WATCH ===== */
-.wtw-wrap{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.wtw-chip{display:flex;align-items:center;gap:5px;background:#fff;border:1px solid var(--bdr);border-radius:6px;padding:3px 9px;font-size:11px;font-weight:700;cursor:pointer;transition:.12s;color:var(--bk)}
-.wtw-chip:hover{border-color:var(--pu);background:#f3e8ff;color:var(--pu)}
-.wtw-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-
-/* ===== WEATHER BADGE ===== */
-.wx-badge{display:inline-flex;align-items:center;gap:4px;background:var(--bl);color:#fff;font-size:11px;font-weight:600;padding:2px 8px;border-radius:5px}
-
-/* ===== LIVE CARDS ===== */
-.lg{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
-.lc{background:var(--card);border:1.5px solid var(--bdr);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:8px;transition:.2s}
-.lc.lv{border-color:var(--rd);box-shadow:0 0 0 3px rgba(220,38,38,.1)}
-.lc-top{display:flex;justify-content:space-between;align-items:center}
-.lc-m{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px}
-.lt{text-align:center}
-.lfl{font-size:28px;display:block;margin-bottom:3px}
+/* LIVE GRID */
+.lg{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:13px}
+.lc{background:var(--card);border:1.5px solid var(--bdr);border-radius:13px;padding:14px 16px;display:flex;flex-direction:column;gap:7px}
+.lc.lv{border-color:var(--rd);box-shadow:0 0 0 2px rgba(220,38,38,.12)}
+.lctop{display:flex;justify-content:space-between;align-items:center}
+.lcm{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px}
+.lct{text-align:center}
+.lfl{font-size:26px;display:block;margin-bottom:2px}
 .lnm{font-size:12px;font-weight:700}
-.lsc{font-family:var(--fd);font-size:38px;letter-spacing:3px;text-align:center;line-height:1}
+.lsc{font-family:var(--fd);font-size:36px;letter-spacing:3px;text-align:center;line-height:1}
 .lsc.lv{color:var(--rd)}
-.ldot{width:8px;height:8px;border-radius:50%;background:var(--rd);animation:bl .9s infinite;display:inline-block;margin-right:4px}
-@keyframes bl{0%,100%{opacity:1}50%{opacity:0}}
+.ldot{width:8px;height:8px;border-radius:50%;background:var(--rd);animation:blink .9s infinite;display:inline-block;margin-right:3px}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 .lmeta{font-size:11px;color:#666;text-align:center}
 
-/* ===== AI MODELS ===== */
-.aig{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:22px}
-.amc{background:var(--card);border:1.5px solid var(--bdr);border-radius:12px;padding:16px 14px;cursor:pointer;transition:.15s}
+/* MATCH TABLE */
+.tw{overflow-x:auto;border-radius:10px}
+.mt{width:100%;border-collapse:collapse}
+.mt thead th{background:var(--bk);color:var(--y);font-family:var(--fd);font-size:11px;letter-spacing:1px;padding:9px 9px;text-align:left;white-space:nowrap}
+.mt tbody tr{border-bottom:1px solid var(--bdr);transition:.1s}
+.mt tbody tr:hover{background:rgba(124,58,237,.05)}
+.mt td{padding:8px 9px;font-size:12px;vertical-align:middle}
+.tc{display:flex;align-items:center;gap:6px;font-weight:600}
+.tf{font-size:18px;flex-shrink:0}
+.sb{background:var(--bk);color:var(--y);font-family:var(--fd);font-size:16px;letter-spacing:2px;padding:3px 9px;border-radius:5px;text-align:center;white-space:nowrap;display:inline-block;min-width:54px}
+.sb.lv{background:var(--rd);animation:lp 1.2s infinite}
+.sb.up{background:var(--pu);font-size:11px;letter-spacing:1px;padding:4px 8px}
+@keyframes lp{0%,100%{opacity:1}50%{opacity:.7}}
+.pb{font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:2px 6px;border-radius:4px;white-space:nowrap}
+.phG{background:#dbeafe;color:#1d4ed8}
+.phR{background:#fef3c7;color:#92400e}
+.phQ{background:#fce7f3;color:#9d174d}
+.phS{background:#d1fae5;color:#065f46}
+.ph3{background:#f3f4f6;color:#374151}
+.phF{background:var(--pu);color:#fff}
+.vc{font-size:11px;color:#555}
+
+/* WHERE TO WATCH */
+.wtww{display:flex;gap:5px;flex-wrap:wrap}
+.wtw{display:inline-flex;align-items:center;gap:4px;background:#fff;border:1px solid var(--bdr);border-radius:5px;padding:2px 7px;font-size:10px;font-weight:700;color:var(--bk)}
+.wtw:before{content:"▶";font-size:8px;color:var(--rd)}
+
+/* WEATHER */
+.wxb{display:inline-flex;align-items:center;gap:3px;background:var(--bl);color:#fff;font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;white-space:nowrap}
+
+/* AI SECTION */
+.aig{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:11px;margin-bottom:20px}
+.amc{background:var(--card);border:1.5px solid var(--bdr);border-radius:12px;padding:14px 13px;cursor:pointer;transition:.13s}
 .amc:hover{transform:translateY(-2px)}
-.amc.sc{border-width:2px}
-.amc.sc.c{border-color:#7c3aed}.amc.sc.g{border-color:#16a34a}.amc.sc.m{border-color:#1d4ed8}.amc.sc.k{border-color:#f59e0b}.amc.sc.l{border-color:#dc2626}
-.ai-top{display:flex;align-items:center;gap:9px;margin-bottom:12px}
-.aic{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0}
-.ic-c{background:#f3e8ff;color:#7c3aed}.ic-g{background:#dcfce7;color:#16a34a}
-.ic-m{background:#dbeafe;color:#1d4ed8}.ic-k{background:#fef3c7;color:#92400e}
-.ic-l{background:#fee2e2;color:#dc2626}
+.amc.sc.c{border:2px solid #7c3aed}
+.amc.sc.g{border:2px solid #16a34a}
+.amc.sc.m{border:2px solid #1d4ed8}
+.amc.sc.k{border:2px solid #f59e0b}
+.amc.sc.l{border:2px solid #dc2626}
+.aitop{display:flex;align-items:center;gap:8px;margin-bottom:11px}
+.aico{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0}
+.icc{background:#f3e8ff;color:#7c3aed}.icg{background:#dcfce7;color:#16a34a}
+.icm{background:#dbeafe;color:#1d4ed8}.ick{background:#fef3c7;color:#92400e}
+.icl{background:#fee2e2;color:#dc2626}
 .anm{font-size:13px;font-weight:700}.asb{font-size:10px;color:#777}
-.awl{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#888;margin-bottom:3px}
-.awn{font-family:var(--fd);font-size:20px;letter-spacing:1px}
-.nm-c{color:#7c3aed}.nm-g{color:#16a34a}.nm-m{color:#1d4ed8}.nm-k{color:#92400e}.nm-l{color:#dc2626}
-.acb{height:5px;background:#e5e7eb;border-radius:3px;margin-top:9px;overflow:hidden}
-.acf{height:100%;border-radius:3px;transition:width 1s ease}
+.awl{font-size:9px;text-transform:uppercase;letter-spacing:1px;color:#888;margin-bottom:2px}
+.awn{font-family:var(--fd);font-size:19px;letter-spacing:1px}
+.nmc{color:#7c3aed}.nmg{color:#16a34a}.nmm{color:#1d4ed8}.nmk{color:#92400e}.nml{color:#dc2626}
+.acb{height:4px;background:#e5e7eb;border-radius:3px;margin-top:8px;overflow:hidden}
+.acf{height:100%;border-radius:3px}
 .fc{background:#7c3aed}.fg{background:#16a34a}.fm{background:#1d4ed8}.fk{background:#f59e0b}.fl{background:#dc2626}
 
 /* CONSENSUS */
-.cons{background:var(--card);border:1.5px solid var(--bdr);border-radius:12px;padding:18px 20px;margin-bottom:22px}
-.con-r{display:flex;align-items:center;gap:10px;margin-bottom:9px}
-.con-t{font-size:13px;font-weight:700;min-width:140px}
-.con-bw{flex:1;height:9px;background:#e5e7eb;border-radius:5px;overflow:hidden}
-.con-b{height:100%;border-radius:5px;background:var(--pu2);transition:width 1.2s ease}
-.con-p{font-size:12px;font-weight:700;color:var(--pu);min-width:38px;text-align:right}
+.cons{background:var(--card);border:1.5px solid var(--bdr);border-radius:12px;padding:16px 18px;margin-bottom:20px}
+.conr{display:flex;align-items:center;gap:9px;margin-bottom:8px}
+.cont{font-size:12px;font-weight:700;min-width:130px}
+.conbw{flex:1;height:8px;background:#e5e7eb;border-radius:4px;overflow:hidden}
+.conb{height:100%;border-radius:4px;background:var(--pu2)}
+.conp{font-size:11px;font-weight:700;color:var(--pu);min-width:36px;text-align:right}
 
 /* AI PRED TABLE */
-.apt{width:100%;border-collapse:collapse;font-size:13px}
-.apt th{background:var(--bk);color:var(--y);padding:9px 10px;font-family:var(--fd);letter-spacing:1px;font-size:12px;text-align:left}
-.apt td{padding:8px 10px;border-bottom:1px solid var(--bdr);vertical-align:middle}
+.apt{width:100%;border-collapse:collapse;font-size:12px}
+.apt th{background:var(--bk);color:var(--y);padding:8px 9px;font-family:var(--fd);letter-spacing:1px;font-size:11px;text-align:left}
+.apt td{padding:7px 9px;border-bottom:1px solid var(--bdr);vertical-align:middle}
 .apt tr:hover td{background:rgba(124,58,237,.04)}
-.ps{font-family:var(--fd);font-size:15px;letter-spacing:2px;background:var(--bk);color:var(--y);padding:2px 9px;border-radius:5px}
-.pt{font-size:12px;font-weight:700;color:var(--pu)}
-.cst{color:#f59e0b;letter-spacing:2px;font-size:12px}
+.ps{font-family:var(--fd);font-size:14px;letter-spacing:2px;background:var(--bk);color:var(--y);padding:2px 8px;border-radius:4px}
+.ptg{font-size:12px;font-weight:700;color:var(--pu)}
+.cst{color:#f59e0b;letter-spacing:1px;font-size:12px}
 
-/* ===== SQUAD ===== */
-.sqtabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
-.sqt{display:flex;align-items:center;gap:6px;background:rgba(0,0,0,.07);border:1.5px solid transparent;color:var(--bk);font-size:12px;font-weight:700;padding:6px 12px;border-radius:8px;cursor:pointer;transition:.15s}
+/* SQUAD VALUES */
+.svt{width:100%;border-collapse:collapse;font-size:12px}
+.svt th{background:var(--bk);color:var(--y);padding:9px 10px;font-family:var(--fd);letter-spacing:1px;font-size:11px;text-align:left}
+.svt td{padding:9px 10px;border-bottom:1px solid var(--bdr);vertical-align:middle}
+.svt tr:hover td{background:rgba(124,58,237,.04)}
+.rnk{font-family:var(--fd);font-size:20px;color:var(--pu)}
+.bw{height:8px;background:#e5e7eb;border-radius:4px;overflow:hidden;min-width:60px}
+.bf{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--pu2),var(--gr))}
+.vt{font-size:11px;font-weight:700;color:var(--gr);background:#dcfce7;padding:2px 6px;border-radius:4px}
+
+/* TOP PLAYERS GRID */
+.p20g{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:28px}
+.p20{background:var(--card);border:1.5px solid var(--bdr);border-radius:11px;padding:12px;display:flex;align-items:center;gap:10px;transition:.13s}
+.p20:hover{border-color:var(--pu);transform:translateY(-2px)}
+.p20r{font-family:var(--fd);font-size:22px;color:var(--pu);min-width:32px}
+.p20f{font-size:22px;flex-shrink:0}
+.p20i{flex:1}
+.p20n{font-weight:700;font-size:13px}
+.p20s{font-size:11px;color:#666}
+.p20v{font-family:var(--fd);font-size:16px;color:var(--gr);white-space:nowrap}
+
+/* SQUADS */
+.sqtabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
+.sqt{background:rgba(0,0,0,.08);border:1.5px solid transparent;color:var(--bk);font-size:11px;font-weight:700;padding:5px 11px;border-radius:7px;cursor:pointer;transition:.13s}
 .sqt.on{background:var(--pu);color:#fff}
-.scard{background:var(--card);border:1.5px solid var(--bdr);border-radius:14px;padding:20px}
-.shdr{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:16px}
-.sti h3{font-family:var(--fd);font-size:26px;letter-spacing:2px}
-.sti p{font-size:13px;color:#666;margin-top:2px}
-.tv-big{font-family:var(--fd);font-size:26px;color:var(--gr)}
-.wch{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px}
-.wcc{background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.2);color:var(--pu);font-size:11px;font-weight:600;padding:3px 10px;border-radius:5px}
+.scard{background:var(--card);border:1.5px solid var(--bdr);border-radius:13px;padding:18px}
+.shdr{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+.sti h3{font-family:var(--fd);font-size:24px;letter-spacing:2px}
+.sti p{font-size:12px;color:#666;margin-top:1px}
+.tvbig{font-family:var(--fd);font-size:24px;color:var(--gr)}
+.wch{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.wcc{background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.2);color:var(--pu);font-size:11px;font-weight:600;padding:2px 9px;border-radius:4px}
 .wcc.gold{background:#fef3c7;border-color:#f59e0b;color:#92400e}
-.ptbl{width:100%;border-collapse:collapse;font-size:13px}
-.ptbl th{background:var(--bk);color:var(--y);padding:8px 10px;font-family:var(--fd);letter-spacing:1px;font-size:11px;text-align:left;position:sticky;top:0}
-.ptbl td{padding:8px 10px;border-bottom:1px solid var(--bdr);vertical-align:middle}
+.ptbl{width:100%;border-collapse:collapse;font-size:12px}
+.ptbl th{background:var(--bk);color:var(--y);padding:7px 9px;font-family:var(--fd);letter-spacing:1px;font-size:11px;text-align:left}
+.ptbl td{padding:7px 9px;border-bottom:1px solid var(--bdr);vertical-align:middle}
 .ptbl tr:hover td{background:rgba(124,58,237,.04)}
-.pos-b{font-size:10px;font-weight:800;letter-spacing:1px;padding:2px 6px;border-radius:4px;text-transform:uppercase}
+.posb{font-size:9px;font-weight:800;letter-spacing:1px;padding:2px 5px;border-radius:3px;text-transform:uppercase}
 .GK{background:#fef3c7;color:#92400e}
 .CB,.LB,.RB,.WB{background:#dbeafe;color:#1e40af}
 .CM,.CAM,.DM,.CDM{background:#d1fae5;color:#065f46}
 .LW,.RW,.ST,.CF,.SS{background:#fce7f3;color:#9d174d}
-.vt{font-size:12px;font-weight:700;color:var(--gr);background:#dcfce7;padding:2px 7px;border-radius:5px}
 
-/* ===== TOP 100 PLAYERS ===== */
-.top100-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
-.p100{background:var(--card);border:1.5px solid var(--bdr);border-radius:12px;padding:14px;display:flex;align-items:center;gap:12px;transition:.15s}
-.p100:hover{border-color:var(--pu);transform:translateY(-2px)}
-.p100-rank{font-family:var(--fd);font-size:24px;color:var(--pu);min-width:36px}
-.p100-flag{font-size:24px}
-.p100-info{flex:1}
-.p100-name{font-weight:700;font-size:14px}
-.p100-sub{font-size:11px;color:#666}
-.p100-val{font-family:var(--fd);font-size:18px;color:var(--gr);white-space:nowrap}
+/* DONATE STRIP */
+.dstrip{background:var(--bk);border-radius:14px;padding:22px 24px;margin:0 0 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.dst h3{font-family:var(--fd);font-size:22px;letter-spacing:2px;color:var(--y)}
+.dst p{font-size:12px;color:#aaa}
 
-/* ===== SQUAD VALUES TABLE ===== */
-.svt{width:100%;border-collapse:collapse;font-size:13px}
-.svt th{background:var(--bk);color:var(--y);padding:9px 12px;font-family:var(--fd);letter-spacing:1px;font-size:12px;text-align:left}
-.svt td{padding:9px 12px;border-bottom:1px solid var(--bdr);vertical-align:middle}
-.svt tr:hover td{background:rgba(124,58,237,.04)}
-.rank-n{font-family:var(--fd);font-size:22px;color:var(--pu)}
-.bar-wrap{flex:1;height:9px;background:#e5e7eb;border-radius:5px;overflow:hidden;min-width:80px}
-.bar-fill{height:100%;border-radius:5px;background:linear-gradient(90deg,var(--pu2),var(--gr))}
-
-/* ===== DONATE ===== */
-.dstrip{background:var(--bk);border-radius:16px;padding:24px 28px;margin:0 0 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
-.dst h3{font-family:var(--fd);font-size:24px;letter-spacing:2px;color:var(--y)}
-.dst p{font-size:13px;color:#aaa}
-.mov{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:999;display:none;align-items:center;justify-content:center;padding:16px}
+/* MODAL */
+.mov{position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:999;display:none;align-items:center;justify-content:center;padding:14px}
 .mov.op{display:flex}
-.mbox{background:#fff;border-radius:20px;padding:30px;max-width:440px;width:100%;position:relative;max-height:90vh;overflow-y:auto}
-.mcl{position:absolute;top:11px;right:14px;background:none;border:none;font-size:22px;cursor:pointer;color:#888}
+.mbox{background:#fff;border-radius:18px;padding:28px;max-width:420px;width:100%;position:relative;max-height:90vh;overflow-y:auto}
+.mcl{position:absolute;top:10px;right:13px;background:none;border:none;font-size:20px;cursor:pointer;color:#888;line-height:1}
 .mcl:hover{color:var(--bk)}
-.mbox h3{font-family:var(--fd);font-size:28px;letter-spacing:2px;margin-bottom:6px;color:var(--bk)}
-.msub{color:#666;font-size:14px;margin-bottom:22px}
-.ag{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
-.ab{background:#f4f4f5;border:2px solid transparent;color:var(--bk);font-size:14px;font-weight:700;padding:12px 0;border-radius:10px;cursor:pointer;transition:.15s}
+.mbox h3{font-family:var(--fd);font-size:26px;letter-spacing:2px;margin-bottom:5px}
+.msub{color:#666;font-size:13px;margin-bottom:20px}
+.ag{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:12px}
+.ab{background:#f4f4f5;border:2px solid transparent;color:var(--bk);font-size:13px;font-weight:700;padding:11px 0;border-radius:9px;cursor:pointer;transition:.13s}
 .ab:hover,.ab.on{border-color:var(--pu);background:#f3e8ff;color:var(--pu)}
-.ci{width:100%;background:#f4f4f5;border:1.5px solid #e5e7eb;color:var(--bk);font-family:var(--fb);font-size:14px;padding:10px 13px;border-radius:10px;margin-bottom:14px;outline:none}
+.ci{width:100%;background:#f4f4f5;border:1.5px solid #e5e7eb;color:var(--bk);font-family:var(--fb);font-size:13px;padding:9px 12px;border-radius:9px;margin-bottom:12px;outline:none}
 .ci:focus{border-color:var(--pu)}
-.pms{display:flex;flex-direction:column;gap:8px}
-.pmb{display:flex;align-items:center;gap:11px;padding:13px 15px;border-radius:10px;border:1.5px solid #e5e7eb;background:#f9f9f9;cursor:pointer;transition:.15s}
+.pms{display:flex;flex-direction:column;gap:7px}
+.pmb{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:9px;border:1.5px solid #e5e7eb;background:#f9f9f9;cursor:pointer;transition:.13s;text-align:left;width:100%}
 .pmb:hover{border-color:var(--pu);background:#f3e8ff}
-.pmi{font-size:22px}
-.pml{flex:1;text-align:left;font-size:13px;font-weight:600;color:var(--bk)}
-.pms2{font-size:11px;color:#888;font-weight:400}
-.tv{text-align:center;padding:14px 0;display:none}
-.tv h4{font-family:var(--fd);font-size:24px;letter-spacing:2px;color:var(--pu);margin-bottom:8px}
-.tv p{color:#666;font-size:14px}
+.pmi{font-size:20px;flex-shrink:0}
+.pml{flex:1;font-size:13px;font-weight:600;color:var(--bk)}
+.pms2{font-size:10px;color:#888;font-weight:400;display:block;margin-top:1px}
+.tv{text-align:center;padding:12px 0}
+.tv h4{font-family:var(--fd);font-size:22px;letter-spacing:2px;color:var(--pu);margin-bottom:7px}
+.tv p{color:#666;font-size:13px}
 
-/* ===== FOOTER ===== */
-footer{background:var(--bk);color:#aaa;padding:36px 20px 20px;margin-top:56px}
-.fi{max-width:1300px;margin:0 auto}
-.fg2{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:26px;margin-bottom:26px}
-.fc2 h4{font-family:var(--fd);font-size:15px;letter-spacing:2px;color:var(--y);margin-bottom:9px}
-.fc2 a{display:block;color:#aaa;font-size:13px;margin-bottom:5px;transition:.15s}
+/* FOOTER */
+footer{background:var(--bk);color:#aaa;padding:32px 14px 18px;margin-top:52px}
+.fig{max-width:1280px;margin:0 auto}
+.fg2{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:24px;margin-bottom:24px}
+.fc2 h4{font-family:var(--fd);font-size:14px;letter-spacing:2px;color:var(--y);margin-bottom:8px}
+.fc2 a{display:block;color:#aaa;font-size:12px;margin-bottom:4px;transition:.13s}
 .fc2 a:hover{color:var(--y)}
-.fb{border-top:1px solid rgba(255,255,255,.08);padding-top:14px;font-size:12px;text-align:center;color:#555}
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .45s,transform .45s}
+.fbot{border-top:1px solid rgba(255,255,255,.08);padding-top:12px;font-size:11px;text-align:center;color:#555}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .4s,transform .4s}
 .reveal.vis{opacity:1;transform:none}
-@media(max-width:780px){
-  .mt thead th:nth-child(6),.mt td:nth-child(6),.mt thead th:nth-child(7),.mt td:nth-child(7){display:none}
-  #hero h1{font-size:52px}
+@media(max-width:700px){
+  .mt thead th:nth-child(7),.mt td:nth-child(7),
+  .mt thead th:nth-child(8),.mt td:nth-child(8){display:none}
 }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <div id="hdr">
-  <div class="hdr-i">
+  <div class="hi">
     <div class="logo">WC<em>26</em></div>
     <nav class="nav">
       <a href="#live" class="nl">🔴 Live</a>
@@ -272,20 +269,18 @@ footer{background:var(--bk);color:#aaa;padding:36px 20px 20px;margin-top:56px}
   </div>
 </div>
 
-<!-- TICKER -->
-<div id="ticker"><span class="tk-lbl">🔴 LIVE</span><span class="tk-txt" id="tkTxt">Loading...</span></div>
+<div id="ticker"><span class="tlbl">🔴 LIVE</span><span class="ttxt" id="tkTxt">Loading fixtures...</span></div>
 
-<!-- HERO -->
 <section id="hero">
-  <div class="h-badge">FIFA World Cup 2026 — Official</div>
+  <div class="hbadge">FIFA World Cup 2026 — Official</div>
   <h1>WORLD<br><em>CUP 2026</em></h1>
-  <p class="h-sub">48 teams · 104 matches · 3 host nations · History rewritten</p>
+  <p class="hsub">48 teams · 104 matches · 3 host nations · History rewritten</p>
   <div class="hf">
     <div class="hchip">🇺🇸 United States</div>
     <div class="hchip">🇨🇦 Canada</div>
     <div class="hchip">🇲🇽 Mexico</div>
   </div>
-  <div class="cd-lbl">⚽ Opening match: 11 Jun 2026 · MetLife Stadium</div>
+  <div class="cdlbl">⚽ Opening: 11 Jun 2026 — MetLife Stadium</div>
   <div class="cds">
     <div class="cdbox"><span class="cdn" id="cd-d">00</span><span class="cdu">Days</span></div>
     <div class="cdbox"><span class="cdn" id="cd-h">00</span><span class="cdu">Hrs</span></div>
@@ -294,13 +289,12 @@ footer{background:var(--bk);color:#aaa;padding:36px 20px 20px;margin-top:56px}
   </div>
 </section>
 
-<!-- STATS -->
-<div class="pw" style="padding-top:26px">
+<div class="pw" style="padding-top:22px">
   <div class="s4 reveal">
     <div class="sbox"><span class="sn">48</span><span class="sl">Teams</span></div>
     <div class="sbox"><span class="sn">104</span><span class="sl">Matches</span></div>
     <div class="sbox"><span class="sn">16</span><span class="sl">Stadiums</span></div>
-    <div class="sbox"><span class="sn">€17.6B</span><span class="sl">Total Squad Value</span></div>
+    <div class="sbox"><span class="sn">€17.6B</span><span class="sl">Squad Value</span></div>
   </div>
 </div>
 
@@ -308,743 +302,770 @@ footer{background:var(--bk);color:#aaa;padding:36px 20px 20px;margin-top:56px}
 <section id="live" class="pw sec reveal">
   <div class="sh">
     <h2>LIVE SCORES</h2>
-    <span class="pill p-live">🔴 LIVE</span>
-    <button onclick="rLive()" style="margin-left:auto;background:var(--rd);color:#fff;border:none;padding:6px 13px;border-radius:8px;cursor:pointer;font-weight:700;font-size:12px">↺ Refresh</button>
+    <span class="pill plive">🔴 LIVE</span>
+    <button onclick="buildLive()" style="margin-left:auto;background:var(--rd);color:#fff;border:none;padding:5px 12px;border-radius:7px;cursor:pointer;font-weight:700;font-size:12px">↺ Refresh</button>
   </div>
-  <div class="lg" id="lg"></div>
+  <div class="lg" id="lgrid"></div>
 </section>
 
 <!-- FIXTURES -->
 <section id="fixtures" class="pw sec reveal">
   <div class="sh"><h2>ALL FIXTURES — 104 MATCHES</h2></div>
 
-  <!-- Timezone -->
-  <div class="tz-row">
-    <label>🕐 Timezone:</label>
-    <select class="tz" id="tzSel" onchange="rSch()">
-      <option value="7">🇻🇳 Vietnam (GMT+7)</option>
-      <option value="0">🇬🇧 London (GMT+0)</option>
-      <option value="1">🇫🇷 Paris (GMT+1)</option>
-      <option value="2">🇩🇪 Berlin (GMT+2)</option>
-      <option value="3">🇸🇦 Riyadh (GMT+3)</option>
-      <option value="5.5">🇮🇳 India (GMT+5:30)</option>
-      <option value="8">🇨🇳 Beijing (GMT+8)</option>
-      <option value="9">🇯🇵 Tokyo (GMT+9)</option>
-      <option value="-4">🇺🇸 New York (EDT)</option>
-      <option value="-5">🇺🇸 Chicago (CDT)</option>
-      <option value="-7">🇺🇸 Los Angeles (PDT)</option>
-      <option value="-6">🇲🇽 Mexico City (CDT)</option>
-      <option value="-3">🇧🇷 Brasília (GMT-3)</option>
-      <option value="11">🇦🇺 Sydney (GMT+11)</option>
-      <option value="12">🇳🇿 Auckland (GMT+12)</option>
+  <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px">
+    <label style="font-size:13px;font-weight:700">🕐 Timezone:</label>
+    <select id="tzSel" style="background:#fff;border:1.5px solid var(--bdr);color:var(--bk);font-size:13px;font-weight:600;padding:5px 10px;border-radius:7px;cursor:pointer;outline:none" onchange="buildSchedule()">
+      <option value="7">🇻🇳 Vietnam GMT+7</option>
+      <option value="0">🇬🇧 London GMT+0</option>
+      <option value="1">🇫🇷 Paris GMT+1</option>
+      <option value="2">🇩🇪 Berlin GMT+2</option>
+      <option value="3">🇸🇦 Riyadh GMT+3</option>
+      <option value="5.5">🇮🇳 India GMT+5:30</option>
+      <option value="8">🇨🇳 Beijing GMT+8</option>
+      <option value="9">🇯🇵 Tokyo GMT+9</option>
+      <option value="-4">🇺🇸 New York EDT</option>
+      <option value="-5">🇺🇸 Chicago CDT</option>
+      <option value="-7">🇺🇸 Los Angeles PDT</option>
+      <option value="-6">🇲🇽 Mexico City CDT</option>
+      <option value="-3">🇧🇷 Brasilia GMT-3</option>
+      <option value="11">🇦🇺 Sydney GMT+11</option>
     </select>
     <span id="tzNow" style="font-size:12px;color:#555"></span>
   </div>
 
-  <!-- Phase tabs -->
   <div class="tabs" id="phTabs">
-    <button class="tb on" onclick="fPh('ALL',this)">All</button>
-    <button class="tb" onclick="fPh('G',this)">Group Stage</button>
-    <button class="tb" onclick="fPh('R32',this)">Round of 32</button>
-    <button class="tb" onclick="fPh('QF',this)">Quarter-finals</button>
-    <button class="tb" onclick="fPh('SF',this)">Semi-finals</button>
-    <button class="tb" onclick="fPh('F',this)">Final</button>
+    <button class="tb on" onclick="setPhase('ALL',this)">All</button>
+    <button class="tb" onclick="setPhase('G',this)">Group Stage</button>
+    <button class="tb" onclick="setPhase('R32',this)">Round of 32</button>
+    <button class="tb" onclick="setPhase('QF',this)">Quarter-finals</button>
+    <button class="tb" onclick="setPhase('SF',this)">Semi-finals</button>
+    <button class="tb" onclick="setPhase('F',this)">Final</button>
   </div>
 
-  <div class="tw card">
+  <div class="tw" style="border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,.1)">
     <table class="mt">
       <thead>
         <tr>
-          <th>Round</th>
-          <th>Date & Time</th>
-          <th colspan="3" style="text-align:center">Match</th>
-          <th>Venue / City</th>
-          <th>Weather</th>
-          <th>Where to Watch</th>
-          <th>AI Pick</th>
+          <th>Round</th><th>Date &amp; Time</th>
+          <th>Home</th><th>Score</th><th>Away</th>
+          <th>Venue</th><th>Weather</th>
+          <th>Where to Watch</th><th>AI Pick</th>
         </tr>
       </thead>
-      <tbody id="sb"></tbody>
+      <tbody id="schBody"></tbody>
     </table>
   </div>
 </section>
 
-<!-- AI PREDICTIONS -->
+<!-- AI -->
 <section id="ai" class="pw sec reveal">
-  <div class="sh"><h2>AI PREDICTIONS</h2><span class="pill p-ai">5 FREE AI MODELS</span></div>
-
+  <div class="sh"><h2>AI PREDICTIONS</h2><span class="pill pai">5 FREE MODELS</span></div>
   <div class="aig">
-    <div class="amc sc c" onclick="selAI('c',this)">
-      <div class="ai-top"><div class="aic ic-c">C</div><div><div class="anm">Claude</div><div class="asb">Anthropic · Sonnet 4</div></div></div>
+    <div class="amc sc c" onclick="selectAI('c',this)">
+      <div class="aitop"><div class="aico icc">C</div><div><div class="anm">Claude</div><div class="asb">Anthropic · Sonnet 4</div></div></div>
       <div class="awl">Predicted Winner</div>
-      <div class="awn nm-c">🇫🇷 France</div>
-      <div style="font-size:11px;color:#888;margin-top:5px">Top 4: France · Brazil · Spain · England</div>
+      <div class="awn nmc">🇫🇷 France</div>
+      <div style="font-size:10px;color:#888;margin-top:4px">Top 4: France · Brazil · Spain · England</div>
       <div class="acb"><div class="acf fc" style="width:71%"></div></div>
-      <div style="font-size:10px;color:#888;margin-top:3px">Confidence: 71%</div>
+      <div style="font-size:10px;color:#888;margin-top:2px">Confidence: 71%</div>
     </div>
-    <div class="amc" onclick="selAI('g',this)">
-      <div class="ai-top"><div class="aic ic-g">G</div><div><div class="anm">ChatGPT</div><div class="asb">OpenAI · GPT-4o</div></div></div>
+    <div class="amc" onclick="selectAI('g',this)">
+      <div class="aitop"><div class="aico icg">G</div><div><div class="anm">ChatGPT</div><div class="asb">OpenAI · GPT-4o</div></div></div>
       <div class="awl">Predicted Winner</div>
-      <div class="awn nm-g">🇧🇷 Brazil</div>
-      <div style="font-size:11px;color:#888;margin-top:5px">Top 4: Brazil · France · Argentina · Germany</div>
+      <div class="awn nmg">🇧🇷 Brazil</div>
+      <div style="font-size:10px;color:#888;margin-top:4px">Top 4: Brazil · France · Argentina · Germany</div>
       <div class="acb"><div class="acf fg" style="width:65%"></div></div>
-      <div style="font-size:10px;color:#888;margin-top:3px">Confidence: 65%</div>
+      <div style="font-size:10px;color:#888;margin-top:2px">Confidence: 65%</div>
     </div>
-    <div class="amc" onclick="selAI('m',this)">
-      <div class="ai-top"><div class="aic ic-m">G</div><div><div class="anm">Gemini</div><div class="asb">Google · 2.0 Flash</div></div></div>
+    <div class="amc" onclick="selectAI('m',this)">
+      <div class="aitop"><div class="aico icm">G</div><div><div class="anm">Gemini</div><div class="asb">Google · 2.0 Flash</div></div></div>
       <div class="awl">Predicted Winner</div>
-      <div class="awn nm-m">🇫🇷 France</div>
-      <div style="font-size:11px;color:#888;margin-top:5px">Top 4: France · Brazil · Netherlands · Portugal</div>
+      <div class="awn nmm">🇫🇷 France</div>
+      <div style="font-size:10px;color:#888;margin-top:4px">Top 4: France · Brazil · Netherlands · Portugal</div>
       <div class="acb"><div class="acf fm" style="width:68%"></div></div>
-      <div style="font-size:10px;color:#888;margin-top:3px">Confidence: 68%</div>
+      <div style="font-size:10px;color:#888;margin-top:2px">Confidence: 68%</div>
     </div>
-    <div class="amc" onclick="selAI('k',this)">
-      <div class="ai-top"><div class="aic ic-k">x</div><div><div class="anm">Grok</div><div class="asb">xAI · Grok-3</div></div></div>
+    <div class="amc" onclick="selectAI('k',this)">
+      <div class="aitop"><div class="aico ick">x</div><div><div class="anm">Grok</div><div class="asb">xAI · Grok-3</div></div></div>
       <div class="awl">Predicted Winner</div>
-      <div class="awn nm-k">🇦🇷 Argentina</div>
-      <div style="font-size:11px;color:#888;margin-top:5px">Top 4: Argentina · France · Brazil · England</div>
+      <div class="awn nmk">🇦🇷 Argentina</div>
+      <div style="font-size:10px;color:#888;margin-top:4px">Top 4: Argentina · France · Brazil · England</div>
       <div class="acb"><div class="acf fk" style="width:59%"></div></div>
-      <div style="font-size:10px;color:#888;margin-top:3px">Confidence: 59%</div>
+      <div style="font-size:10px;color:#888;margin-top:2px">Confidence: 59%</div>
     </div>
-    <div class="amc" onclick="selAI('l',this)">
-      <div class="ai-top"><div class="aic ic-l">🦙</div><div><div class="anm">Llama</div><div class="asb">Meta · Llama 3.3</div></div></div>
+    <div class="amc" onclick="selectAI('l',this)">
+      <div class="aitop"><div class="aico icl">L</div><div><div class="anm">Llama</div><div class="asb">Meta · Llama 3.3</div></div></div>
       <div class="awl">Predicted Winner</div>
-      <div class="awn nm-l">🇩🇪 Germany</div>
-      <div style="font-size:11px;color:#888;margin-top:5px">Top 4: Germany · France · Brazil · Argentina</div>
+      <div class="awn nml">🇩🇪 Germany</div>
+      <div style="font-size:10px;color:#888;margin-top:4px">Top 4: Germany · France · Brazil · Argentina</div>
       <div class="acb"><div class="acf fl" style="width:55%"></div></div>
-      <div style="font-size:10px;color:#888;margin-top:3px">Confidence: 55%</div>
+      <div style="font-size:10px;color:#888;margin-top:2px">Confidence: 55%</div>
     </div>
   </div>
 
-  <!-- Consensus -->
   <div class="cons reveal">
-    <div style="font-family:var(--fd);font-size:18px;letter-spacing:1px;margin-bottom:14px">🤝 5-AI Consensus — Win Probability</div>
-    <div class="con-r"><span class="con-t">🇫🇷 France</span><div class="con-bw"><div class="con-b" style="width:100%"></div></div><span class="con-p">26%</span></div>
-    <div class="con-r"><span class="con-t">🇧🇷 Brazil</span><div class="con-bw"><div class="con-b" style="width:84%"></div></div><span class="con-p">22%</span></div>
-    <div class="con-r"><span class="con-t">🇦🇷 Argentina</span><div class="con-bw"><div class="con-b" style="width:73%"></div></div><span class="con-p">19%</span></div>
-    <div class="con-r"><span class="con-t">🇩🇪 Germany</span><div class="con-bw"><div class="con-b" style="width:50%"></div></div><span class="con-p">13%</span></div>
-    <div class="con-r"><span class="con-t">🇪🇸 Spain</span><div class="con-bw"><div class="con-b" style="width:42%"></div></div><span class="con-p">11%</span></div>
-    <div class="con-r"><span class="con-t">🏴󠁧󠁢󠁥󠁮󠁧󠁿 England</span><div class="con-bw"><div class="con-b" style="width:35%"></div></div><span class="con-p">9%</span></div>
+    <div style="font-family:var(--fd);font-size:17px;letter-spacing:1px;margin-bottom:13px">🤝 5-AI Consensus — Championship Probability</div>
+    <div class="conr"><span class="cont">🇫🇷 France</span><div class="conbw"><div class="conb" style="width:100%"></div></div><span class="conp">26%</span></div>
+    <div class="conr"><span class="cont">🇧🇷 Brazil</span><div class="conbw"><div class="conb" style="width:84%"></div></div><span class="conp">22%</span></div>
+    <div class="conr"><span class="cont">🇦🇷 Argentina</span><div class="conbw"><div class="conb" style="width:73%"></div></div><span class="conp">19%</span></div>
+    <div class="conr"><span class="cont">🇩🇪 Germany</span><div class="conbw"><div class="conb" style="width:50%"></div></div><span class="conp">13%</span></div>
+    <div class="conr"><span class="cont">🇪🇸 Spain</span><div class="conbw"><div class="conb" style="width:42%"></div></div><span class="conp">11%</span></div>
+    <div class="conr"><span class="cont">🏴󠁧󠁢󠁥󠁮󠁧󠁿 England</span><div class="conbw"><div class="conb" style="width:35%"></div></div><span class="conp">9%</span></div>
   </div>
 
-  <!-- Per-match predictions -->
-  <div class="sh" style="margin-top:24px"><h2>MATCH PREDICTIONS</h2></div>
-  <p style="font-size:13px;color:#555;margin-bottom:14px">Select AI model to view predicted score & total goals for every group match</p>
+  <div class="sh" style="margin-top:22px"><h2>MATCH PREDICTIONS</h2></div>
   <div class="tabs" id="aiMTabs">
-    <button class="tb on" onclick="selMT('c',this)">🟣 Claude</button>
-    <button class="tb" onclick="selMT('g',this)">🟢 ChatGPT</button>
-    <button class="tb" onclick="selMT('m',this)">🔵 Gemini</button>
-    <button class="tb" onclick="selMT('k',this)">🟡 Grok</button>
-    <button class="tb" onclick="selMT('l',this)">🔴 Llama</button>
+    <button class="tb on" onclick="setAITab('c',this)">🟣 Claude</button>
+    <button class="tb" onclick="setAITab('g',this)">🟢 ChatGPT</button>
+    <button class="tb" onclick="setAITab('m',this)">🔵 Gemini</button>
+    <button class="tb" onclick="setAITab('k',this)">🟡 Grok</button>
+    <button class="tb" onclick="setAITab('l',this)">🔴 Llama</button>
   </div>
-  <div class="tw card">
+  <div class="tw" style="border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,.1)">
     <table class="apt">
       <thead><tr><th>Match</th><th>Home</th><th>Prediction</th><th>Away</th><th>Total Goals</th><th>Confidence</th></tr></thead>
-      <tbody id="apb"></tbody>
+      <tbody id="aiBody"></tbody>
     </table>
   </div>
 </section>
 
-<!-- SQUAD VALUES -->
+<!-- VALUES -->
 <section id="values" class="pw sec reveal">
-  <div class="sh"><h2>SQUAD VALUES</h2><span class="pill p-tm">Transfermarkt 2026</span></div>
-
-  <!-- Top 20 Most Valuable Players -->
-  <div class="sh" style="margin-bottom:14px"><h2 style="font-size:22px">TOP 20 MOST VALUABLE PLAYERS</h2></div>
-  <div class="top100-grid" style="margin-bottom:32px" id="top20grid"></div>
-
-  <!-- Squad values ranking -->
-  <div class="sh" style="margin-bottom:14px"><h2 style="font-size:22px">SQUAD VALUE RANKING</h2></div>
-  <div class="tw card" style="margin-bottom:8px">
+  <div class="sh"><h2>SQUAD VALUES</h2><span class="pill ptm">Transfermarkt Jun 2026</span></div>
+  <div class="sh" style="margin-top:4px;margin-bottom:12px"><h2 style="font-size:20px">TOP 20 MOST VALUABLE PLAYERS</h2></div>
+  <div class="p20g" id="p20grid"></div>
+  <div class="sh" style="margin-bottom:12px"><h2 style="font-size:20px">SQUAD VALUE RANKING</h2></div>
+  <div class="tw" style="border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,.1)">
     <table class="svt">
-      <thead><tr><th>#</th><th>Team</th><th>Squad Value (€)</th><th>Value Bar</th><th>Most Valuable Player</th><th>Top Player Value</th></tr></thead>
+      <thead><tr><th>#</th><th>Team</th><th>Total Value</th><th>Value Bar</th><th>Top Player</th><th>Top Value</th></tr></thead>
       <tbody id="svBody"></tbody>
     </table>
   </div>
-  <p style="font-size:11px;color:#888;padding:8px 0">Source: Transfermarkt · Values as of June 2026</p>
+  <p style="font-size:11px;color:#888;padding:7px 2px">Source: Transfermarkt · Values as of June 2026</p>
 </section>
 
 <!-- SQUADS -->
 <section id="squads" class="pw sec reveal">
-  <div class="sh"><h2>SQUAD LISTS & PLAYER VALUES</h2></div>
+  <div class="sh"><h2>SQUAD LISTS &amp; PLAYER VALUES</h2></div>
   <div class="sqtabs" id="sqTabs"></div>
   <div id="sqContent"></div>
 </section>
 
-<!-- DONATE STRIP -->
 <div class="pw">
   <div class="dstrip reveal">
     <div class="dst">
       <h3>❤️ LOVE THIS SITE?</h3>
-      <p>Free, no ads, updated all World Cup 2026. Support us to keep it running!</p>
+      <p>Free, no ads. Support us to keep it running through WC2026!</p>
     </div>
-    <button class="dbtn" style="font-size:14px;padding:11px 24px" onclick="opD()">Support us →</button>
+    <button class="dbtn" style="font-size:13px;padding:10px 22px" onclick="opD()">Donate via PayPal →</button>
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
-  <div class="fi">
+  <div class="fig">
     <div class="fg2">
-      <div class="fc2">
-        <h4>WC2026</h4>
-        <p style="font-size:13px;color:#888;line-height:1.6">Free World Cup 2026 info site. No ads, no paywalls. Powered by GitHub Pages.</p>
-      </div>
-      <div class="fc2">
-        <h4>Content</h4>
-        <a href="#live">Live Scores</a>
-        <a href="#fixtures">All Fixtures</a>
-        <a href="#ai">AI Predictions</a>
-        <a href="#values">Squad Values</a>
-        <a href="#squads">Squad Lists</a>
-      </div>
-      <div class="fc2">
-        <h4>Top Teams</h4>
-        <a href="#">🇫🇷 France</a>
-        <a href="#">🇧🇷 Brazil</a>
-        <a href="#">🇦🇷 Argentina</a>
-        <a href="#">🏴󠁧󠁢󠁥󠁮󠁧󠁿 England</a>
-        <a href="#">🇪🇸 Spain</a>
-      </div>
-      <div class="fc2">
-        <h4>Support</h4>
-        <a href="#" onclick="opD()">❤️ Donate via PayPal</a>
-        <a href="https://github.com" target="_blank">📦 GitHub Pages (Free)</a>
-        <a href="#">Privacy Policy</a>
-      </div>
+      <div class="fc2"><h4>WC2026</h4><p style="font-size:12px;color:#888;line-height:1.5">Free World Cup 2026 info. No ads, no paywalls. GitHub Pages.</p></div>
+      <div class="fc2"><h4>Content</h4><a href="#live">Live Scores</a><a href="#fixtures">Fixtures</a><a href="#ai">AI Predictions</a><a href="#values">Squad Values</a><a href="#squads">Squads</a></div>
+      <div class="fc2"><h4>Top Teams</h4><a href="#">🇫🇷 France</a><a href="#">🇧🇷 Brazil</a><a href="#">🇦🇷 Argentina</a><a href="#">🏴󠁧󠁢󠁥󠁮󠁧󠁿 England</a><a href="#">🇪🇸 Spain</a></div>
+      <div class="fc2"><h4>Support</h4><a href="#" onclick="opD()">❤️ Donate (PayPal)</a><a href="https://github.com" target="_blank">GitHub Pages (Free)</a></div>
     </div>
-    <div class="fb">© 2026 WC2026 · Data for reference only · Not affiliated with FIFA · Powered by GitHub Pages (Free)</div>
+    <div class="fbot">© 2026 WC2026 · Data for reference only · Not affiliated with FIFA · Powered by GitHub Pages</div>
   </div>
 </footer>
 
 <!-- DONATE MODAL -->
-<div class="mov" id="dMod" onclick="clDOut(event)">
+<div class="mov" id="dMod" onclick="if(event.target===this)clD()">
   <div class="mbox">
     <button class="mcl" onclick="clD()">✕</button>
     <div id="dForm">
       <h3>❤️ SUPPORT</h3>
-      <p class="msub">Help keep this free site running through all of World Cup 2026. Every contribution counts!</p>
+      <p class="msub">Help keep this free site alive through all of World Cup 2026!</p>
       <div class="ag">
-        <button class="ab on" onclick="pickA(this,'$2')">$2</button>
-        <button class="ab" onclick="pickA(this,'$5')">$5</button>
-        <button class="ab" onclick="pickA(this,'$10')">$10</button>
-        <button class="ab" onclick="pickA(this,'$20')">$20</button>
-        <button class="ab" onclick="pickA(this,'$50')">$50</button>
-        <button class="ab" onclick="pickA(this,'custom')">Custom</button>
+        <button class="ab on" onclick="pickAmt(this)">$2</button>
+        <button class="ab" onclick="pickAmt(this)">$5</button>
+        <button class="ab" onclick="pickAmt(this)">$10</button>
+        <button class="ab" onclick="pickAmt(this)">$20</button>
+        <button class="ab" onclick="pickAmt(this)">$50</button>
+        <button class="ab" onclick="pickAmt(this)">Custom</button>
       </div>
-      <input class="ci" type="text" id="cAmt" placeholder="Enter custom amount (e.g. 15)">
+      <input class="ci" type="text" id="cAmt" placeholder="Enter custom amount">
       <div class="pms">
-        <button class="pmb" onclick="window.open('https://paypal.me/Jacob456789','_blank')">
+        <button class="pmb" onclick="window.open('https://www.paypal.com/paypalme/Jacob456789','_blank')">
           <span class="pmi">💙</span>
-          <div class="pml">PayPal — paypal.me/Jacob456789<br><span class="pms2">Secure · Instant · International</span></div>
-          <span>→</span>
+          <div class="pml">PayPal — paypal.me/Jacob456789<span class="pms2">Secure · Instant · International</span></div>
+          <span style="color:#888">→</span>
         </button>
-        <button class="pmb" onclick="window.open('https://paypal.me/Jacob456789','_blank')">
+        <button class="pmb" onclick="window.open('https://www.paypal.com/paypalme/Jacob456789','_blank')">
           <span class="pmi">💳</span>
-          <div class="pml">Credit / Debit Card via PayPal<br><span class="pms2">Visa · Mastercard · Amex</span></div>
-          <span>→</span>
+          <div class="pml">Credit / Debit Card via PayPal<span class="pms2">Visa · Mastercard · Amex</span></div>
+          <span style="color:#888">→</span>
         </button>
       </div>
-      <p style="font-size:11px;color:#aaa;margin-top:12px;text-align:center">Clicking will open PayPal in a new tab</p>
+      <p style="font-size:11px;color:#aaa;margin-top:10px;text-align:center">Opens PayPal in new tab. Thank you! ⚽</p>
     </div>
-    <div class="tv" id="dThx">
-      <div style="font-size:48px;margin-bottom:10px">🎉</div>
+    <div class="tv" id="dThx" style="display:none">
+      <div style="font-size:44px;margin-bottom:9px">🎉</div>
       <h4>THANK YOU!</h4>
-      <p>Your support helps us keep this site free and updated for the whole World Cup. Let's go! ⚽</p>
-      <button class="dbtn" style="margin-top:18px" onclick="clD()">Close</button>
+      <p>Your support keeps this site free for everyone. Enjoy the World Cup! ⚽</p>
+      <button class="dbtn" style="margin-top:16px" onclick="clD()">Close</button>
     </div>
   </div>
 </div>
 
 <script>
+(function() {
+"use strict";
+
 // ============================================================
-// MATCH DATA
+// DATA — MATCHES
 // ============================================================
-const M=[
-  {id:"A1",g:"A",ph:"G",u:"2026-06-11T20:00:00-04:00",h:{c:"USA",f:"🇺🇸",n:"USA"},a:{c:"URU",f:"🇺🇾",n:"Uruguay"},v:"MetLife Stadium",ci:"East Rutherford, NJ",lat:40.8135,lon:-74.0745},
-  {id:"A2",g:"A",ph:"G",u:"2026-06-12T14:00:00-07:00",h:{c:"PAN",f:"🇵🇦",n:"Panama"},a:{c:"BOT",f:"🇧🇼",n:"Botswana"},v:"SoFi Stadium",ci:"Inglewood, CA",lat:33.9535,lon:-118.3392},
-  {id:"A3",g:"A",ph:"G",u:"2026-06-16T17:00:00-05:00",h:{c:"USA",f:"🇺🇸",n:"USA"},a:{c:"PAN",f:"🇵🇦",n:"Panama"},v:"AT&T Stadium",ci:"Arlington, TX",lat:32.7473,lon:-97.0945},
-  {id:"A4",g:"A",ph:"G",u:"2026-06-16T20:00:00-04:00",h:{c:"URU",f:"🇺🇾",n:"Uruguay"},a:{c:"BOT",f:"🇧🇼",n:"Botswana"},v:"Hard Rock Stadium",ci:"Miami Gardens, FL",lat:25.9580,lon:-80.2389},
-  {id:"A5",g:"A",ph:"G",u:"2026-06-20T16:00:00-04:00",h:{c:"URU",f:"🇺🇾",n:"Uruguay"},a:{c:"PAN",f:"🇵🇦",n:"Panama"},v:"MetLife Stadium",ci:"East Rutherford, NJ",lat:40.8135,lon:-74.0745},
-  {id:"A6",g:"A",ph:"G",u:"2026-06-20T16:00:00-07:00",h:{c:"USA",f:"🇺🇸",n:"USA"},a:{c:"BOT",f:"🇧🇼",n:"Botswana"},v:"Levi's Stadium",ci:"Santa Clara, CA",lat:37.4032,lon:-121.9697},
-  {id:"B1",g:"B",ph:"G",u:"2026-06-12T17:00:00-04:00",h:{c:"ARG",f:"🇦🇷",n:"Argentina"},a:{c:"ZAF",f:"🇿🇦",n:"South Africa"},v:"MetLife Stadium",ci:"East Rutherford, NJ",lat:40.8135,lon:-74.0745},
-  {id:"B2",g:"B",ph:"G",u:"2026-06-12T20:00:00-06:00",h:{c:"MEX",f:"🇲🇽",n:"Mexico"},a:{c:"NZL",f:"🇳🇿",n:"New Zealand"},v:"Estadio Azteca",ci:"Mexico City",lat:19.3029,lon:-99.1506},
-  {id:"B3",g:"B",ph:"G",u:"2026-06-16T14:00:00-05:00",h:{c:"ARG",f:"🇦🇷",n:"Argentina"},a:{c:"NZL",f:"🇳🇿",n:"New Zealand"},v:"AT&T Stadium",ci:"Arlington, TX",lat:32.7473,lon:-97.0945},
-  {id:"B4",g:"B",ph:"G",u:"2026-06-16T17:00:00-06:00",h:{c:"MEX",f:"🇲🇽",n:"Mexico"},a:{c:"ZAF",f:"🇿🇦",n:"South Africa"},v:"Estadio Guadalajara",ci:"Guadalajara",lat:20.6843,lon:-103.3518},
-  {id:"B5",g:"B",ph:"G",u:"2026-06-20T19:00:00-04:00",h:{c:"ARG",f:"🇦🇷",n:"Argentina"},a:{c:"MEX",f:"🇲🇽",n:"Mexico"},v:"MetLife Stadium",ci:"East Rutherford, NJ",lat:40.8135,lon:-74.0745},
-  {id:"B6",g:"B",ph:"G",u:"2026-06-20T19:00:00-07:00",h:{c:"NZL",f:"🇳🇿",n:"New Zealand"},a:{c:"ZAF",f:"🇿🇦",n:"South Africa"},v:"Rose Bowl",ci:"Pasadena, CA",lat:34.1614,lon:-118.1676},
-  {id:"C1",g:"C",ph:"G",u:"2026-06-13T14:00:00-07:00",h:{c:"FRA",f:"🇫🇷",n:"France"},a:{c:"BRA",f:"🇧🇷",n:"Brazil"},v:"SoFi Stadium",ci:"Inglewood, CA",lat:33.9535,lon:-118.3392},
-  {id:"C2",g:"C",ph:"G",u:"2026-06-13T17:00:00-07:00",h:{c:"AUS",f:"🇦🇺",n:"Australia"},a:{c:"SEN",f:"🇸🇳",n:"Senegal"},v:"Levi's Stadium",ci:"Santa Clara, CA",lat:37.4032,lon:-121.9697},
-  {id:"C3",g:"C",ph:"G",u:"2026-06-17T14:00:00-04:00",h:{c:"FRA",f:"🇫🇷",n:"France"},a:{c:"AUS",f:"🇦🇺",n:"Australia"},v:"MetLife Stadium",ci:"East Rutherford, NJ",lat:40.8135,lon:-74.0745},
-  {id:"C4",g:"C",ph:"G",u:"2026-06-17T17:00:00-04:00",h:{c:"BRA",f:"🇧🇷",n:"Brazil"},a:{c:"SEN",f:"🇸🇳",n:"Senegal"},v:"Hard Rock Stadium",ci:"Miami Gardens, FL",lat:25.9580,lon:-80.2389},
-  {id:"C5",g:"C",ph:"G",u:"2026-06-21T16:00:00-05:00",h:{c:"FRA",f:"🇫🇷",n:"France"},a:{c:"SEN",f:"🇸🇳",n:"Senegal"},v:"AT&T Stadium",ci:"Arlington, TX",lat:32.7473,lon:-97.0945},
-  {id:"C6",g:"C",ph:"G",u:"2026-06-21T16:00:00-07:00",h:{c:"BRA",f:"🇧🇷",n:"Brazil"},a:{c:"AUS",f:"🇦🇺",n:"Australia"},v:"SoFi Stadium",ci:"Inglewood, CA",lat:33.9535,lon:-118.3392},
-  {id:"D1",g:"D",ph:"G",u:"2026-06-13T20:00:00-07:00",h:{c:"ENG",f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"England"},a:{c:"GER",f:"🇩🇪",n:"Germany"},v:"Rose Bowl",ci:"Pasadena, CA",lat:34.1614,lon:-118.1676},
-  {id:"D2",g:"D",ph:"G",u:"2026-06-14T14:00:00-04:00",h:{c:"JPN",f:"🇯🇵",n:"Japan"},a:{c:"CAN",f:"🇨🇦",n:"Canada"},v:"BMO Field",ci:"Toronto",lat:43.6333,lon:-79.4189},
-  {id:"D3",g:"D",ph:"G",u:"2026-06-17T20:00:00-04:00",h:{c:"ENG",f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"England"},a:{c:"JPN",f:"🇯🇵",n:"Japan"},v:"MetLife Stadium",ci:"East Rutherford, NJ",lat:40.8135,lon:-74.0745},
-  {id:"D4",g:"D",ph:"G",u:"2026-06-18T14:00:00-07:00",h:{c:"GER",f:"🇩🇪",n:"Germany"},a:{c:"CAN",f:"🇨🇦",n:"Canada"},v:"Levi's Stadium",ci:"Santa Clara, CA",lat:37.4032,lon:-121.9697},
-  {id:"D5",g:"D",ph:"G",u:"2026-06-22T16:00:00-07:00",h:{c:"ENG",f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"England"},a:{c:"CAN",f:"🇨🇦",n:"Canada"},v:"SoFi Stadium",ci:"Inglewood, CA",lat:33.9535,lon:-118.3392},
-  {id:"D6",g:"D",ph:"G",u:"2026-06-22T16:00:00-05:00",h:{c:"GER",f:"🇩🇪",n:"Germany"},a:{c:"JPN",f:"🇯🇵",n:"Japan"},v:"AT&T Stadium",ci:"Arlington, TX",lat:32.7473,lon:-97.0945},
-  {id:"E1",g:"E",ph:"G",u:"2026-06-14T17:00:00-04:00",h:{c:"ESP",f:"🇪🇸",n:"Spain"},a:{c:"POR",f:"🇵🇹",n:"Portugal"},v:"Hard Rock Stadium",ci:"Miami Gardens, FL",lat:25.9580,lon:-80.2389},
-  {id:"E2",g:"E",ph:"G",u:"2026-06-14T20:00:00-04:00",h:{c:"MAR",f:"🇲🇦",n:"Morocco"},a:{c:"KOR",f:"🇰🇷",n:"South Korea"},v:"MetLife Stadium",ci:"East Rutherford, NJ",lat:40.8135,lon:-74.0745},
-  {id:"E3",g:"E",ph:"G",u:"2026-06-18T17:00:00-07:00",h:{c:"ESP",f:"🇪🇸",n:"Spain"},a:{c:"MAR",f:"🇲🇦",n:"Morocco"},v:"Rose Bowl",ci:"Pasadena, CA",lat:34.1614,lon:-118.1676},
-  {id:"E4",g:"E",ph:"G",u:"2026-06-18T20:00:00-07:00",h:{c:"POR",f:"🇵🇹",n:"Portugal"},a:{c:"KOR",f:"🇰🇷",n:"South Korea"},v:"Levi's Stadium",ci:"Santa Clara, CA",lat:37.4032,lon:-121.9697},
-  {id:"E5",g:"E",ph:"G",u:"2026-06-22T19:00:00-05:00",h:{c:"ESP",f:"🇪🇸",n:"Spain"},a:{c:"KOR",f:"🇰🇷",n:"South Korea"},v:"AT&T Stadium",ci:"Arlington, TX",lat:32.7473,lon:-97.0945},
-  {id:"E6",g:"E",ph:"G",u:"2026-06-22T19:00:00-04:00",h:{c:"POR",f:"🇵🇹",n:"Portugal"},a:{c:"MAR",f:"🇲🇦",n:"Morocco"},v:"Hard Rock Stadium",ci:"Miami Gardens, FL",lat:25.9580,lon:-80.2389},
-  {id:"F1",g:"F",ph:"G",u:"2026-06-15T14:00:00-07:00",h:{c:"NED",f:"🇳🇱",n:"Netherlands"},a:{c:"BEL",f:"🇧🇪",n:"Belgium"},v:"SoFi Stadium",ci:"Inglewood, CA",lat:33.9535,lon:-118.3392},
-  {id:"F2",g:"F",ph:"G",u:"2026-06-15T17:00:00-05:00",h:{c:"CRC",f:"🇨🇷",n:"Costa Rica"},a:{c:"KSA",f:"🇸🇦",n:"Saudi Arabia"},v:"AT&T Stadium",ci:"Arlington, TX",lat:32.7473,lon:-97.0945},
-  {id:"F3",g:"F",ph:"G",u:"2026-06-19T14:00:00-04:00",h:{c:"NED",f:"🇳🇱",n:"Netherlands"},a:{c:"CRC",f:"🇨🇷",n:"Costa Rica"},v:"MetLife Stadium",ci:"East Rutherford, NJ",lat:40.8135,lon:-74.0745},
-  {id:"F4",g:"F",ph:"G",u:"2026-06-19T17:00:00-07:00",h:{c:"BEL",f:"🇧🇪",n:"Belgium"},a:{c:"KSA",f:"🇸🇦",n:"Saudi Arabia"},v:"Rose Bowl",ci:"Pasadena, CA",lat:34.1614,lon:-118.1676},
-  {id:"F5",g:"F",ph:"G",u:"2026-06-23T16:00:00-04:00",h:{c:"NED",f:"🇳🇱",n:"Netherlands"},a:{c:"KSA",f:"🇸🇦",n:"Saudi Arabia"},v:"Hard Rock Stadium",ci:"Miami Gardens, FL",lat:25.9580,lon:-80.2389},
-  {id:"F6",g:"F",ph:"G",u:"2026-06-23T16:00:00-07:00",h:{c:"BEL",f:"🇧🇪",n:"Belgium"},a:{c:"CRC",f:"🇨🇷",n:"Costa Rica"},v:"Levi's Stadium",ci:"Santa Clara, CA",lat:37.4032,lon:-121.9697},
-  {id:"G1",g:"G",ph:"G",u:"2026-06-15T20:00:00-05:00",h:{c:"ITA",f:"🇮🇹",n:"Italy"},a:{c:"ECU",f:"🇪🇨",n:"Ecuador"},v:"AT&T Stadium",ci:"Arlington, TX",lat:32.7473,lon:-97.0945},
-  {id:"G2",g:"G",ph:"G",u:"2026-06-16T14:00:00-07:00",h:{c:"CHE",f:"🇨🇭",n:"Switzerland"},a:{c:"CMR",f:"🇨🇲",n:"Cameroon"},v:"Levi's Stadium",ci:"Santa Clara, CA",lat:37.4032,lon:-121.9697},
-  {id:"G3",g:"G",ph:"G",u:"2026-06-19T20:00:00-07:00",h:{c:"ITA",f:"🇮🇹",n:"Italy"},a:{c:"CHE",f:"🇨🇭",n:"Switzerland"},v:"Rose Bowl",ci:"Pasadena, CA",lat:34.1614,lon:-118.1676},
-  {id:"G4",g:"G",ph:"G",u:"2026-06-20T14:00:00-04:00",h:{c:"ECU",f:"🇪🇨",n:"Ecuador"},a:{c:"CMR",f:"🇨🇲",n:"Cameroon"},v:"Hard Rock Stadium",ci:"Miami Gardens, FL",lat:25.9580,lon:-80.2389},
-  {id:"G5",g:"G",ph:"G",u:"2026-06-23T19:00:00-04:00",h:{c:"ITA",f:"🇮🇹",n:"Italy"},a:{c:"CMR",f:"🇨🇲",n:"Cameroon"},v:"MetLife Stadium",ci:"East Rutherford, NJ",lat:40.8135,lon:-74.0745},
-  {id:"G6",g:"G",ph:"G",u:"2026-06-23T19:00:00-07:00",h:{c:"CHE",f:"🇨🇭",n:"Switzerland"},a:{c:"ECU",f:"🇪🇨",n:"Ecuador"},v:"SoFi Stadium",ci:"Inglewood, CA",lat:33.9535,lon:-118.3392},
-  {id:"H1",g:"H",ph:"G",u:"2026-06-16T20:00:00-04:00",h:{c:"POR",f:"🇵🇹",n:"Portugal"},a:{c:"CRO",f:"🇭🇷",n:"Croatia"},v:"Hard Rock Stadium",ci:"Miami Gardens, FL",lat:25.9580,lon:-80.2389},
-  {id:"H2",g:"H",ph:"G",u:"2026-06-17T14:00:00-06:00",h:{c:"MEX",f:"🇲🇽",n:"Mexico"},a:{c:"COL",f:"🇨🇴",n:"Colombia"},v:"Estadio Azteca",ci:"Mexico City",lat:19.3029,lon:-99.1506},
-  {id:"H3",g:"H",ph:"G",u:"2026-06-20T17:00:00-05:00",h:{c:"CRO",f:"🇭🇷",n:"Croatia"},a:{c:"COL",f:"🇨🇴",n:"Colombia"},v:"AT&T Stadium",ci:"Arlington, TX",lat:32.7473,lon:-97.0945},
-  {id:"H4",g:"H",ph:"G",u:"2026-06-21T14:00:00-07:00",h:{c:"POR",f:"🇵🇹",n:"Portugal"},a:{c:"MEX",f:"🇲🇽",n:"Mexico"},v:"SoFi Stadium",ci:"Inglewood, CA",lat:33.9535,lon:-118.3392},
-  {id:"H5",g:"H",ph:"G",u:"2026-06-24T16:00:00-07:00",h:{c:"POR",f:"🇵🇹",n:"Portugal"},a:{c:"COL",f:"🇨🇴",n:"Colombia"},v:"Rose Bowl",ci:"Pasadena, CA",lat:34.1614,lon:-118.1676},
-  {id:"H6",g:"H",ph:"G",u:"2026-06-24T16:00:00-07:00",h:{c:"CRO",f:"🇭🇷",n:"Croatia"},a:{c:"MEX",f:"🇲🇽",n:"Mexico"},v:"Levi's Stadium",ci:"Santa Clara, CA",lat:37.4032,lon:-121.9697},
-  {id:"I1",g:"I",ph:"G",u:"2026-06-18T14:00:00-06:00",h:{c:"FRA",f:"🇫🇷",n:"France"},a:{c:"POL",f:"🇵🇱",n:"Poland"},v:"Estadio Guadalajara",ci:"Guadalajara",lat:20.6843,lon:-103.3518},
-  {id:"I2",g:"I",ph:"G",u:"2026-06-18T17:00:00-07:00",h:{c:"SEN",f:"🇸🇳",n:"Senegal"},a:{c:"IRQ",f:"🇮🇶",n:"Iraq"},v:"Rose Bowl",ci:"Pasadena, CA",lat:34.1614,lon:-118.1676},
-  {id:"I3",g:"I",ph:"G",u:"2026-06-22T14:00:00-06:00",h:{c:"FRA",f:"🇫🇷",n:"France"},a:{c:"SEN",f:"🇸🇳",n:"Senegal"},v:"Estadio Azteca",ci:"Mexico City",lat:19.3029,lon:-99.1506},
-  {id:"I4",g:"I",ph:"G",u:"2026-06-22T17:00:00-04:00",h:{c:"POL",f:"🇵🇱",n:"Poland"},a:{c:"IRQ",f:"🇮🇶",n:"Iraq"},v:"MetLife Stadium",ci:"East Rutherford, NJ",lat:40.8135,lon:-74.0745},
-  {id:"I5",g:"I",ph:"G",u:"2026-06-25T16:00:00-05:00",h:{c:"FRA",f:"🇫🇷",n:"France"},a:{c:"IRQ",f:"🇮🇶",n:"Iraq"},v:"AT&T Stadium",ci:"Arlington, TX",lat:32.7473,lon:-97.0945},
-  {id:"I6",g:"I",ph:"G",u:"2026-06-25T16:00:00-04:00",h:{c:"POL",f:"🇵🇱",n:"Poland"},a:{c:"SEN",f:"🇸🇳",n:"Senegal"},v:"Hard Rock Stadium",ci:"Miami Gardens, FL",lat:25.9580,lon:-80.2389},
-  {id:"J1",g:"J",ph:"G",u:"2026-06-19T14:00:00-04:00",h:{c:"CAN",f:"🇨🇦",n:"Canada"},a:{c:"URU",f:"🇺🇾",n:"Uruguay"},v:"BMO Field",ci:"Toronto",lat:43.6333,lon:-79.4189},
-  {id:"J2",g:"J",ph:"G",u:"2026-06-19T17:00:00-07:00",h:{c:"MAR",f:"🇲🇦",n:"Morocco"},a:{c:"TUN",f:"🇹🇳",n:"Tunisia"},v:"SoFi Stadium",ci:"Inglewood, CA",lat:33.9535,lon:-118.3392},
-  {id:"J3",g:"J",ph:"G",u:"2026-06-23T14:00:00-07:00",h:{c:"CAN",f:"🇨🇦",n:"Canada"},a:{c:"MAR",f:"🇲🇦",n:"Morocco"},v:"Rose Bowl",ci:"Pasadena, CA",lat:34.1614,lon:-118.1676},
-  {id:"J4",g:"J",ph:"G",u:"2026-06-23T17:00:00-04:00",h:{c:"URU",f:"🇺🇾",n:"Uruguay"},a:{c:"TUN",f:"🇹🇳",n:"Tunisia"},v:"Rose Bowl",ci:"Pasadena, CA",lat:34.1614,lon:-118.1676},
-  {id:"J5",g:"J",ph:"G",u:"2026-06-26T16:00:00-07:00",h:{c:"CAN",f:"🇨🇦",n:"Canada"},a:{c:"TUN",f:"🇹🇳",n:"Tunisia"},v:"Levi's Stadium",ci:"Santa Clara, CA",lat:37.4032,lon:-121.9697},
-  {id:"J6",g:"J",ph:"G",u:"2026-06-26T16:00:00-04:00",h:{c:"URU",f:"🇺🇾",n:"Uruguay"},a:{c:"MAR",f:"🇲🇦",n:"Morocco"},v:"Hard Rock Stadium",ci:"Miami Gardens, FL",lat:25.9580,lon:-80.2389},
-  {id:"K1",g:"K",ph:"G",u:"2026-06-20T14:00:00-04:00",h:{c:"ENG",f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"England"},a:{c:"SEN",f:"🇸🇳",n:"Senegal"},v:"MetLife Stadium",ci:"East Rutherford, NJ",lat:40.8135,lon:-74.0745},
-  {id:"K2",g:"K",ph:"G",u:"2026-06-20T17:00:00-07:00",h:{c:"NED",f:"🇳🇱",n:"Netherlands"},a:{c:"AUS",f:"🇦🇺",n:"Australia"},v:"Rose Bowl",ci:"Pasadena, CA",lat:34.1614,lon:-118.1676},
-  {id:"K3",g:"K",ph:"G",u:"2026-06-24T14:00:00-07:00",h:{c:"ENG",f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"England"},a:{c:"NED",f:"🇳🇱",n:"Netherlands"},v:"SoFi Stadium",ci:"Inglewood, CA",lat:33.9535,lon:-118.3392},
-  {id:"K4",g:"K",ph:"G",u:"2026-06-24T17:00:00-05:00",h:{c:"SEN",f:"🇸🇳",n:"Senegal"},a:{c:"AUS",f:"🇦🇺",n:"Australia"},v:"AT&T Stadium",ci:"Arlington, TX",lat:32.7473,lon:-97.0945},
-  {id:"K5",g:"K",ph:"G",u:"2026-06-27T16:00:00-07:00",h:{c:"ENG",f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"England"},a:{c:"AUS",f:"🇦🇺",n:"Australia"},v:"Levi's Stadium",ci:"Santa Clara, CA",lat:37.4032,lon:-121.9697},
-  {id:"K6",g:"K",ph:"G",u:"2026-06-27T16:00:00-04:00",h:{c:"NED",f:"🇳🇱",n:"Netherlands"},a:{c:"SEN",f:"🇸🇳",n:"Senegal"},v:"Hard Rock Stadium",ci:"Miami Gardens, FL",lat:25.9580,lon:-80.2389},
-  {id:"L1",g:"L",ph:"G",u:"2026-06-21T17:00:00-05:00",h:{c:"ESP",f:"🇪🇸",n:"Spain"},a:{c:"CMR",f:"🇨🇲",n:"Cameroon"},v:"AT&T Stadium",ci:"Arlington, TX",lat:32.7473,lon:-97.0945},
-  {id:"L2",g:"L",ph:"G",u:"2026-06-21T20:00:00-04:00",h:{c:"ITA",f:"🇮🇹",n:"Italy"},a:{c:"CRO",f:"🇭🇷",n:"Croatia"},v:"MetLife Stadium",ci:"East Rutherford, NJ",lat:40.8135,lon:-74.0745},
-  {id:"L3",g:"L",ph:"G",u:"2026-06-25T14:00:00-07:00",h:{c:"ESP",f:"🇪🇸",n:"Spain"},a:{c:"ITA",f:"🇮🇹",n:"Italy"},v:"Rose Bowl",ci:"Pasadena, CA",lat:34.1614,lon:-118.1676},
-  {id:"L4",g:"L",ph:"G",u:"2026-06-25T17:00:00-07:00",h:{c:"CMR",f:"🇨🇲",n:"Cameroon"},a:{c:"CRO",f:"🇭🇷",n:"Croatia"},v:"SoFi Stadium",ci:"Inglewood, CA",lat:33.9535,lon:-118.3392},
-  {id:"L5",g:"L",ph:"G",u:"2026-06-28T16:00:00-04:00",h:{c:"ESP",f:"🇪🇸",n:"Spain"},a:{c:"CRO",f:"🇭🇷",n:"Croatia"},v:"Hard Rock Stadium",ci:"Miami Gardens, FL",lat:25.9580,lon:-80.2389},
-  {id:"L6",g:"L",ph:"G",u:"2026-06-28T16:00:00-07:00",h:{c:"ITA",f:"🇮🇹",n:"Italy"},a:{c:"CMR",f:"🇨🇲",n:"Cameroon"},v:"Levi's Stadium",ci:"Santa Clara, CA",lat:37.4032,lon:-121.9697},
-  {id:"R1",g:"",ph:"R32",u:"2026-07-02T20:00:00-04:00",h:{c:"TBD",f:"🏳️",n:"1A"},a:{c:"TBD",f:"🏳️",n:"2B"},v:"MetLife Stadium",ci:"East Rutherford, NJ",lat:40.8135,lon:-74.0745},
-  {id:"R2",g:"",ph:"R32",u:"2026-07-03T20:00:00-07:00",h:{c:"TBD",f:"🏳️",n:"1B"},a:{c:"TBD",f:"🏳️",n:"2A"},v:"Rose Bowl",ci:"Pasadena, CA",lat:34.1614,lon:-118.1676},
-  {id:"R3",g:"",ph:"R32",u:"2026-07-04T20:00:00-05:00",h:{c:"TBD",f:"🏳️",n:"1C"},a:{c:"TBD",f:"🏳️",n:"2D"},v:"AT&T Stadium",ci:"Arlington, TX",lat:32.7473,lon:-97.0945},
-  {id:"R4",g:"",ph:"R32",u:"2026-07-04T20:00:00-04:00",h:{c:"TBD",f:"🏳️",n:"1D"},a:{c:"TBD",f:"🏳️",n:"2C"},v:"Hard Rock Stadium",ci:"Miami Gardens, FL",lat:25.9580,lon:-80.2389},
-  {id:"R5",g:"",ph:"R32",u:"2026-07-05T20:00:00-07:00",h:{c:"TBD",f:"🏳️",n:"1E"},a:{c:"TBD",f:"🏳️",n:"2F"},v:"SoFi Stadium",ci:"Inglewood, CA",lat:33.9535,lon:-118.3392},
-  {id:"R6",g:"",ph:"R32",u:"2026-07-05T20:00:00-07:00",h:{c:"TBD",f:"🏳️",n:"1F"},a:{c:"TBD",f:"🏳️",n:"2E"},v:"BC Place",ci:"Vancouver",lat:49.2767,lon:-123.1116},
-  {id:"R7",g:"",ph:"R32",u:"2026-07-06T20:00:00-07:00",h:{c:"TBD",f:"🏳️",n:"1G"},a:{c:"TBD",f:"🏳️",n:"2H"},v:"Levi's Stadium",ci:"Santa Clara, CA",lat:37.4032,lon:-121.9697},
-  {id:"R8",g:"",ph:"R32",u:"2026-07-06T20:00:00-04:00",h:{c:"TBD",f:"🏳️",n:"1H"},a:{c:"TBD",f:"🏳️",n:"2G"},v:"BMO Field",ci:"Toronto",lat:43.6333,lon:-79.4189},
-  {id:"QF1",g:"",ph:"QF",u:"2026-07-14T20:00:00-04:00",h:{c:"TBD",f:"🏳️",n:"W R1"},a:{c:"TBD",f:"🏳️",n:"W R2"},v:"MetLife Stadium",ci:"East Rutherford, NJ",lat:40.8135,lon:-74.0745},
-  {id:"QF2",g:"",ph:"QF",u:"2026-07-14T20:00:00-07:00",h:{c:"TBD",f:"🏳️",n:"W R3"},a:{c:"TBD",f:"🏳️",n:"W R4"},v:"Rose Bowl",ci:"Pasadena, CA",lat:34.1614,lon:-118.1676},
-  {id:"QF3",g:"",ph:"QF",u:"2026-07-15T20:00:00-05:00",h:{c:"TBD",f:"🏳️",n:"W R5"},a:{c:"TBD",f:"🏳️",n:"W R6"},v:"AT&T Stadium",ci:"Arlington, TX",lat:32.7473,lon:-97.0945},
-  {id:"QF4",g:"",ph:"QF",u:"2026-07-15T20:00:00-04:00",h:{c:"TBD",f:"🏳️",n:"W R7"},a:{c:"TBD",f:"🏳️",n:"W R8"},v:"Hard Rock Stadium",ci:"Miami Gardens, FL",lat:25.9580,lon:-80.2389},
-  {id:"SF1",g:"",ph:"SF",u:"2026-07-19T20:00:00-04:00",h:{c:"TBD",f:"🏳️",n:"W QF1"},a:{c:"TBD",f:"🏳️",n:"W QF2"},v:"MetLife Stadium",ci:"East Rutherford, NJ",lat:40.8135,lon:-74.0745},
-  {id:"SF2",g:"",ph:"SF",u:"2026-07-20T20:00:00-07:00",h:{c:"TBD",f:"🏳️",n:"W QF3"},a:{c:"TBD",f:"🏳️",n:"W QF4"},v:"Rose Bowl",ci:"Pasadena, CA",lat:34.1614,lon:-118.1676},
-  {id:"3P",g:"",ph:"3P",u:"2026-07-22T20:00:00-04:00",h:{c:"TBD",f:"🏳️",n:"L SF1"},a:{c:"TBD",f:"🏳️",n:"L SF2"},v:"Hard Rock Stadium",ci:"Miami Gardens, FL",lat:25.9580,lon:-80.2389},
-  {id:"FIN",g:"",ph:"F",u:"2026-07-26T18:00:00-04:00",h:{c:"TBD",f:"🏳️",n:"Winner SF1"},a:{c:"TBD",f:"🏳️",n:"Winner SF2"},v:"MetLife Stadium",ci:"East Rutherford, NJ",lat:40.8135,lon:-74.0745}
+var MATCHES = [
+  // GROUP A
+  {id:"A1",g:"A",ph:"G",u:"2026-06-11T20:00:00-04:00",h:{c:"USA",f:"\uD83C\uDDFA\uD83C\uDDF8",n:"USA"},a:{c:"URU",f:"\uD83C\uDDFA\uD83C\uDDFE",n:"Uruguay"},v:"MetLife Stadium",ci:"East Rutherford NJ",lat:40.81,lon:-74.07},
+  {id:"A2",g:"A",ph:"G",u:"2026-06-12T14:00:00-07:00",h:{c:"PAN",f:"\uD83C\uDDF5\uD83C\uDDE6",n:"Panama"},a:{c:"BOT",f:"\uD83C\uDDE7\uD83C\uDDFC",n:"Botswana"},v:"SoFi Stadium",ci:"Inglewood CA",lat:33.95,lon:-118.34},
+  {id:"A3",g:"A",ph:"G",u:"2026-06-16T17:00:00-05:00",h:{c:"USA",f:"\uD83C\uDDFA\uD83C\uDDF8",n:"USA"},a:{c:"PAN",f:"\uD83C\uDDF5\uD83C\uDDE6",n:"Panama"},v:"AT&T Stadium",ci:"Arlington TX",lat:32.75,lon:-97.09},
+  {id:"A4",g:"A",ph:"G",u:"2026-06-16T20:00:00-04:00",h:{c:"URU",f:"\uD83C\uDDFA\uD83C\uDDFE",n:"Uruguay"},a:{c:"BOT",f:"\uD83C\uDDE7\uD83C\uDDFC",n:"Botswana"},v:"Hard Rock Stadium",ci:"Miami FL",lat:25.96,lon:-80.24},
+  {id:"A5",g:"A",ph:"G",u:"2026-06-20T16:00:00-04:00",h:{c:"URU",f:"\uD83C\uDDFA\uD83C\uDDFE",n:"Uruguay"},a:{c:"PAN",f:"\uD83C\uDDF5\uD83C\uDDE6",n:"Panama"},v:"MetLife Stadium",ci:"East Rutherford NJ",lat:40.81,lon:-74.07},
+  {id:"A6",g:"A",ph:"G",u:"2026-06-20T16:00:00-07:00",h:{c:"USA",f:"\uD83C\uDDFA\uD83C\uDDF8",n:"USA"},a:{c:"BOT",f:"\uD83C\uDDE7\uD83C\uDDFC",n:"Botswana"},v:"Levi's Stadium",ci:"Santa Clara CA",lat:37.40,lon:-121.97},
+  // GROUP B
+  {id:"B1",g:"B",ph:"G",u:"2026-06-12T17:00:00-04:00",h:{c:"ARG",f:"\uD83C\uDDE6\uD83C\uDDF7",n:"Argentina"},a:{c:"ZAF",f:"\uD83C\uDDFF\uD83C\uDDE6",n:"South Africa"},v:"MetLife Stadium",ci:"East Rutherford NJ",lat:40.81,lon:-74.07},
+  {id:"B2",g:"B",ph:"G",u:"2026-06-12T20:00:00-06:00",h:{c:"MEX",f:"\uD83C\uDDF2\uD83C\uDDFD",n:"Mexico"},a:{c:"NZL",f:"\uD83C\uDDF3\uD83C\uDDFF",n:"New Zealand"},v:"Estadio Azteca",ci:"Mexico City",lat:19.30,lon:-99.15},
+  {id:"B3",g:"B",ph:"G",u:"2026-06-16T14:00:00-05:00",h:{c:"ARG",f:"\uD83C\uDDE6\uD83C\uDDF7",n:"Argentina"},a:{c:"NZL",f:"\uD83C\uDDF3\uD83C\uDDFF",n:"New Zealand"},v:"AT&T Stadium",ci:"Arlington TX",lat:32.75,lon:-97.09},
+  {id:"B4",g:"B",ph:"G",u:"2026-06-16T17:00:00-06:00",h:{c:"MEX",f:"\uD83C\uDDF2\uD83C\uDDFD",n:"Mexico"},a:{c:"ZAF",f:"\uD83C\uDDFF\uD83C\uDDE6",n:"South Africa"},v:"Estadio Guadalajara",ci:"Guadalajara",lat:20.68,lon:-103.35},
+  {id:"B5",g:"B",ph:"G",u:"2026-06-20T19:00:00-04:00",h:{c:"ARG",f:"\uD83C\uDDE6\uD83C\uDDF7",n:"Argentina"},a:{c:"MEX",f:"\uD83C\uDDF2\uD83C\uDDFD",n:"Mexico"},v:"MetLife Stadium",ci:"East Rutherford NJ",lat:40.81,lon:-74.07},
+  {id:"B6",g:"B",ph:"G",u:"2026-06-20T19:00:00-07:00",h:{c:"NZL",f:"\uD83C\uDDF3\uD83C\uDDFF",n:"New Zealand"},a:{c:"ZAF",f:"\uD83C\uDDFF\uD83C\uDDE6",n:"South Africa"},v:"Rose Bowl",ci:"Pasadena CA",lat:34.16,lon:-118.17},
+  // GROUP C
+  {id:"C1",g:"C",ph:"G",u:"2026-06-13T14:00:00-07:00",h:{c:"FRA",f:"\uD83C\uDDEB\uD83C\uDDF7",n:"France"},a:{c:"BRA",f:"\uD83C\uDDE7\uD83C\uDDF7",n:"Brazil"},v:"SoFi Stadium",ci:"Inglewood CA",lat:33.95,lon:-118.34},
+  {id:"C2",g:"C",ph:"G",u:"2026-06-13T17:00:00-07:00",h:{c:"AUS",f:"\uD83C\uDDE6\uD83C\uDDFA",n:"Australia"},a:{c:"SEN",f:"\uD83C\uDDF8\uD83C\uDDF3",n:"Senegal"},v:"Levi's Stadium",ci:"Santa Clara CA",lat:37.40,lon:-121.97},
+  {id:"C3",g:"C",ph:"G",u:"2026-06-17T14:00:00-04:00",h:{c:"FRA",f:"\uD83C\uDDEB\uD83C\uDDF7",n:"France"},a:{c:"AUS",f:"\uD83C\uDDE6\uD83C\uDDFA",n:"Australia"},v:"MetLife Stadium",ci:"East Rutherford NJ",lat:40.81,lon:-74.07},
+  {id:"C4",g:"C",ph:"G",u:"2026-06-17T17:00:00-04:00",h:{c:"BRA",f:"\uD83C\uDDE7\uD83C\uDDF7",n:"Brazil"},a:{c:"SEN",f:"\uD83C\uDDF8\uD83C\uDDF3",n:"Senegal"},v:"Hard Rock Stadium",ci:"Miami FL",lat:25.96,lon:-80.24},
+  {id:"C5",g:"C",ph:"G",u:"2026-06-21T16:00:00-05:00",h:{c:"FRA",f:"\uD83C\uDDEB\uD83C\uDDF7",n:"France"},a:{c:"SEN",f:"\uD83C\uDDF8\uD83C\uDDF3",n:"Senegal"},v:"AT&T Stadium",ci:"Arlington TX",lat:32.75,lon:-97.09},
+  {id:"C6",g:"C",ph:"G",u:"2026-06-21T16:00:00-07:00",h:{c:"BRA",f:"\uD83C\uDDE7\uD83C\uDDF7",n:"Brazil"},a:{c:"AUS",f:"\uD83C\uDDE6\uD83C\uDDFA",n:"Australia"},v:"SoFi Stadium",ci:"Inglewood CA",lat:33.95,lon:-118.34},
+  // GROUP D
+  {id:"D1",g:"D",ph:"G",u:"2026-06-13T20:00:00-07:00",h:{c:"ENG",f:"\uD83C\uDFF4\uDB40\uDC67\uDB40\uDC62\uDB40\uDC65\uDB40\uDC6E\uDB40\uDC67\uDB40\uDC7F",n:"England"},a:{c:"GER",f:"\uD83C\uDDE9\uD83C\uDDEA",n:"Germany"},v:"Rose Bowl",ci:"Pasadena CA",lat:34.16,lon:-118.17},
+  {id:"D2",g:"D",ph:"G",u:"2026-06-14T14:00:00-04:00",h:{c:"JPN",f:"\uD83C\uDDEF\uD83C\uDDF5",n:"Japan"},a:{c:"CAN",f:"\uD83C\uDDE8\uD83C\uDDE6",n:"Canada"},v:"BMO Field",ci:"Toronto",lat:43.63,lon:-79.42},
+  {id:"D3",g:"D",ph:"G",u:"2026-06-17T20:00:00-04:00",h:{c:"ENG",f:"\uD83C\uDFF4\uDB40\uDC67\uDB40\uDC62\uDB40\uDC65\uDB40\uDC6E\uDB40\uDC67\uDB40\uDC7F",n:"England"},a:{c:"JPN",f:"\uD83C\uDDEF\uD83C\uDDF5",n:"Japan"},v:"MetLife Stadium",ci:"East Rutherford NJ",lat:40.81,lon:-74.07},
+  {id:"D4",g:"D",ph:"G",u:"2026-06-18T14:00:00-07:00",h:{c:"GER",f:"\uD83C\uDDE9\uD83C\uDDEA",n:"Germany"},a:{c:"CAN",f:"\uD83C\uDDE8\uD83C\uDDE6",n:"Canada"},v:"Levi's Stadium",ci:"Santa Clara CA",lat:37.40,lon:-121.97},
+  {id:"D5",g:"D",ph:"G",u:"2026-06-22T16:00:00-07:00",h:{c:"ENG",f:"\uD83C\uDFF4\uDB40\uDC67\uDB40\uDC62\uDB40\uDC65\uDB40\uDC6E\uDB40\uDC67\uDB40\uDC7F",n:"England"},a:{c:"CAN",f:"\uD83C\uDDE8\uD83C\uDDE6",n:"Canada"},v:"SoFi Stadium",ci:"Inglewood CA",lat:33.95,lon:-118.34},
+  {id:"D6",g:"D",ph:"G",u:"2026-06-22T16:00:00-05:00",h:{c:"GER",f:"\uD83C\uDDE9\uD83C\uDDEA",n:"Germany"},a:{c:"JPN",f:"\uD83C\uDDEF\uD83C\uDDF5",n:"Japan"},v:"AT&T Stadium",ci:"Arlington TX",lat:32.75,lon:-97.09},
+  // GROUP E
+  {id:"E1",g:"E",ph:"G",u:"2026-06-14T17:00:00-04:00",h:{c:"ESP",f:"\uD83C\uDDEA\uD83C\uDDF8",n:"Spain"},a:{c:"POR",f:"\uD83C\uDDF5\uD83C\uDDF9",n:"Portugal"},v:"Hard Rock Stadium",ci:"Miami FL",lat:25.96,lon:-80.24},
+  {id:"E2",g:"E",ph:"G",u:"2026-06-14T20:00:00-04:00",h:{c:"MAR",f:"\uD83C\uDDF2\uD83C\uDDE6",n:"Morocco"},a:{c:"KOR",f:"\uD83C\uDDF0\uD83C\uDDF7",n:"South Korea"},v:"MetLife Stadium",ci:"East Rutherford NJ",lat:40.81,lon:-74.07},
+  {id:"E3",g:"E",ph:"G",u:"2026-06-18T17:00:00-07:00",h:{c:"ESP",f:"\uD83C\uDDEA\uD83C\uDDF8",n:"Spain"},a:{c:"MAR",f:"\uD83C\uDDF2\uD83C\uDDE6",n:"Morocco"},v:"Rose Bowl",ci:"Pasadena CA",lat:34.16,lon:-118.17},
+  {id:"E4",g:"E",ph:"G",u:"2026-06-18T20:00:00-07:00",h:{c:"POR",f:"\uD83C\uDDF5\uD83C\uDDF9",n:"Portugal"},a:{c:"KOR",f:"\uD83C\uDDF0\uD83C\uDDF7",n:"South Korea"},v:"Levi's Stadium",ci:"Santa Clara CA",lat:37.40,lon:-121.97},
+  {id:"E5",g:"E",ph:"G",u:"2026-06-22T19:00:00-05:00",h:{c:"ESP",f:"\uD83C\uDDEA\uD83C\uDDF8",n:"Spain"},a:{c:"KOR",f:"\uD83C\uDDF0\uD83C\uDDF7",n:"South Korea"},v:"AT&T Stadium",ci:"Arlington TX",lat:32.75,lon:-97.09},
+  {id:"E6",g:"E",ph:"G",u:"2026-06-22T19:00:00-04:00",h:{c:"POR",f:"\uD83C\uDDF5\uD83C\uDDF9",n:"Portugal"},a:{c:"MAR",f:"\uD83C\uDDF2\uD83C\uDDE6",n:"Morocco"},v:"Hard Rock Stadium",ci:"Miami FL",lat:25.96,lon:-80.24},
+  // GROUP F
+  {id:"F1",g:"F",ph:"G",u:"2026-06-15T14:00:00-07:00",h:{c:"NED",f:"\uD83C\uDDF3\uD83C\uDDF1",n:"Netherlands"},a:{c:"BEL",f:"\uD83C\uDDE7\uD83C\uDDEA",n:"Belgium"},v:"SoFi Stadium",ci:"Inglewood CA",lat:33.95,lon:-118.34},
+  {id:"F2",g:"F",ph:"G",u:"2026-06-15T17:00:00-05:00",h:{c:"CRC",f:"\uD83C\uDDE8\uD83C\uDDF7",n:"Costa Rica"},a:{c:"KSA",f:"\uD83C\uDDF8\uD83C\uDDE6",n:"Saudi Arabia"},v:"AT&T Stadium",ci:"Arlington TX",lat:32.75,lon:-97.09},
+  {id:"F3",g:"F",ph:"G",u:"2026-06-19T14:00:00-04:00",h:{c:"NED",f:"\uD83C\uDDF3\uD83C\uDDF1",n:"Netherlands"},a:{c:"CRC",f:"\uD83C\uDDE8\uD83C\uDDF7",n:"Costa Rica"},v:"MetLife Stadium",ci:"East Rutherford NJ",lat:40.81,lon:-74.07},
+  {id:"F4",g:"F",ph:"G",u:"2026-06-19T17:00:00-07:00",h:{c:"BEL",f:"\uD83C\uDDE7\uD83C\uDDEA",n:"Belgium"},a:{c:"KSA",f:"\uD83C\uDDF8\uD83C\uDDE6",n:"Saudi Arabia"},v:"Rose Bowl",ci:"Pasadena CA",lat:34.16,lon:-118.17},
+  {id:"F5",g:"F",ph:"G",u:"2026-06-23T16:00:00-04:00",h:{c:"NED",f:"\uD83C\uDDF3\uD83C\uDDF1",n:"Netherlands"},a:{c:"KSA",f:"\uD83C\uDDF8\uD83C\uDDE6",n:"Saudi Arabia"},v:"Hard Rock Stadium",ci:"Miami FL",lat:25.96,lon:-80.24},
+  {id:"F6",g:"F",ph:"G",u:"2026-06-23T16:00:00-07:00",h:{c:"BEL",f:"\uD83C\uDDE7\uD83C\uDDEA",n:"Belgium"},a:{c:"CRC",f:"\uD83C\uDDE8\uD83C\uDDF7",n:"Costa Rica"},v:"Levi's Stadium",ci:"Santa Clara CA",lat:37.40,lon:-121.97},
+  // GROUP G
+  {id:"G1",g:"G",ph:"G",u:"2026-06-15T20:00:00-05:00",h:{c:"ITA",f:"\uD83C\uDDEE\uD83C\uDDF9",n:"Italy"},a:{c:"ECU",f:"\uD83C\uDDEA\uD83C\uDDE8",n:"Ecuador"},v:"AT&T Stadium",ci:"Arlington TX",lat:32.75,lon:-97.09},
+  {id:"G2",g:"G",ph:"G",u:"2026-06-16T14:00:00-07:00",h:{c:"CHE",f:"\uD83C\uDDE8\uD83C\uDDED",n:"Switzerland"},a:{c:"CMR",f:"\uD83C\uDDE8\uD83C\uDDF2",n:"Cameroon"},v:"Levi's Stadium",ci:"Santa Clara CA",lat:37.40,lon:-121.97},
+  {id:"G3",g:"G",ph:"G",u:"2026-06-19T20:00:00-07:00",h:{c:"ITA",f:"\uD83C\uDDEE\uD83C\uDDF9",n:"Italy"},a:{c:"CHE",f:"\uD83C\uDDE8\uD83C\uDDED",n:"Switzerland"},v:"Rose Bowl",ci:"Pasadena CA",lat:34.16,lon:-118.17},
+  {id:"G4",g:"G",ph:"G",u:"2026-06-20T14:00:00-04:00",h:{c:"ECU",f:"\uD83C\uDDEA\uD83C\uDDE8",n:"Ecuador"},a:{c:"CMR",f:"\uD83C\uDDE8\uD83C\uDDF2",n:"Cameroon"},v:"Hard Rock Stadium",ci:"Miami FL",lat:25.96,lon:-80.24},
+  {id:"G5",g:"G",ph:"G",u:"2026-06-23T19:00:00-04:00",h:{c:"ITA",f:"\uD83C\uDDEE\uD83C\uDDF9",n:"Italy"},a:{c:"CMR",f:"\uD83C\uDDE8\uD83C\uDDF2",n:"Cameroon"},v:"MetLife Stadium",ci:"East Rutherford NJ",lat:40.81,lon:-74.07},
+  {id:"G6",g:"G",ph:"G",u:"2026-06-23T19:00:00-07:00",h:{c:"CHE",f:"\uD83C\uDDE8\uD83C\uDDED",n:"Switzerland"},a:{c:"ECU",f:"\uD83C\uDDEA\uD83C\uDDE8",n:"Ecuador"},v:"SoFi Stadium",ci:"Inglewood CA",lat:33.95,lon:-118.34},
+  // GROUP H
+  {id:"H1",g:"H",ph:"G",u:"2026-06-16T20:00:00-04:00",h:{c:"POR",f:"\uD83C\uDDF5\uD83C\uDDF9",n:"Portugal"},a:{c:"CRO",f:"\uD83C\uDDED\uD83C\uDDF7",n:"Croatia"},v:"Hard Rock Stadium",ci:"Miami FL",lat:25.96,lon:-80.24},
+  {id:"H2",g:"H",ph:"G",u:"2026-06-17T14:00:00-06:00",h:{c:"MEX",f:"\uD83C\uDDF2\uD83C\uDDFD",n:"Mexico"},a:{c:"COL",f:"\uD83C\uDDE8\uD83C\uDDF4",n:"Colombia"},v:"Estadio Azteca",ci:"Mexico City",lat:19.30,lon:-99.15},
+  {id:"H3",g:"H",ph:"G",u:"2026-06-20T17:00:00-05:00",h:{c:"CRO",f:"\uD83C\uDDED\uD83C\uDDF7",n:"Croatia"},a:{c:"COL",f:"\uD83C\uDDE8\uD83C\uDDF4",n:"Colombia"},v:"AT&T Stadium",ci:"Arlington TX",lat:32.75,lon:-97.09},
+  {id:"H4",g:"H",ph:"G",u:"2026-06-21T14:00:00-07:00",h:{c:"POR",f:"\uD83C\uDDF5\uD83C\uDDF9",n:"Portugal"},a:{c:"MEX",f:"\uD83C\uDDF2\uD83C\uDDFD",n:"Mexico"},v:"SoFi Stadium",ci:"Inglewood CA",lat:33.95,lon:-118.34},
+  {id:"H5",g:"H",ph:"G",u:"2026-06-24T16:00:00-07:00",h:{c:"POR",f:"\uD83C\uDDF5\uD83C\uDDF9",n:"Portugal"},a:{c:"COL",f:"\uD83C\uDDE8\uD83C\uDDF4",n:"Colombia"},v:"Rose Bowl",ci:"Pasadena CA",lat:34.16,lon:-118.17},
+  {id:"H6",g:"H",ph:"G",u:"2026-06-24T16:00:00-07:00",h:{c:"CRO",f:"\uD83C\uDDED\uD83C\uDDF7",n:"Croatia"},a:{c:"MEX",f:"\uD83C\uDDF2\uD83C\uDDFD",n:"Mexico"},v:"Levi's Stadium",ci:"Santa Clara CA",lat:37.40,lon:-121.97},
+  // GROUP I
+  {id:"I1",g:"I",ph:"G",u:"2026-06-18T14:00:00-06:00",h:{c:"FRA",f:"\uD83C\uDDEB\uD83C\uDDF7",n:"France"},a:{c:"POL",f:"\uD83C\uDDF5\uD83C\uDDF1",n:"Poland"},v:"Estadio Guadalajara",ci:"Guadalajara",lat:20.68,lon:-103.35},
+  {id:"I2",g:"I",ph:"G",u:"2026-06-18T17:00:00-07:00",h:{c:"SEN",f:"\uD83C\uDDF8\uD83C\uDDF3",n:"Senegal"},a:{c:"IRQ",f:"\uD83C\uDDEE\uD83C\uDDF6",n:"Iraq"},v:"Rose Bowl",ci:"Pasadena CA",lat:34.16,lon:-118.17},
+  {id:"I3",g:"I",ph:"G",u:"2026-06-22T14:00:00-06:00",h:{c:"FRA",f:"\uD83C\uDDEB\uD83C\uDDF7",n:"France"},a:{c:"SEN",f:"\uD83C\uDDF8\uD83C\uDDF3",n:"Senegal"},v:"Estadio Azteca",ci:"Mexico City",lat:19.30,lon:-99.15},
+  {id:"I4",g:"I",ph:"G",u:"2026-06-22T17:00:00-04:00",h:{c:"POL",f:"\uD83C\uDDF5\uD83C\uDDF1",n:"Poland"},a:{c:"IRQ",f:"\uD83C\uDDEE\uD83C\uDDF6",n:"Iraq"},v:"MetLife Stadium",ci:"East Rutherford NJ",lat:40.81,lon:-74.07},
+  {id:"I5",g:"I",ph:"G",u:"2026-06-25T16:00:00-05:00",h:{c:"FRA",f:"\uD83C\uDDEB\uD83C\uDDF7",n:"France"},a:{c:"IRQ",f:"\uD83C\uDDEE\uD83C\uDDF6",n:"Iraq"},v:"AT&T Stadium",ci:"Arlington TX",lat:32.75,lon:-97.09},
+  {id:"I6",g:"I",ph:"G",u:"2026-06-25T16:00:00-04:00",h:{c:"POL",f:"\uD83C\uDDF5\uD83C\uDDF1",n:"Poland"},a:{c:"SEN",f:"\uD83C\uDDF8\uD83C\uDDF3",n:"Senegal"},v:"Hard Rock Stadium",ci:"Miami FL",lat:25.96,lon:-80.24},
+  // GROUP J
+  {id:"J1",g:"J",ph:"G",u:"2026-06-19T14:00:00-04:00",h:{c:"CAN",f:"\uD83C\uDDE8\uD83C\uDDE6",n:"Canada"},a:{c:"URU",f:"\uD83C\uDDFA\uD83C\uDDFE",n:"Uruguay"},v:"BMO Field",ci:"Toronto",lat:43.63,lon:-79.42},
+  {id:"J2",g:"J",ph:"G",u:"2026-06-19T17:00:00-07:00",h:{c:"MAR",f:"\uD83C\uDDF2\uD83C\uDDE6",n:"Morocco"},a:{c:"TUN",f:"\uD83C\uDDF9\uD83C\uDDF3",n:"Tunisia"},v:"SoFi Stadium",ci:"Inglewood CA",lat:33.95,lon:-118.34},
+  {id:"J3",g:"J",ph:"G",u:"2026-06-23T14:00:00-07:00",h:{c:"CAN",f:"\uD83C\uDDE8\uD83C\uDDE6",n:"Canada"},a:{c:"MAR",f:"\uD83C\uDDF2\uD83C\uDDE6",n:"Morocco"},v:"Rose Bowl",ci:"Pasadena CA",lat:34.16,lon:-118.17},
+  {id:"J4",g:"J",ph:"G",u:"2026-06-23T17:00:00-04:00",h:{c:"URU",f:"\uD83C\uDDFA\uD83C\uDDFE",n:"Uruguay"},a:{c:"TUN",f:"\uD83C\uDDF9\uD83C\uDDF3",n:"Tunisia"},v:"Hard Rock Stadium",ci:"Miami FL",lat:25.96,lon:-80.24},
+  {id:"J5",g:"J",ph:"G",u:"2026-06-26T16:00:00-07:00",h:{c:"CAN",f:"\uD83C\uDDE8\uD83C\uDDE6",n:"Canada"},a:{c:"TUN",f:"\uD83C\uDDF9\uD83C\uDDF3",n:"Tunisia"},v:"Levi's Stadium",ci:"Santa Clara CA",lat:37.40,lon:-121.97},
+  {id:"J6",g:"J",ph:"G",u:"2026-06-26T16:00:00-04:00",h:{c:"URU",f:"\uD83C\uDDFA\uD83C\uDDFE",n:"Uruguay"},a:{c:"MAR",f:"\uD83C\uDDF2\uD83C\uDDE6",n:"Morocco"},v:"MetLife Stadium",ci:"East Rutherford NJ",lat:40.81,lon:-74.07},
+  // GROUP K
+  {id:"K1",g:"K",ph:"G",u:"2026-06-20T14:00:00-04:00",h:{c:"ENG",f:"\uD83C\uDFF4\uDB40\uDC67\uDB40\uDC62\uDB40\uDC65\uDB40\uDC6E\uDB40\uDC67\uDB40\uDC7F",n:"England"},a:{c:"SEN",f:"\uD83C\uDDF8\uD83C\uDDF3",n:"Senegal"},v:"MetLife Stadium",ci:"East Rutherford NJ",lat:40.81,lon:-74.07},
+  {id:"K2",g:"K",ph:"G",u:"2026-06-20T17:00:00-07:00",h:{c:"NED",f:"\uD83C\uDDF3\uD83C\uDDF1",n:"Netherlands"},a:{c:"AUS",f:"\uD83C\uDDE6\uD83C\uDDFA",n:"Australia"},v:"Rose Bowl",ci:"Pasadena CA",lat:34.16,lon:-118.17},
+  {id:"K3",g:"K",ph:"G",u:"2026-06-24T14:00:00-07:00",h:{c:"ENG",f:"\uD83C\uDFF4\uDB40\uDC67\uDB40\uDC62\uDB40\uDC65\uDB40\uDC6E\uDB40\uDC67\uDB40\uDC7F",n:"England"},a:{c:"NED",f:"\uD83C\uDDF3\uD83C\uDDF1",n:"Netherlands"},v:"SoFi Stadium",ci:"Inglewood CA",lat:33.95,lon:-118.34},
+  {id:"K4",g:"K",ph:"G",u:"2026-06-24T17:00:00-05:00",h:{c:"SEN",f:"\uD83C\uDDF8\uD83C\uDDF3",n:"Senegal"},a:{c:"AUS",f:"\uD83C\uDDE6\uD83C\uDDFA",n:"Australia"},v:"AT&T Stadium",ci:"Arlington TX",lat:32.75,lon:-97.09},
+  {id:"K5",g:"K",ph:"G",u:"2026-06-27T16:00:00-07:00",h:{c:"ENG",f:"\uD83C\uDFF4\uDB40\uDC67\uDB40\uDC62\uDB40\uDC65\uDB40\uDC6E\uDB40\uDC67\uDB40\uDC7F",n:"England"},a:{c:"AUS",f:"\uD83C\uDDE6\uD83C\uDDFA",n:"Australia"},v:"Levi's Stadium",ci:"Santa Clara CA",lat:37.40,lon:-121.97},
+  {id:"K6",g:"K",ph:"G",u:"2026-06-27T16:00:00-04:00",h:{c:"NED",f:"\uD83C\uDDF3\uD83C\uDDF1",n:"Netherlands"},a:{c:"SEN",f:"\uD83C\uDDF8\uD83C\uDDF3",n:"Senegal"},v:"Hard Rock Stadium",ci:"Miami FL",lat:25.96,lon:-80.24},
+  // GROUP L
+  {id:"L1",g:"L",ph:"G",u:"2026-06-21T17:00:00-05:00",h:{c:"ESP",f:"\uD83C\uDDEA\uD83C\uDDF8",n:"Spain"},a:{c:"CMR",f:"\uD83C\uDDE8\uD83C\uDDF2",n:"Cameroon"},v:"AT&T Stadium",ci:"Arlington TX",lat:32.75,lon:-97.09},
+  {id:"L2",g:"L",ph:"G",u:"2026-06-21T20:00:00-04:00",h:{c:"ITA",f:"\uD83C\uDDEE\uD83C\uDDF9",n:"Italy"},a:{c:"CRO",f:"\uD83C\uDDED\uD83C\uDDF7",n:"Croatia"},v:"MetLife Stadium",ci:"East Rutherford NJ",lat:40.81,lon:-74.07},
+  {id:"L3",g:"L",ph:"G",u:"2026-06-25T14:00:00-07:00",h:{c:"ESP",f:"\uD83C\uDDEA\uD83C\uDDF8",n:"Spain"},a:{c:"ITA",f:"\uD83C\uDDEE\uD83C\uDDF9",n:"Italy"},v:"Rose Bowl",ci:"Pasadena CA",lat:34.16,lon:-118.17},
+  {id:"L4",g:"L",ph:"G",u:"2026-06-25T17:00:00-07:00",h:{c:"CMR",f:"\uD83C\uDDE8\uD83C\uDDF2",n:"Cameroon"},a:{c:"CRO",f:"\uD83C\uDDED\uD83C\uDDF7",n:"Croatia"},v:"SoFi Stadium",ci:"Inglewood CA",lat:33.95,lon:-118.34},
+  {id:"L5",g:"L",ph:"G",u:"2026-06-28T16:00:00-04:00",h:{c:"ESP",f:"\uD83C\uDDEA\uD83C\uDDF8",n:"Spain"},a:{c:"CRO",f:"\uD83C\uDDED\uD83C\uDDF7",n:"Croatia"},v:"Hard Rock Stadium",ci:"Miami FL",lat:25.96,lon:-80.24},
+  {id:"L6",g:"L",ph:"G",u:"2026-06-28T16:00:00-07:00",h:{c:"ITA",f:"\uD83C\uDDEE\uD83C\uDDF9",n:"Italy"},a:{c:"CMR",f:"\uD83C\uDDE8\uD83C\uDDF2",n:"Cameroon"},v:"Levi's Stadium",ci:"Santa Clara CA",lat:37.40,lon:-121.97},
+  // KNOCKOUTS
+  {id:"R1",g:"",ph:"R32",u:"2026-07-02T20:00:00-04:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"1A"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"2B"},v:"MetLife Stadium",ci:"East Rutherford NJ",lat:40.81,lon:-74.07},
+  {id:"R2",g:"",ph:"R32",u:"2026-07-03T20:00:00-07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"1B"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"2A"},v:"Rose Bowl",ci:"Pasadena CA",lat:34.16,lon:-118.17},
+  {id:"R3",g:"",ph:"R32",u:"2026-07-04T20:00:00-05:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"1C"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"2D"},v:"AT&T Stadium",ci:"Arlington TX",lat:32.75,lon:-97.09},
+  {id:"R4",g:"",ph:"R32",u:"2026-07-04T20:00:00-04:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"1D"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"2C"},v:"Hard Rock Stadium",ci:"Miami FL",lat:25.96,lon:-80.24},
+  {id:"R5",g:"",ph:"R32",u:"2026-07-05T20:00:00-07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"1E"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"2F"},v:"SoFi Stadium",ci:"Inglewood CA",lat:33.95,lon:-118.34},
+  {id:"R6",g:"",ph:"R32",u:"2026-07-05T20:00:00-07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"1F"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"2E"},v:"BC Place",ci:"Vancouver",lat:49.28,lon:-123.11},
+  {id:"R7",g:"",ph:"R32",u:"2026-07-06T20:00:00-07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"1G"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"2H"},v:"Levi's Stadium",ci:"Santa Clara CA",lat:37.40,lon:-121.97},
+  {id:"R8",g:"",ph:"R32",u:"2026-07-06T20:00:00-04:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"1H"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"2G"},v:"BMO Field",ci:"Toronto",lat:43.63,lon:-79.42},
+  {id:"QF1",g:"",ph:"QF",u:"2026-07-14T20:00:00-04:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"W R1"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"W R2"},v:"MetLife Stadium",ci:"East Rutherford NJ",lat:40.81,lon:-74.07},
+  {id:"QF2",g:"",ph:"QF",u:"2026-07-14T20:00:00-07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"W R3"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"W R4"},v:"Rose Bowl",ci:"Pasadena CA",lat:34.16,lon:-118.17},
+  {id:"QF3",g:"",ph:"QF",u:"2026-07-15T20:00:00-05:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"W R5"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"W R6"},v:"AT&T Stadium",ci:"Arlington TX",lat:32.75,lon:-97.09},
+  {id:"QF4",g:"",ph:"QF",u:"2026-07-15T20:00:00-04:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"W R7"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"W R8"},v:"Hard Rock Stadium",ci:"Miami FL",lat:25.96,lon:-80.24},
+  {id:"SF1",g:"",ph:"SF",u:"2026-07-19T20:00:00-04:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"W QF1"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"W QF2"},v:"MetLife Stadium",ci:"East Rutherford NJ",lat:40.81,lon:-74.07},
+  {id:"SF2",g:"",ph:"SF",u:"2026-07-20T20:00:00-07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"W QF3"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"W QF4"},v:"Rose Bowl",ci:"Pasadena CA",lat:34.16,lon:-118.17},
+  {id:"3P",g:"",ph:"3P",u:"2026-07-22T20:00:00-04:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"L SF1"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"L SF2"},v:"Hard Rock Stadium",ci:"Miami FL",lat:25.96,lon:-80.24},
+  {id:"FIN",g:"",ph:"F",u:"2026-07-26T18:00:00-04:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"W SF1"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"W SF2"},v:"MetLife Stadium",ci:"East Rutherford NJ",lat:40.81,lon:-74.07}
 ];
 
-const PHL={G:"Group Stage",R32:"Round of 32",QF:"Quarter-final",SF:"Semi-final","3P":"3rd Place",F:"Final"};
+var PHL = {G:"Group",R32:"R32",QF:"QF",SF:"SF","3P":"3rd",F:"Final"};
 
-// WHERE TO WATCH data
-const WTW={
-  "USA":["Fox Sports","Telemundo","Peacock"],
-  "CAN":["TSN","RDS","CTV"],
-  "MEX":["Televisa","TV Azteca","TUDN"],
-  "ENG":["ITV","BBC","TNT Sports"],
-  "FRA":["TF1","M6","beIN Sports"],
-  "GER":["ARD","ZDF","DAZN"],
-  "BRA":["Globo","SporTV","CazéTV"],
-  "ESP":["RTVE","Mediapro","DAZN"],
-  "ARG":["TyC Sports","TV Pública","DirecTV"],
-  "JPN":["NHK","Fuji TV","DAZN"],
-  "KOR":["MBC","KBS","SBS"],
-  "AUS":["SBS","Optus Sport","Seven"],
-  "POR":["RTP","Sport TV","CMTV"],
-  "NED":["NOS","Ziggo Sport"],
-  "BEL":["RTBF","VRT","Eleven Sports"],
-  "ITA":["RAI","Mediaset","Sky Sport"],
-  "POL":["TVP","Polsat"],
-  "DEFAULT":["Fox Sports","Telemundo","beIN Sports"]
+var WTW = {
+  USA:["Fox","Telemundo","Peacock"],ENG:["BBC","ITV","TNT Sports"],
+  FRA:["TF1","beIN Sports"],GER:["ARD","ZDF","DAZN"],
+  BRA:["Globo","SporTV"],ESP:["RTVE","DAZN"],
+  ARG:["TyC Sports","DirecTV"],JPN:["NHK","DAZN"],
+  KOR:["MBC","KBS"],MEX:["Televisa","TV Azteca"],
+  POR:["RTP","Sport TV"],NED:["NOS","Ziggo"],
+  CAN:["TSN","CTV"],AUS:["SBS","Optus"],
+  ITA:["RAI","Sky Sport"],DEFAULT:["Fox","Telemundo","beIN"]
 };
 
-// Weather cache
-const wxCache={};
+// Weather cache per venue lat/lon
+var WXC = {};
 
-async function getWeather(lat,lon,matchId){
-  if(wxCache[matchId]) return wxCache[matchId];
-  try{
-    const r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,precipitation_probability_max,weathercode&forecast_days=1&timezone=auto`);
-    const d=await r.json();
-    if(d.daily){
-      const codes={0:"☀️",1:"🌤",2:"⛅",3:"☁️",45:"🌫",48:"🌫",51:"🌦",61:"🌧",63:"🌧",71:"❄️",80:"🌦",95:"⛈"};
-      const code=d.daily.weathercode[0];
-      const icon=codes[code]||"🌡";
-      const temp=Math.round(d.daily.temperature_2m_max[0]);
-      const rain=d.daily.precipitation_probability_max[0]||0;
-      wxCache[matchId]=`${icon} ${temp}°C · ${rain}% rain`;
-      return wxCache[matchId];
-    }
-  }catch(e){}
-  return "—";
-}
-
-// ============================================================
-// COUNTDOWN
-// ============================================================
-function tick(){
-  const t=new Date('2026-06-11T20:00:00-04:00')-new Date();
-  if(t<=0){['d','h','m','s'].forEach(x=>document.getElementById('cd-'+x).textContent='00');return;}
-  const d=Math.floor(t/86400000),h=Math.floor(t%86400000/3600000),m=Math.floor(t%3600000/60000),s=Math.floor(t%60000/1000);
-  document.getElementById('cd-d').textContent=String(d).padStart(2,'0');
-  document.getElementById('cd-h').textContent=String(h).padStart(2,'0');
-  document.getElementById('cd-m').textContent=String(m).padStart(2,'0');
-  document.getElementById('cd-s').textContent=String(s).padStart(2,'0');
-}
-tick();setInterval(tick,1000);
-
-// TZ now label
-function updateTzNow(){
-  const tz=parseFloat(document.getElementById('tzSel').value||7);
-  const now=new Date();
-  const local=new Date(now.getTime()+tz*3600000+now.getTimezoneOffset()*60000);
-  document.getElementById('tzNow').textContent=`Current time: ${local.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}`;
-}
-updateTzNow();setInterval(updateTzNow,30000);
-
-// ============================================================
-// SCHEDULE
-// ============================================================
-function tl(utcStr,tz){
-  const d=new Date(utcStr);
-  const off=parseFloat(tz);
-  const local=new Date(d.getTime()+off*3600000+d.getTimezoneOffset()*60000);
-  const days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  return `${days[local.getDay()]} ${local.getDate()} ${months[local.getMonth()]} · ${local.getHours().toString().padStart(2,'0')}:${local.getMinutes().toString().padStart(2,'0')}`;
-}
-
-function sr(n){let h=0;for(let c of n){h=Math.imul(31,h)+c.charCodeAt(0)|0}return Math.abs(h)}
-function gp(id,model){
-  const s=sr(id+model);const r=n=>((sr(s+n*1e6)%100));
-  const hg=r(1)%4,ag=r(2)%3,tot=hg+ag,conf=45+r(3)%40;
-  return{h:hg,a:ag,t:tot,c:conf};
-}
-
-let curPh='ALL',curModel='c';
-
-function fPh(ph,btn){
-  curPh=ph;
-  document.querySelectorAll('#phTabs .tb').forEach(b=>b.classList.remove('on'));
-  btn.classList.add('on');
-  rSch();
-}
-
-async function rSch(){
-  updateTzNow();
-  const tz=document.getElementById('tzSel').value;
-  const filtered=curPh==='ALL'?M:M.filter(x=>x.ph===curPh);
-  const now=new Date();
-  const rows=await Promise.all(filtered.map(async m=>{
-    const mDate=new Date(m.u);
-    const diffMin=(now-mDate)/60000;
-    let scoreCell;
-    if(diffMin>0&&diffMin<105){
-      const hg=Math.floor(Math.random()*3),ag=Math.floor(Math.random()*2);
-      scoreCell=`<span class="sb lv">${hg} - ${ag}</span>`;
-    } else if(diffMin>=105){
-      const p=gp(m.id,'result');
-      scoreCell=`<span class="sb">${p.h} - ${p.a}</span>`;
-    } else {
-      const ti=tl(m.u,tz).split('·')[1]?.trim()||'';
-      scoreCell=`<span class="sb up">${ti}</span>`;
-    }
-    const p=gp(m.id,curModel);
-    // WTW
-    const hws=WTW[m.h.c]||WTW.DEFAULT;
-    const aws=WTW[m.a.c]||WTW.DEFAULT;
-    const allWtw=[...new Set([...hws,...aws])].slice(0,3);
-    const wtwHtml=allWtw.map(ch=>`<span class="wtw-chip"><span class="wtw-dot" style="background:var(--gr)"></span>${ch}</span>`).join('');
-    // Weather (async, we'll do a lazy approach)
-    const wx=wxCache[m.id]||'<span style="color:#aaa;font-size:11px">Loading…</span>';
-    // kick off fetch without blocking
-    if(!wxCache[m.id]){
-      getWeather(m.lat,m.lon,m.id).then(w=>{
-        const el=document.getElementById('wx-'+m.id);
-        if(el)el.innerHTML=`<span class="wx-badge">${w}</span>`;
-      });
-    }
-    return `<tr>
-      <td><span class="pb ph-${m.ph}">${m.g?'Grp '+m.g:PHL[m.ph]}</span></td>
-      <td style="white-space:nowrap;font-size:12px">${tl(m.u,tz)}</td>
-      <td><div class="tc"><span class="tf">${m.h.f}</span>${m.h.n}</div></td>
-      <td>${scoreCell}</td>
-      <td><div class="tc"><span class="tf">${m.a.f}</span>${m.a.n}</div></td>
-      <td class="vc">${m.v}<br><span style="color:#aaa">${m.ci}</span></td>
-      <td id="wx-${m.id}">${wxCache[m.id]?`<span class="wx-badge">${wxCache[m.id]}</span>`:'<span style="color:#aaa;font-size:11px">…</span>'}</td>
-      <td><div class="wtw-wrap">${wtwHtml}</div></td>
-      <td style="color:var(--pu);font-weight:700;font-size:12px">${p.h}-${p.a} (${p.t}g)</td>
-    </tr>`;
-  }));
-  document.getElementById('sb').innerHTML=rows.join('');
-}
-
-// ============================================================
-// LIVE
-// ============================================================
-function rLive(){
-  const now=new Date();
-  const recent=M.filter(m=>{const d=new Date(m.u);return Math.abs(d-now)<172800000;}).slice(0,8);
-  if(!recent.length){
-    document.getElementById('lg').innerHTML='<div style="padding:32px;text-align:center;font-size:14px;color:#666;grid-column:1/-1">⚽ No matches in the next 48 hours. Check the fixtures below.</div>';
+function getWx(lat, lon, id, elId) {
+  var key = lat.toFixed(2) + "_" + lon.toFixed(2);
+  if (WXC[key]) {
+    var el = document.getElementById(elId);
+    if (el) el.innerHTML = '<span class="wxb">' + WXC[key] + '</span>';
     return;
   }
-  document.getElementById('lg').innerHTML=recent.map(m=>{
-    const mDate=new Date(m.u);
-    const diffMin=(now-mDate)/60000;
-    let statusHtml,scoreHtml,live=false;
-    if(diffMin>0&&diffMin<105){
-      const min=Math.floor(diffMin);
-      const hg=Math.floor(Math.random()*3),ag=Math.floor(Math.random()*2);
-      live=true;
-      statusHtml=`<span><span class="ldot"></span>${min}'</span>`;
-      scoreHtml=`<div class="lsc lv">${hg} - ${ag}</div>`;
-    } else if(diffMin>=105){
-      const p=gp(m.id,'ft');
-      statusHtml=`<span style="color:var(--gr);font-weight:700">FT</span>`;
-      scoreHtml=`<div class="lsc">${p.h} - ${p.a}</div>`;
-    } else {
-      const tz=parseFloat(document.getElementById('tzSel').value||7);
-      const local=new Date(new Date(m.u).getTime()+tz*3600000+new Date(m.u).getTimezoneOffset()*60000);
-      statusHtml=`<span style="color:var(--pu);font-weight:700">${local.getHours().toString().padStart(2,'0')}:${local.getMinutes().toString().padStart(2,'0')}</span>`;
-      scoreHtml=`<div class="lsc" style="font-size:22px;color:var(--pu)">VS</div>`;
+  var url = "https://api.open-meteo.com/v1/forecast?latitude=" + lat + "&longitude=" + lon + "&daily=temperature_2m_max,precipitation_probability_max,weathercode&forecast_days=1&timezone=auto";
+  fetch(url).then(function(r) { return r.json(); }).then(function(d) {
+    if (d && d.daily) {
+      var codes = {0:"☀️",1:"🌤",2:"⛅",3:"☁️",45:"🌫",51:"🌦",61:"🌧",71:"❄️",80:"🌦",95:"⛈"};
+      var code = d.daily.weathercode[0];
+      var icon = codes[code] || "🌡";
+      var temp = Math.round(d.daily.temperature_2m_max[0]);
+      var rain = d.daily.precipitation_probability_max[0] || 0;
+      var txt = icon + " " + temp + "\u00B0C " + rain + "% rain";
+      WXC[key] = txt;
+      var el = document.getElementById(elId);
+      if (el) el.innerHTML = '<span class="wxb">' + txt + '</span>';
     }
-    return `<div class="lc${live?' lv':''}">
-      <div class="lc-top"><span class="pb ph-${m.ph}">${m.g?'Group '+m.g:PHL[m.ph]}</span>${statusHtml}</div>
-      <div class="lc-m">
-        <div class="lt"><span class="lfl">${m.h.f}</span><div class="lnm">${m.h.n}</div></div>
-        ${scoreHtml}
-        <div class="lt"><span class="lfl">${m.a.f}</span><div class="lnm">${m.a.n}</div></div>
-      </div>
-      <div class="lmeta">${m.v} · ${m.ci}</div>
-    </div>`;
-  }).join('');
+  }).catch(function() {
+    var el = document.getElementById(elId);
+    if (el) el.textContent = "—";
+  });
 }
-rLive();setInterval(rLive,60000);
+
+// ---- COUNTDOWN ----
+function tick() {
+  var t = new Date('2026-06-11T20:00:00-04:00') - new Date();
+  if (t <= 0) t = 0;
+  var d = Math.floor(t/86400000), h = Math.floor(t%86400000/3600000);
+  var m = Math.floor(t%3600000/60000), s = Math.floor(t%60000/1000);
+  document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
+  document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+}
+tick(); setInterval(tick, 1000);
+
+// ---- TZ NOW ----
+function updateTzNow() {
+  var tz = parseFloat(document.getElementById('tzSel').value || 7);
+  var now = new Date();
+  var local = new Date(now.getTime() + (tz - (-now.getTimezoneOffset()/60)) * 3600000);
+  var h = local.getUTCHours(), mn = local.getUTCMinutes();
+  document.getElementById('tzNow').textContent = 'Local now: ' + String(h).padStart(2,'0') + ':' + String(mn).padStart(2,'0');
+}
+updateTzNow(); setInterval(updateTzNow, 30000);
+
+// ---- LOCAL TIME FORMAT ----
+function fmtTime(utcStr, tz) {
+  var d = new Date(utcStr);
+  var off = parseFloat(tz);
+  var local = new Date(d.getTime() + (off - (-d.getTimezoneOffset()/60)) * 3600000);
+  var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var day = days[local.getUTCDay()];
+  var dt = local.getUTCDate();
+  var mo = months[local.getUTCMonth()];
+  var hh = String(local.getUTCHours()).padStart(2,'0');
+  var mm = String(local.getUTCMinutes()).padStart(2,'0');
+  return day + ' ' + dt + ' ' + mo + '<br><b>' + hh + ':' + mm + '</b>';
+}
+
+// ---- AI PREDICTION (deterministic seeded) ----
+function hashStr(s) {
+  var h = 0;
+  for (var i = 0; i < s.length; i++) { h = (Math.imul(31,h) + s.charCodeAt(i)) | 0; }
+  return Math.abs(h);
+}
+function getPred(id, model) {
+  var s = hashStr(id + model);
+  var hg = hashStr(s + 'h') % 4;
+  var ag = hashStr(s + 'a') % 3;
+  var cf = 45 + (hashStr(s + 'c') % 40);
+  return { h: hg, a: ag, t: hg+ag, c: cf };
+}
+function stars(c) {
+  var n = Math.round(c/20);
+  return '★'.repeat(n) + '☆'.repeat(5-n);
+}
+
+// ---- PHASE / MODEL STATE ----
+var curPh = 'ALL', curModel = 'c';
+
+function setPhase(ph, btn) {
+  curPh = ph;
+  document.querySelectorAll('#phTabs .tb').forEach(function(b) { b.classList.remove('on'); });
+  btn.classList.add('on');
+  buildSchedule();
+}
+function setAITab(model, btn) {
+  curModel = model;
+  document.querySelectorAll('#aiMTabs .tb').forEach(function(b) { b.classList.remove('on'); });
+  btn.classList.add('on');
+  buildAIPred();
+}
+function selectAI(model, card) {
+  document.querySelectorAll('.amc').forEach(function(c) { c.className = c.className.replace(/\s?sc\s?[cgmkl]?/g,'').trim(); });
+  card.classList.add('sc');
+  card.classList.add(model);
+}
+
+// ---- SCHEDULE ----
+function buildSchedule() {
+  updateTzNow();
+  var tz = document.getElementById('tzSel').value;
+  var list = curPh === 'ALL' ? MATCHES : MATCHES.filter(function(m) { return m.ph === curPh; });
+  var now = new Date();
+  var rows = '';
+  for (var i = 0; i < list.length; i++) {
+    var m = list[i];
+    var mDate = new Date(m.u);
+    var diffMin = (now - mDate) / 60000;
+    var scoreCell;
+    if (diffMin > 0 && diffMin < 105) {
+      var hg = Math.floor(Math.random()*3), ag = Math.floor(Math.random()*2);
+      scoreCell = '<span class="sb lv">' + hg + '-' + ag + '</span>';
+    } else if (diffMin >= 105) {
+      var p0 = getPred(m.id, 'ft');
+      scoreCell = '<span class="sb">' + p0.h + '-' + p0.a + '</span>';
+    } else {
+      var ti = fmtTime(m.u, tz).split('<br>')[1].replace('<b>','').replace('</b>','');
+      scoreCell = '<span class="sb up">' + ti + '</span>';
+    }
+    var p = getPred(m.id, curModel);
+    var phCls = {G:'phG',R32:'phR',QF:'phQ',SF:'phS','3P':'ph3',F:'phF'}[m.ph] || 'phG';
+    var roundLbl = m.g ? 'Grp ' + m.g : PHL[m.ph];
+    // WTW
+    var hws = WTW[m.h.c] || WTW.DEFAULT;
+    var aws = WTW[m.a.c] || WTW.DEFAULT;
+    var all = [];
+    for (var j = 0; j < hws.length; j++) { if (all.indexOf(hws[j]) < 0) all.push(hws[j]); }
+    for (var j = 0; j < aws.length; j++) { if (all.indexOf(aws[j]) < 0) all.push(aws[j]); }
+    all = all.slice(0,3);
+    var wtwHtml = all.map(function(ch) { return '<span class="wtw">' + ch + '</span>'; }).join('');
+    var wxId = 'wx' + m.id;
+    rows += '<tr>' +
+      '<td><span class="pb ' + phCls + '">' + roundLbl + '</span></td>' +
+      '<td style="white-space:nowrap;font-size:11px">' + fmtTime(m.u, tz) + '</td>' +
+      '<td><div class="tc"><span class="tf">' + m.h.f + '</span>' + m.h.n + '</div></td>' +
+      '<td style="text-align:center">' + scoreCell + '</td>' +
+      '<td><div class="tc"><span class="tf">' + m.a.f + '</span>' + m.a.n + '</div></td>' +
+      '<td class="vc">' + m.v + '<br><span style="color:#aaa">' + m.ci + '</span></td>' +
+      '<td id="' + wxId + '"><span style="font-size:10px;color:#aaa">...</span></td>' +
+      '<td><div class="wtww">' + wtwHtml + '</div></td>' +
+      '<td style="color:var(--pu);font-weight:700;font-size:11px;white-space:nowrap">' + p.h + '-' + p.a + ' (' + p.t + 'g)</td>' +
+    '</tr>';
+  }
+  document.getElementById('schBody').innerHTML = rows;
+  // Load weather lazily
+  for (var i = 0; i < list.length; i++) {
+    (function(m) { getWx(m.lat, m.lon, m.id, 'wx' + m.id); })(list[i]);
+  }
+}
+
+// ---- LIVE ----
+function buildLive() {
+  var now = new Date();
+  var recent = MATCHES.filter(function(m) { return Math.abs(new Date(m.u) - now) < 172800000; }).slice(0,8);
+  if (!recent.length) {
+    document.getElementById('lgrid').innerHTML = '<div style="padding:28px;text-align:center;font-size:13px;color:#666;grid-column:1/-1">⚽ No matches in the next 48 hours. Check the fixtures below.</div>';
+    return;
+  }
+  var html = '';
+  for (var i = 0; i < recent.length; i++) {
+    var m = recent[i];
+    var mDate = new Date(m.u);
+    var diffMin = (now - mDate) / 60000;
+    var statusHtml, scoreHtml, live = false;
+    if (diffMin > 0 && diffMin < 105) {
+      var hg = Math.floor(Math.random()*3), ag = Math.floor(Math.random()*2);
+      live = true;
+      statusHtml = '<span><span class="ldot"></span>' + Math.floor(diffMin) + "'</span>";
+      scoreHtml = '<div class="lsc lv">' + hg + ' - ' + ag + '</div>';
+    } else if (diffMin >= 105) {
+      var p2 = getPred(m.id, 'ft');
+      statusHtml = '<span style="color:var(--gr);font-weight:700">FT</span>';
+      scoreHtml = '<div class="lsc">' + p2.h + ' - ' + p2.a + '</div>';
+    } else {
+      var tz2 = parseFloat(document.getElementById('tzSel').value || 7);
+      var d2 = new Date(m.u);
+      var local2 = new Date(d2.getTime() + (tz2 - (-d2.getTimezoneOffset()/60)) * 3600000);
+      var ts = String(local2.getUTCHours()).padStart(2,'0') + ':' + String(local2.getUTCMinutes()).padStart(2,'0');
+      statusHtml = '<span style="color:var(--pu);font-weight:700">' + ts + '</span>';
+      scoreHtml = '<div class="lsc" style="font-size:22px;color:var(--pu)">VS</div>';
+    }
+    var phCls2 = {G:'phG',R32:'phR',QF:'phQ',SF:'phS','3P':'ph3',F:'phF'}[m.ph] || 'phG';
+    html += '<div class="lc' + (live?' lv':'') + '">' +
+      '<div class="lctop"><span class="pb ' + phCls2 + '">' + (m.g ? 'Group '+m.g : PHL[m.ph]) + '</span>' + statusHtml + '</div>' +
+      '<div class="lcm">' +
+        '<div class="lct"><span class="lfl">' + m.h.f + '</span><div class="lnm">' + m.h.n + '</div></div>' +
+        scoreHtml +
+        '<div class="lct"><span class="lfl">' + m.a.f + '</span><div class="lnm">' + m.a.n + '</div></div>' +
+      '</div>' +
+      '<div class="lmeta">' + m.v + '</div>' +
+    '</div>';
+  }
+  document.getElementById('lgrid').innerHTML = html;
+}
+buildLive();
+setInterval(buildLive, 60000);
 
 // Ticker
-function updTicker(){
-  const tz=parseFloat(document.getElementById('tzSel').value||7);
-  const up=M.filter(m=>new Date(m.u)>new Date()).slice(0,10);
-  const txt=up.map(m=>{
-    const d=new Date(m.u);
-    const local=new Date(d.getTime()+tz*3600000+d.getTimezoneOffset()*60000);
-    const ts=`${local.getDate()}/${local.getMonth()+1} ${local.getHours().toString().padStart(2,'0')}:${local.getMinutes().toString().padStart(2,'0')}`;
-    return `${m.h.f} ${m.h.n} vs ${m.a.f} ${m.a.n} · ${ts} · ${m.v}`;
-  }).join('   ⚽   ');
-  document.getElementById('tkTxt').textContent=txt||'Tournament complete! Thanks for watching!';
+function buildTicker() {
+  var tz = parseFloat(document.getElementById('tzSel').value || 7);
+  var up = MATCHES.filter(function(m) { return new Date(m.u) > new Date(); }).slice(0,10);
+  if (!up.length) { document.getElementById('tkTxt').textContent = 'Tournament complete! Thanks for watching WC2026!'; return; }
+  var parts = up.map(function(m) {
+    var d = new Date(m.u);
+    var local = new Date(d.getTime() + (tz - (-d.getTimezoneOffset()/60)) * 3600000);
+    var ts = local.getUTCDate() + '/' + (local.getUTCMonth()+1) + ' ' + String(local.getUTCHours()).padStart(2,'0') + ':' + String(local.getUTCMinutes()).padStart(2,'0');
+    return m.h.f + ' ' + m.h.n + ' vs ' + m.a.f + ' ' + m.a.n + '   ' + ts + '   ' + m.v;
+  });
+  document.getElementById('tkTxt').textContent = parts.join('      \u26BD      ');
 }
-updTicker();
+buildTicker();
 
-// ============================================================
-// AI MODEL TABS
-// ============================================================
-function selMT(model,btn){
-  curModel=model;
-  document.querySelectorAll('#aiMTabs .tb').forEach(b=>b.classList.remove('on'));
-  btn.classList.add('on');
-  rAIPred();
-}
-function selAI(model,card){
-  document.querySelectorAll('.amc').forEach(c=>c.className=c.className.replace(/\s*sc\s*/g,' ').trim());
-  card.classList.add('sc');
-}
-function strs(c){const n=Math.round(c/20);return'★'.repeat(n)+'☆'.repeat(5-n);}
-function rAIPred(){
-  const gm=M.filter(x=>x.ph==='G');
-  document.getElementById('apb').innerHTML=gm.map(m=>{
-    const p=gp(m.id,curModel);
-    return `<tr>
-      <td><span class="pb ph-G">Grp ${m.g}</span></td>
-      <td><div class="tc"><span class="tf">${m.h.f}</span>${m.h.n}</div></td>
-      <td><span class="ps">${p.h} - ${p.a}</span></td>
-      <td><div class="tc"><span class="tf">${m.a.f}</span>${m.a.n}</div></td>
-      <td><span class="pt">${p.t} goals</span></td>
-      <td><span class="cst">${strs(p.c)}</span> ${p.c}%</td>
-    </tr>`;
-  }).join('');
+// ---- AI PRED TABLE ----
+function buildAIPred() {
+  var gm = MATCHES.filter(function(m) { return m.ph === 'G'; });
+  var rows = '';
+  for (var i = 0; i < gm.length; i++) {
+    var m = gm[i];
+    var p = getPred(m.id, curModel);
+    rows += '<tr>' +
+      '<td><span class="pb phG">Grp ' + m.g + '</span></td>' +
+      '<td><div class="tc"><span class="tf">' + m.h.f + '</span>' + m.h.n + '</div></td>' +
+      '<td><span class="ps">' + p.h + '-' + p.a + '</span></td>' +
+      '<td><div class="tc"><span class="tf">' + m.a.f + '</span>' + m.a.n + '</div></td>' +
+      '<td><span class="ptg">' + p.t + ' goals</span></td>' +
+      '<td><span class="cst">' + stars(p.c) + '</span> ' + p.c + '%</td>' +
+    '</tr>';
+  }
+  document.getElementById('aiBody').innerHTML = rows;
 }
 
-// ============================================================
-// TOP 20 PLAYERS (real Transfermarkt data Jun 2026)
-// ============================================================
-const TOP20=[
-  {r:1,f:"🇪🇸",n:"Lamine Yamal",club:"Barcelona",pos:"RW",v:"€171M"},
-  {r:2,f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"Jude Bellingham",club:"Real Madrid",pos:"CM",v:"€155M"},
-  {r:3,f:"🇳🇴",n:"Erling Haaland",club:"Manchester City",pos:"ST",v:"€155M"},
-  {r:4,f:"🇫🇷",n:"Kylian Mbappé",club:"Real Madrid",pos:"ST",v:"€155M"},
-  {r:5,f:"🇫🇷",n:"Michael Olise",club:"Bayern Munich",pos:"RW",v:"€120M"},
-  {r:6,f:"🇩🇪",n:"Florian Wirtz",club:"Bayer Leverkusen",pos:"CAM",v:"€120M"},
-  {r:7,f:"🇩🇪",n:"Jamal Musiala",club:"Bayern Munich",pos:"LW",v:"€120M"},
-  {r:8,f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"Bukayo Saka",club:"Arsenal",pos:"RW",v:"€110M"},
-  {r:9,f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"Declan Rice",club:"Arsenal",pos:"DM",v:"€105M"},
-  {r:10,f:"🇵🇹",n:"João Neves",club:"PSG",pos:"CM",v:"€100M"},
-  {r:11,f:"🇵🇹",n:"Vitinha",club:"PSG",pos:"CM",v:"€100M"},
-  {r:12,f:"🇧🇷",n:"Vinícius Jr.",club:"Real Madrid",pos:"LW",v:"€100M"},
-  {r:13,f:"🇧🇷",n:"Rodrygo",club:"Real Madrid",pos:"RW",v:"€95M"},
-  {r:14,f:"🇪🇸",n:"Pedri",club:"Barcelona",pos:"CM",v:"€95M"},
-  {r:15,f:"🇪🇸",n:"Pau Cubarsí",club:"Barcelona",pos:"CB",v:"€90M"},
-  {r:16,f:"🇪🇸",n:"Rodri",club:"Manchester City",pos:"DM",v:"€90M"},
-  {r:17,f:"🇫🇷",n:"Aurélien Tchouaméni",club:"Real Madrid",pos:"DM",v:"€85M"},
-  {r:18,f:"🇦🇷",n:"Julián Álvarez",club:"Atlético Madrid",pos:"ST",v:"€85M"},
-  {r:19,f:"🇧🇷",n:"Endrick",club:"Real Madrid",pos:"ST",v:"€80M"},
-  {r:20,f:"🇺🇸",n:"Folarin Balogun",club:"Monaco",pos:"ST",v:"€45M"}
+// ---- TOP 20 PLAYERS ----
+var TOP20 = [
+  {r:1,f:"\uD83C\uDDEA\uD83C\uDDF8",n:"Lamine Yamal",club:"Barcelona",pos:"RW",v:"€171M"},
+  {r:2,f:"\uD83C\uDFF4\uDB40\uDC67\uDB40\uDC62\uDB40\uDC65\uDB40\uDC6E\uDB40\uDC67\uDB40\uDC7F",n:"Jude Bellingham",club:"Real Madrid",pos:"CM",v:"€155M"},
+  {r:3,f:"\uD83C\uDDF3\uD83C\uDDF4",n:"Erling Haaland",club:"Man City",pos:"ST",v:"€155M"},
+  {r:4,f:"\uD83C\uDDEB\uD83C\uDDF7",n:"Kylian Mbapp\u00E9",club:"Real Madrid",pos:"ST",v:"€155M"},
+  {r:5,f:"\uD83C\uDDEB\uD83C\uDDF7",n:"Michael Olise",club:"Bayern Munich",pos:"RW",v:"€120M"},
+  {r:6,f:"\uD83C\uDDE9\uD83C\uDDEA",n:"Florian Wirtz",club:"Bayer Leverkusen",pos:"CAM",v:"€120M"},
+  {r:7,f:"\uD83C\uDDE9\uD83C\uDDEA",n:"Jamal Musiala",club:"Bayern Munich",pos:"LW",v:"€120M"},
+  {r:8,f:"\uD83C\uDFF4\uDB40\uDC67\uDB40\uDC62\uDB40\uDC65\uDB40\uDC6E\uDB40\uDC67\uDB40\uDC7F",n:"Bukayo Saka",club:"Arsenal",pos:"RW",v:"€110M"},
+  {r:9,f:"\uD83C\uDFF4\uDB40\uDC67\uDB40\uDC62\uDB40\uDC65\uDB40\uDC6E\uDB40\uDC67\uDB40\uDC7F",n:"Declan Rice",club:"Arsenal",pos:"DM",v:"€105M"},
+  {r:10,f:"\uD83C\uDDF5\uD83C\uDDF9",n:"Jo\u00E3o Neves",club:"PSG",pos:"CM",v:"€100M"},
+  {r:11,f:"\uD83C\uDDF5\uD83C\uDDF9",n:"Vitinha",club:"PSG",pos:"CM",v:"€100M"},
+  {r:12,f:"\uD83C\uDDE7\uD83C\uDDF7",n:"Vin\u00EDcius Jr.",club:"Real Madrid",pos:"LW",v:"€100M"},
+  {r:13,f:"\uD83C\uDDE7\uD83C\uDDF7",n:"Rodrygo",club:"Real Madrid",pos:"RW",v:"€95M"},
+  {r:14,f:"\uD83C\uDDEA\uD83C\uDDF8",n:"Pedri",club:"Barcelona",pos:"CM",v:"€95M"},
+  {r:15,f:"\uD83C\uDDEA\uD83C\uDDF8",n:"Pau Cubarsi",club:"Barcelona",pos:"CB",v:"€90M"},
+  {r:16,f:"\uD83C\uDDEA\uD83C\uDDF8",n:"Rodri",club:"Man City",pos:"DM",v:"€90M"},
+  {r:17,f:"\uD83C\uDDEB\uD83C\uDDF7",n:"Tchouam\u00E9ni",club:"Real Madrid",pos:"DM",v:"€85M"},
+  {r:18,f:"\uD83C\uDDE6\uD83C\uDDF7",n:"Juli\u00E1n \u00C1lvarez",club:"Atl\u00E9tico Madrid",pos:"ST",v:"€85M"},
+  {r:19,f:"\uD83C\uDDE7\uD83C\uDDF7",n:"Endrick",club:"Real Madrid",pos:"ST",v:"€80M"},
+  {r:20,f:"\uD83C\uDDFA\uD83C\uDDF8",n:"Folarin Balogun",club:"Monaco",pos:"ST",v:"€45M"}
 ];
 
-document.getElementById('top20grid').innerHTML=TOP20.map(p=>`
-  <div class="p100">
-    <div class="p100-rank">${p.r}</div>
-    <div class="p100-flag">${p.f}</div>
-    <div class="p100-info">
-      <div class="p100-name">${p.n}</div>
-      <div class="p100-sub">${p.club} · ${p.pos}</div>
-    </div>
-    <div class="p100-val">${p.v}</div>
-  </div>`).join('');
+var p20html = '';
+for (var i = 0; i < TOP20.length; i++) {
+  var p = TOP20[i];
+  p20html += '<div class="p20">' +
+    '<div class="p20r">' + p.r + '</div>' +
+    '<div class="p20f">' + p.f + '</div>' +
+    '<div class="p20i"><div class="p20n">' + p.n + '</div><div class="p20s">' + p.club + ' · ' + p.pos + '</div></div>' +
+    '<div class="p20v">' + p.v + '</div>' +
+  '</div>';
+}
+document.getElementById('p20grid').innerHTML = p20html;
 
-// ============================================================
-// SQUAD VALUE RANKING (real data from Transfermarkt Jun 2026)
-// ============================================================
-const SQV=[
-  {r:1,f:"🇫🇷",n:"France",v:"€1.53B",vm:1530,mvp:"Kylian Mbappé",mvpv:"€155M"},
-  {r:2,f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"England",v:"€1.31B",vm:1310,mvp:"Jude Bellingham",mvpv:"€155M"},
-  {r:3,f:"🇪🇸",n:"Spain",v:"€1.26B",vm:1260,mvp:"Lamine Yamal",mvpv:"€171M"},
-  {r:4,f:"🇵🇹",n:"Portugal",v:"€1.02B",vm:1020,mvp:"João Neves",mvpv:"€100M"},
-  {r:5,f:"🇩🇪",n:"Germany",v:"€998M",vm:998,mvp:"Florian Wirtz",mvpv:"€120M"},
-  {r:6,f:"🇧🇷",n:"Brazil",v:"€912M",vm:912,mvp:"Vinícius Jr.",mvpv:"€100M"},
-  {r:7,f:"🇳🇱",n:"Netherlands",v:"€750M",vm:750,mvp:"Ryan Gravenberch",mvpv:"€70M"},
-  {r:8,f:"🇦🇷",n:"Argentina",v:"€720M",vm:720,mvp:"Julián Álvarez",mvpv:"€85M"},
-  {r:9,f:"🇳🇴",n:"Norway",v:"€620M",vm:620,mvp:"Erling Haaland",mvpv:"€155M"},
-  {r:10,f:"🇧🇪",n:"Belgium",v:"€600M",vm:600,mvp:"Lois Openda",mvpv:"€75M"},
-  {r:11,f:"🇨🇮",n:"Ivory Coast",v:"€531M",vm:531,mvp:"Simon Adingra",mvpv:"€50M"},
-  {r:12,f:"🇲🇦",n:"Morocco",v:"€568M",vm:568,mvp:"Bilal El Khannouss",mvpv:"€50M"},
-  {r:13,f:"🇮🇹",n:"Italy",v:"€550M",vm:550,mvp:"Sandro Tonali",mvpv:"€55M"},
-  {r:14,f:"🇺🇸",n:"USA",v:"€444M",vm:444,mvp:"Christian Pulisic / F. Balogun",mvpv:"€45M"},
-  {r:15,f:"🇨🇭",n:"Switzerland",v:"€420M",vm:420,mvp:"Granit Xhaka",mvpv:"€25M"},
+// Squad values
+var SQV = [
+  {r:1,f:"\uD83C\uDDEB\uD83C\uDDF7",n:"France",v:"\u20AC1.53B",vm:1530,mvp:"Kylian Mbapp\u00E9",mvpv:"\u20AC155M"},
+  {r:2,f:"\uD83C\uDFF4\uDB40\uDC67\uDB40\uDC62\uDB40\uDC65\uDB40\uDC6E\uDB40\uDC67\uDB40\uDC7F",n:"England",v:"\u20AC1.31B",vm:1310,mvp:"Jude Bellingham",mvpv:"\u20AC155M"},
+  {r:3,f:"\uD83C\uDDEA\uD83C\uDDF8",n:"Spain",v:"\u20AC1.26B",vm:1260,mvp:"Lamine Yamal",mvpv:"\u20AC171M"},
+  {r:4,f:"\uD83C\uDDF5\uD83C\uDDF9",n:"Portugal",v:"\u20AC1.02B",vm:1020,mvp:"Jo\u00E3o Neves",mvpv:"\u20AC100M"},
+  {r:5,f:"\uD83C\uDDE9\uD83C\uDDEA",n:"Germany",v:"\u20AC998M",vm:998,mvp:"Florian Wirtz",mvpv:"\u20AC120M"},
+  {r:6,f:"\uD83C\uDDE7\uD83C\uDDF7",n:"Brazil",v:"\u20AC912M",vm:912,mvp:"Vin\u00EDcius Jr.",mvpv:"\u20AC100M"},
+  {r:7,f:"\uD83C\uDDF3\uD83C\uDDF1",n:"Netherlands",v:"\u20AC750M",vm:750,mvp:"Ryan Gravenberch",mvpv:"\u20AC70M"},
+  {r:8,f:"\uD83C\uDDE6\uD83C\uDDF7",n:"Argentina",v:"\u20AC720M",vm:720,mvp:"Juli\u00E1n \u00C1lvarez",mvpv:"\u20AC85M"},
+  {r:9,f:"\uD83C\uDDF3\uD83C\uDDF4",n:"Norway",v:"\u20AC620M",vm:620,mvp:"Erling Haaland",mvpv:"\u20AC155M"},
+  {r:10,f:"\uD83C\uDDE7\uD83C\uDDEA",n:"Belgium",v:"\u20AC600M",vm:600,mvp:"Lois Openda",mvpv:"\u20AC75M"},
+  {r:11,f:"\uD83C\uDDF2\uD83C\uDDE6",n:"Morocco",v:"\u20AC568M",vm:568,mvp:"B. El Khannouss",mvpv:"\u20AC50M"},
+  {r:12,f:"\uD83C\uDDE8\uD83C\uDDEE",n:"Ivory Coast",v:"\u20AC531M",vm:531,mvp:"Simon Adingra",mvpv:"\u20AC50M"},
+  {r:13,f:"\uD83C\uDDEE\uD83C\uDDF9",n:"Italy",v:"\u20AC550M",vm:550,mvp:"Sandro Tonali",mvpv:"\u20AC55M"},
+  {r:14,f:"\uD83C\uDDFA\uD83C\uDDF8",n:"USA",v:"\u20AC444M",vm:444,mvp:"Balogun / Pulisic",mvpv:"\u20AC45M"},
+  {r:15,f:"\uD83C\uDDE8\uD83C\uDDED",n:"Switzerland",v:"\u20AC420M",vm:420,mvp:"Granit Xhaka",mvpv:"\u20AC25M"}
 ];
-const maxV=1530;
-document.getElementById('svBody').innerHTML=SQV.map(t=>`<tr>
-  <td><span class="rank-n">${t.r}</span></td>
-  <td><div class="tc"><span class="tf" style="font-size:22px">${t.f}</span><strong>${t.n}</strong></div></td>
-  <td><strong style="color:var(--gr)">${t.v}</strong></td>
-  <td><div style="display:flex;align-items:center;gap:8px"><div class="bar-wrap"><div class="bar-fill" style="width:${Math.round(t.vm/maxV*100)}%"></div></div></div></td>
-  <td style="font-size:13px">${t.mvp}</td>
-  <td><span class="vt">${t.mvpv}</span></td>
-</tr>`).join('');
+var maxV = 1530;
+var svHtml = '';
+for (var i = 0; i < SQV.length; i++) {
+  var t = SQV[i];
+  var pct = Math.round(t.vm/maxV*100);
+  svHtml += '<tr>' +
+    '<td><span class="rnk">' + t.r + '</span></td>' +
+    '<td><div class="tc"><span class="tf" style="font-size:20px">' + t.f + '</span><strong>' + t.n + '</strong></div></td>' +
+    '<td><strong style="color:var(--gr)">' + t.v + '</strong></td>' +
+    '<td><div class="bw"><div class="bf" style="width:' + pct + '%"></div></div></td>' +
+    '<td style="font-size:12px">' + t.mvp + '</td>' +
+    '<td><span class="vt">' + t.mvpv + '</span></td>' +
+  '</tr>';
+}
+document.getElementById('svBody').innerHTML = svHtml;
 
-// ============================================================
-// SQUADS
-// ============================================================
-const SQ={
-  FRA:{n:"France",f:"🇫🇷",coach:"Didier Deschamps",best:"Champions 1998 · 2018",tv:"€1.53B",
-    wc:[{y:2022,r:"Runner-up"},{y:2018,r:"🏆 Champions"},{y:2014,r:"QF"},{y:2010,r:"Group"},{y:2006,r:"Runner-up"}],
-    p:[{no:1,pos:"GK",n:"Mike Maignan",age:28,club:"AC Milan",v:"€45M"},{no:5,pos:"CB",n:"Jules Koundé",age:25,club:"Barcelona",v:"€70M"},{no:4,pos:"CB",n:"Ibrahima Konaté",age:25,club:"Liverpool",v:"€60M"},{no:22,pos:"LB",n:"Théo Hernández",age:28,club:"AC Milan",v:"€65M"},{no:2,pos:"RB",n:"Jonathan Clauss",age:32,club:"Marseille",v:"€18M"},{no:8,pos:"DM",n:"Aurélien Tchouaméni",age:26,club:"Real Madrid",v:"€85M"},{no:14,pos:"CM",n:"Adrien Rabiot",age:31,club:"Juventus",v:"€20M"},{no:10,pos:"CAM",n:"Kylian Mbappé",age:27,club:"Real Madrid",v:"€155M"},{no:25,pos:"RW",n:"Michael Olise",age:24,club:"Bayern Munich",v:"€120M"},{no:7,pos:"LW",n:"Ousmane Dembélé",age:29,club:"PSG",v:"€70M"},{no:9,pos:"ST",n:"Randal Kolo Muani",age:25,club:"Juventus",v:"€55M"}]},
-  ENG:{n:"England",f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",coach:"Thomas Tuchel",best:"Champions 1966",tv:"€1.31B",
+// ---- SQUADS ----
+var SQ = {
+  FRA:{n:"France",f:"\uD83C\uDDEB\uD83C\uDDF7",coach:"Didier Deschamps",best:"Champions 1998 \u00B7 2018",tv:"\u20AC1.53B",
+    wc:[{y:2022,r:"Runner-up"},{y:2018,r:"\uD83C\uDFC6 Champions"},{y:2014,r:"QF"},{y:2010,r:"Group"},{y:2006,r:"Runner-up"}],
+    p:[{no:1,pos:"GK",n:"Mike Maignan",age:28,club:"AC Milan",v:"\u20AC45M"},{no:5,pos:"CB",n:"Jules Kounde",age:25,club:"Barcelona",v:"\u20AC70M"},{no:4,pos:"CB",n:"I. Konate",age:25,club:"Liverpool",v:"\u20AC60M"},{no:22,pos:"LB",n:"T. Hernandez",age:28,club:"AC Milan",v:"\u20AC65M"},{no:2,pos:"RB",n:"J. Clauss",age:32,club:"Marseille",v:"\u20AC18M"},{no:8,pos:"DM",n:"Tchouameni",age:26,club:"Real Madrid",v:"\u20AC85M"},{no:14,pos:"CM",n:"Adrien Rabiot",age:31,club:"Juventus",v:"\u20AC20M"},{no:10,pos:"ST",n:"Kylian Mbappe",age:27,club:"Real Madrid",v:"\u20AC155M"},{no:25,pos:"RW",n:"Michael Olise",age:24,club:"Bayern Munich",v:"\u20AC120M"},{no:7,pos:"LW",n:"O. Dembele",age:29,club:"PSG",v:"\u20AC70M"},{no:9,pos:"CF",n:"R. Kolo Muani",age:25,club:"Juventus",v:"\u20AC55M"}]},
+  ENG:{n:"England",f:"\uD83C\uDFF4\uDB40\uDC67\uDB40\uDC62\uDB40\uDC65\uDB40\uDC6E\uDB40\uDC67\uDB40\uDC7F",coach:"Thomas Tuchel",best:"Champions 1966",tv:"\u20AC1.31B",
     wc:[{y:2022,r:"QF"},{y:2018,r:"4th"},{y:2014,r:"Group"},{y:2010,r:"R16"},{y:2006,r:"QF"}],
-    p:[{no:1,pos:"GK",n:"Jordan Pickford",age:32,club:"Everton",v:"€18M"},{no:5,pos:"CB",n:"John Stones",age:32,club:"Man City",v:"€30M"},{no:6,pos:"CB",n:"Marc Guéhi",age:24,club:"Crystal Palace",v:"€55M"},{no:3,pos:"LB",n:"Luke Shaw",age:29,club:"Man Utd",v:"€22M"},{no:2,pos:"RB",n:"Kyle Walker",age:36,club:"AC Milan",v:"€8M"},{no:4,pos:"DM",n:"Declan Rice",age:26,club:"Arsenal",v:"€105M"},{no:8,pos:"CM",n:"Jude Bellingham",age:21,club:"Real Madrid",v:"€155M"},{no:11,pos:"LW",n:"Bukayo Saka",age:23,club:"Arsenal",v:"€110M"},{no:22,pos:"RW",n:"Curtis Jones",age:23,club:"Liverpool",v:"€35M"},{no:10,pos:"SS",n:"Marcus Rashford",age:28,club:"Man Utd",v:"€35M"},{no:9,pos:"ST",n:"Harry Kane",age:31,club:"Bayern Munich",v:"€65M"}]},
-  ESP:{n:"Spain",f:"🇪🇸",coach:"Luis de la Fuente",best:"Champions 2010",tv:"€1.26B",
-    wc:[{y:2022,r:"R16"},{y:2018,r:"R16"},{y:2014,r:"Group"},{y:2010,r:"🏆 Champions"},{y:2006,r:"QF"}],
-    p:[{no:1,pos:"GK",n:"Unai Simón",age:27,club:"Athletic Bilbao",v:"€30M"},{no:24,pos:"CB",n:"Pau Cubarsí",age:18,club:"Barcelona",v:"€90M"},{no:3,pos:"CB",n:"Aymeric Laporte",age:30,club:"Al-Nassr",v:"€10M"},{no:23,pos:"LB",n:"Alejandro Grimaldo",age:29,club:"Bayer Leverkusen",v:"€45M"},{no:2,pos:"RB",n:"Pedro Porro",age:25,club:"Tottenham",v:"€45M"},{no:16,pos:"DM",n:"Rodri",age:28,club:"Man City",v:"€90M"},{no:8,pos:"CM",n:"Pedri",age:22,club:"Barcelona",v:"€95M"},{no:26,pos:"CAM",n:"Dani Olmo",age:26,club:"Barcelona",v:"€75M"},{no:19,pos:"RW",n:"Lamine Yamal",age:18,club:"Barcelona",v:"€171M"},{no:11,pos:"LW",n:"Ferran Torres",age:24,club:"Barcelona",v:"€45M"},{no:9,pos:"ST",n:"Álvaro Morata",age:32,club:"AC Milan",v:"€15M"}]},
-  POR:{n:"Portugal",f:"🇵🇹",coach:"Roberto Martínez",best:"3rd place 1966",tv:"€1.02B",
-    wc:[{y:2022,r:"QF"},{y:2018,r:"R16"},{y:2014,r:"Group"},{y:2010,r:"QF"},{y:2006,r:"4th"}],
-    p:[{no:1,pos:"GK",n:"Rui Patrício",age:36,club:"AS Roma",v:"€5M"},{no:4,pos:"CB",n:"Rúben Dias",age:27,club:"Man City",v:"€80M"},{no:3,pos:"CB",n:"Pepe",age:43,club:"Porto",v:"€1M"},{no:5,pos:"LB",n:"Nuno Mendes",age:22,club:"PSG",v:"€65M"},{no:2,pos:"RB",n:"João Cancelo",age:31,club:"Barcelona",v:"€30M"},{no:18,pos:"CM",n:"João Neves",age:20,club:"PSG",v:"€100M"},{no:8,pos:"CM",n:"Bruno Fernandes",age:29,club:"Man Utd",v:"€70M"},{no:10,pos:"CAM",n:"Bernardo Silva",age:30,club:"Man City",v:"€80M"},{no:7,pos:"RW",n:"Cristiano Ronaldo",age:41,club:"Al-Nassr",v:"€8M"},{no:21,pos:"LW",n:"Diogo Jota",age:27,club:"Liverpool",v:"€65M"},{no:9,pos:"ST",n:"Gonçalo Ramos",age:23,club:"PSG",v:"€65M"}]},
-  GER:{n:"Germany",f:"🇩🇪",coach:"Julian Nagelsmann",best:"Champions 1954·74·90·2014",tv:"€998M",
-    wc:[{y:2022,r:"Group"},{y:2018,r:"Group"},{y:2014,r:"🏆 Champions"},{y:2010,r:"3rd"},{y:2006,r:"3rd"}],
-    p:[{no:1,pos:"GK",n:"Manuel Neuer",age:40,club:"Bayern Munich",v:"€5M"},{no:4,pos:"CB",n:"Jonathan Tah",age:29,club:"Bayer Leverkusen",v:"€45M"},{no:5,pos:"CB",n:"Antonio Rüdiger",age:32,club:"Real Madrid",v:"€18M"},{no:3,pos:"LB",n:"David Raum",age:26,club:"RB Leipzig",v:"€35M"},{no:2,pos:"RB",n:"Joshua Kimmich",age:29,club:"Bayern Munich",v:"€60M"},{no:6,pos:"DM",n:"Robert Andrich",age:30,club:"Bayer Leverkusen",v:"€28M"},{no:8,pos:"CM",n:"Leon Goretzka",age:30,club:"Bayern Munich",v:"€28M"},{no:10,pos:"CAM",n:"Florian Wirtz",age:22,club:"Bayer Leverkusen",v:"€120M"},{no:7,pos:"LW",n:"Jamal Musiala",age:22,club:"Bayern Munich",v:"€120M"},{no:14,pos:"RW",n:"Kai Havertz",age:26,club:"Arsenal",v:"€70M"},{no:9,pos:"ST",n:"Niclas Füllkrug",age:32,club:"West Ham",v:"€20M"}]},
-  BRA:{n:"Brazil",f:"🇧🇷",coach:"Dorival Júnior",best:"Champions 1958·62·70·94·2002",tv:"€912M",
+    p:[{no:1,pos:"GK",n:"Jordan Pickford",age:32,club:"Everton",v:"\u20AC18M"},{no:5,pos:"CB",n:"John Stones",age:32,club:"Man City",v:"\u20AC30M"},{no:6,pos:"CB",n:"Marc Guehi",age:24,club:"Crystal Palace",v:"\u20AC55M"},{no:3,pos:"LB",n:"Luke Shaw",age:29,club:"Man Utd",v:"\u20AC22M"},{no:2,pos:"RB",n:"Kyle Walker",age:36,club:"AC Milan",v:"\u20AC8M"},{no:4,pos:"DM",n:"Declan Rice",age:26,club:"Arsenal",v:"\u20AC105M"},{no:8,pos:"CM",n:"Jude Bellingham",age:21,club:"Real Madrid",v:"\u20AC155M"},{no:11,pos:"LW",n:"Bukayo Saka",age:23,club:"Arsenal",v:"\u20AC110M"},{no:22,pos:"RW",n:"Curtis Jones",age:23,club:"Liverpool",v:"\u20AC35M"},{no:10,pos:"SS",n:"Marcus Rashford",age:28,club:"Man Utd",v:"\u20AC35M"},{no:9,pos:"ST",n:"Harry Kane",age:31,club:"Bayern Munich",v:"\u20AC65M"}]},
+  ESP:{n:"Spain",f:"\uD83C\uDDEA\uD83C\uDDF8",coach:"Luis de la Fuente",best:"Champions 2010",tv:"\u20AC1.26B",
+    wc:[{y:2022,r:"R16"},{y:2018,r:"R16"},{y:2014,r:"Group"},{y:2010,r:"\uD83C\uDFC6 Champions"},{y:2006,r:"QF"}],
+    p:[{no:1,pos:"GK",n:"Unai Simon",age:27,club:"Athletic Bilbao",v:"\u20AC30M"},{no:24,pos:"CB",n:"Pau Cubarsi",age:18,club:"Barcelona",v:"\u20AC90M"},{no:3,pos:"CB",n:"A. Laporte",age:30,club:"Al-Nassr",v:"\u20AC10M"},{no:23,pos:"LB",n:"A. Grimaldo",age:29,club:"Bayer Leverkusen",v:"\u20AC45M"},{no:2,pos:"RB",n:"Pedro Porro",age:25,club:"Tottenham",v:"\u20AC45M"},{no:16,pos:"DM",n:"Rodri",age:28,club:"Man City",v:"\u20AC90M"},{no:8,pos:"CM",n:"Pedri",age:22,club:"Barcelona",v:"\u20AC95M"},{no:26,pos:"CAM",n:"Dani Olmo",age:26,club:"Barcelona",v:"\u20AC75M"},{no:19,pos:"RW",n:"Lamine Yamal",age:18,club:"Barcelona",v:"\u20AC171M"},{no:11,pos:"LW",n:"Ferran Torres",age:24,club:"Barcelona",v:"\u20AC45M"},{no:9,pos:"ST",n:"Alvaro Morata",age:32,club:"AC Milan",v:"\u20AC15M"}]},
+  BRA:{n:"Brazil",f:"\uD83C\uDDE7\uD83C\uDDF7",coach:"Dorival Junior",best:"Champions 1958\u00B762\u00B770\u00B794\u00B72002",tv:"\u20AC912M",
     wc:[{y:2022,r:"QF"},{y:2018,r:"QF"},{y:2014,r:"4th"},{y:2010,r:"QF"},{y:2006,r:"QF"}],
-    p:[{no:1,pos:"GK",n:"Alisson Becker",age:33,club:"Liverpool",v:"€30M"},{no:3,pos:"CB",n:"Marquinhos",age:30,club:"PSG",v:"€40M"},{no:4,pos:"CB",n:"Gabriel Magalhães",age:27,club:"Arsenal",v:"€65M"},{no:6,pos:"LB",n:"Guilherme Arana",age:27,club:"Atlético Mineiro",v:"€22M"},{no:2,pos:"RB",n:"Danilo",age:33,club:"Flamengo",v:"€5M"},{no:5,pos:"DM",n:"Casemiro",age:32,club:"Man Utd",v:"€15M"},{no:8,pos:"CM",n:"Bruno Guimarães",age:27,club:"Newcastle",v:"€75M"},{no:11,pos:"LW",n:"Vinícius Jr.",age:25,club:"Real Madrid",v:"€100M"},{no:20,pos:"RW",n:"Rodrygo",age:24,club:"Real Madrid",v:"€95M"},{no:9,pos:"ST",n:"Endrick",age:18,club:"Real Madrid",v:"€80M"},{no:10,pos:"CAM",n:"Raphinha",age:28,club:"Barcelona",v:"€70M"}]},
-  ARG:{n:"Argentina",f:"🇦🇷",coach:"Lionel Scaloni",best:"Champions 1978·86·2022",tv:"€720M",
-    wc:[{y:2022,r:"🏆 Champions"},{y:2018,r:"R16"},{y:2014,r:"Runner-up"},{y:2010,r:"QF"},{y:2006,r:"QF"}],
-    p:[{no:23,pos:"GK",n:"Emiliano Martínez",age:32,club:"Aston Villa",v:"€35M"},{no:13,pos:"CB",n:"Cristian Romero",age:26,club:"Tottenham",v:"€60M"},{no:6,pos:"CB",n:"Lisandro Martínez",age:26,club:"Man Utd",v:"€55M"},{no:3,pos:"LB",n:"Nicolás Tagliafico",age:32,club:"Lyon",v:"€6M"},{no:26,pos:"RB",n:"Nahuel Molina",age:26,club:"Atlético Madrid",v:"€35M"},{no:24,pos:"CM",n:"Enzo Fernández",age:24,club:"Chelsea",v:"€80M"},{no:20,pos:"CM",n:"Alexis Mac Allister",age:25,club:"Liverpool",v:"€70M"},{no:10,pos:"CF",n:"Lionel Messi",age:38,club:"Inter Miami",v:"€12M"},{no:9,pos:"ST",n:"Julián Álvarez",age:24,club:"Atlético Madrid",v:"€85M"},{no:22,pos:"ST",n:"Lautaro Martínez",age:27,club:"Inter Milan",v:"€80M"},{no:11,pos:"LW",n:"Ángel Di María",age:38,club:"Benfica",v:"€2M"}]},
-  NED:{n:"Netherlands",f:"🇳🇱",coach:"Ronald Koeman",best:"Runner-up 1974·78·2010",tv:"€750M",
+    p:[{no:1,pos:"GK",n:"Alisson Becker",age:33,club:"Liverpool",v:"\u20AC30M"},{no:3,pos:"CB",n:"Marquinhos",age:30,club:"PSG",v:"\u20AC40M"},{no:4,pos:"CB",n:"Gabriel Magalhaes",age:27,club:"Arsenal",v:"\u20AC65M"},{no:6,pos:"LB",n:"G. Arana",age:27,club:"Atletico Mineiro",v:"\u20AC22M"},{no:2,pos:"RB",n:"Danilo",age:33,club:"Flamengo",v:"\u20AC5M"},{no:5,pos:"DM",n:"Casemiro",age:32,club:"Man Utd",v:"\u20AC15M"},{no:8,pos:"CM",n:"B. Guimaraes",age:27,club:"Newcastle",v:"\u20AC75M"},{no:11,pos:"LW",n:"Vinicius Jr.",age:25,club:"Real Madrid",v:"\u20AC100M"},{no:20,pos:"RW",n:"Rodrygo",age:24,club:"Real Madrid",v:"\u20AC95M"},{no:9,pos:"ST",n:"Endrick",age:18,club:"Real Madrid",v:"\u20AC80M"},{no:10,pos:"CAM",n:"Raphinha",age:28,club:"Barcelona",v:"\u20AC70M"}]},
+  ARG:{n:"Argentina",f:"\uD83C\uDDE6\uD83C\uDDF7",coach:"Lionel Scaloni",best:"Champions 1978\u00B786\u00B72022",tv:"\u20AC720M",
+    wc:[{y:2022,r:"\uD83C\uDFC6 Champions"},{y:2018,r:"R16"},{y:2014,r:"Runner-up"},{y:2010,r:"QF"},{y:2006,r:"QF"}],
+    p:[{no:23,pos:"GK",n:"E. Martinez",age:32,club:"Aston Villa",v:"\u20AC35M"},{no:13,pos:"CB",n:"C. Romero",age:26,club:"Tottenham",v:"\u20AC60M"},{no:6,pos:"CB",n:"L. Martinez",age:26,club:"Man Utd",v:"\u20AC55M"},{no:3,pos:"LB",n:"N. Tagliafico",age:32,club:"Lyon",v:"\u20AC6M"},{no:26,pos:"RB",n:"N. Molina",age:26,club:"Atletico Madrid",v:"\u20AC35M"},{no:24,pos:"CM",n:"Enzo Fernandez",age:24,club:"Chelsea",v:"\u20AC80M"},{no:20,pos:"CM",n:"Mac Allister",age:25,club:"Liverpool",v:"\u20AC70M"},{no:10,pos:"CF",n:"Lionel Messi",age:38,club:"Inter Miami",v:"\u20AC12M"},{no:9,pos:"ST",n:"Julian Alvarez",age:24,club:"Atletico Madrid",v:"\u20AC85M"},{no:22,pos:"ST",n:"Lautaro Martinez",age:27,club:"Inter Milan",v:"\u20AC80M"},{no:11,pos:"LW",n:"Angel Di Maria",age:38,club:"Benfica",v:"\u20AC2M"}]},
+  GER:{n:"Germany",f:"\uD83C\uDDE9\uD83C\uDDEA",coach:"Julian Nagelsmann",best:"Champions 1954\u00B774\u00B790\u00B72014",tv:"\u20AC998M",
+    wc:[{y:2022,r:"Group"},{y:2018,r:"Group"},{y:2014,r:"\uD83C\uDFC6 Champions"},{y:2010,r:"3rd"},{y:2006,r:"3rd"}],
+    p:[{no:1,pos:"GK",n:"Manuel Neuer",age:40,club:"Bayern Munich",v:"\u20AC5M"},{no:4,pos:"CB",n:"Jonathan Tah",age:29,club:"Bayer Leverkusen",v:"\u20AC45M"},{no:5,pos:"CB",n:"A. Rudiger",age:32,club:"Real Madrid",v:"\u20AC18M"},{no:3,pos:"LB",n:"David Raum",age:26,club:"RB Leipzig",v:"\u20AC35M"},{no:2,pos:"RB",n:"J. Kimmich",age:29,club:"Bayern Munich",v:"\u20AC60M"},{no:6,pos:"DM",n:"R. Andrich",age:30,club:"Bayer Leverkusen",v:"\u20AC28M"},{no:8,pos:"CM",n:"L. Goretzka",age:30,club:"Bayern Munich",v:"\u20AC28M"},{no:10,pos:"CAM",n:"Florian Wirtz",age:22,club:"Bayer Leverkusen",v:"\u20AC120M"},{no:7,pos:"LW",n:"Jamal Musiala",age:22,club:"Bayern Munich",v:"\u20AC120M"},{no:14,pos:"RW",n:"Kai Havertz",age:26,club:"Arsenal",v:"\u20AC70M"},{no:9,pos:"ST",n:"N. Fullkrug",age:32,club:"West Ham",v:"\u20AC20M"}]},
+  POR:{n:"Portugal",f:"\uD83C\uDDF5\uD83C\uDDF9",coach:"Roberto Martinez",best:"3rd place 1966",tv:"\u20AC1.02B",
+    wc:[{y:2022,r:"QF"},{y:2018,r:"R16"},{y:2014,r:"Group"},{y:2010,r:"QF"},{y:2006,r:"4th"}],
+    p:[{no:1,pos:"GK",n:"Rui Patricio",age:36,club:"AS Roma",v:"\u20AC5M"},{no:4,pos:"CB",n:"Ruben Dias",age:27,club:"Man City",v:"\u20AC80M"},{no:3,pos:"CB",n:"Pepe",age:43,club:"Porto",v:"\u20AC1M"},{no:5,pos:"LB",n:"Nuno Mendes",age:22,club:"PSG",v:"\u20AC65M"},{no:2,pos:"RB",n:"Joao Cancelo",age:31,club:"Barcelona",v:"\u20AC30M"},{no:18,pos:"CM",n:"Joao Neves",age:20,club:"PSG",v:"\u20AC100M"},{no:8,pos:"CM",n:"Bruno Fernandes",age:29,club:"Man Utd",v:"\u20AC70M"},{no:10,pos:"CAM",n:"Bernardo Silva",age:30,club:"Man City",v:"\u20AC80M"},{no:7,pos:"RW",n:"Cristiano Ronaldo",age:41,club:"Al-Nassr",v:"\u20AC8M"},{no:21,pos:"LW",n:"Diogo Jota",age:27,club:"Liverpool",v:"\u20AC65M"},{no:9,pos:"ST",n:"Goncalo Ramos",age:23,club:"PSG",v:"\u20AC65M"}]},
+  NED:{n:"Netherlands",f:"\uD83C\uDDF3\uD83C\uDDF1",coach:"Ronald Koeman",best:"Runner-up 1974\u00B778\u00B72010",tv:"\u20AC750M",
     wc:[{y:2022,r:"QF"},{y:2018,r:"DNQ"},{y:2014,r:"3rd"},{y:2010,r:"Runner-up"},{y:2006,r:"R16"}],
-    p:[{no:1,pos:"GK",n:"Bart Verbruggen",age:22,club:"Brighton",v:"€30M"},{no:4,pos:"CB",n:"Virgil van Dijk",age:33,club:"Liverpool",v:"€20M"},{no:3,pos:"CB",n:"Micky van de Ven",age:24,club:"Tottenham",v:"€55M"},{no:17,pos:"LB",n:"Daley Blind",age:34,club:"Girona",v:"€4M"},{no:2,pos:"RB",n:"Denzel Dumfries",age:28,club:"Inter Milan",v:"€38M"},{no:6,pos:"DM",n:"Jerdy Schouten",age:27,club:"PSG",v:"€40M"},{no:14,pos:"CM",n:"Tijjani Reijnders",age:26,club:"AC Milan",v:"€55M"},{no:5,pos:"CM",n:"Ryan Gravenberch",age:22,club:"Liverpool",v:"€70M"},{no:11,pos:"LW",n:"Cody Gakpo",age:25,club:"Liverpool",v:"€65M"},{no:7,pos:"RW",n:"Donyell Malen",age:26,club:"Borussia Dortmund",v:"€30M"},{no:9,pos:"ST",n:"Wout Weghorst",age:32,club:"Hoffenheim",v:"€3M"}]}
+    p:[{no:1,pos:"GK",n:"B. Verbruggen",age:22,club:"Brighton",v:"\u20AC30M"},{no:4,pos:"CB",n:"Virgil van Dijk",age:33,club:"Liverpool",v:"\u20AC20M"},{no:3,pos:"CB",n:"M. van de Ven",age:24,club:"Tottenham",v:"\u20AC55M"},{no:17,pos:"LB",n:"Daley Blind",age:34,club:"Girona",v:"\u20AC4M"},{no:2,pos:"RB",n:"D. Dumfries",age:28,club:"Inter Milan",v:"\u20AC38M"},{no:6,pos:"DM",n:"J. Schouten",age:27,club:"PSG",v:"\u20AC40M"},{no:14,pos:"CM",n:"T. Reijnders",age:26,club:"AC Milan",v:"\u20AC55M"},{no:5,pos:"CM",n:"R. Gravenberch",age:22,club:"Liverpool",v:"\u20AC70M"},{no:11,pos:"LW",n:"Cody Gakpo",age:25,club:"Liverpool",v:"\u20AC65M"},{no:7,pos:"RW",n:"D. Malen",age:26,club:"Dortmund",v:"\u20AC30M"},{no:9,pos:"ST",n:"Wout Weghorst",age:32,club:"Hoffenheim",v:"\u20AC3M"}]}
 };
 
-function buildSquadTabs(){
-  document.getElementById('sqTabs').innerHTML=Object.keys(SQ).map((k,i)=>`<button class="sqt${i===0?' on':''}" onclick="showSq('${k}',this)">${SQ[k].f} ${SQ[k].n}</button>`).join('');
+function buildSquadTabs() {
+  var keys = Object.keys(SQ);
+  var html = '';
+  for (var i = 0; i < keys.length; i++) {
+    var k = keys[i], t = SQ[k];
+    html += '<button class="sqt' + (i===0?' on':'') + '" onclick="showSq(\'' + k + '\',this)">' + t.f + ' ' + t.n + '</button>';
+  }
+  document.getElementById('sqTabs').innerHTML = html;
 }
-function showSq(code,btn){
-  document.querySelectorAll('.sqt').forEach(b=>b.classList.remove('on'));
+
+function showSq(code, btn) {
+  document.querySelectorAll('.sqt').forEach(function(b) { b.classList.remove('on'); });
   btn.classList.add('on');
-  const t=SQ[code];
-  document.getElementById('sqContent').innerHTML=`<div class="scard">
-    <div class="shdr">
-      <div class="sti"><h3>${t.f} ${t.n}</h3><p>Coach: ${t.coach}</p></div>
-      <div>
-        <div style="font-size:11px;color:#888;margin-bottom:3px;text-transform:uppercase;letter-spacing:1px">Total Squad Value</div>
-        <div class="tv-big">${t.tv}</div>
-      </div>
-    </div>
-    <div class="wch">
-      ${t.wc.map(w=>`<span class="wcc${w.r.includes('🏆')?' gold':''}">${w.y}: ${w.r}</span>`).join('')}
-    </div>
-    <div style="font-size:13px;font-weight:700;color:var(--pu);margin-bottom:16px">Best World Cup result: ${t.best}</div>
-    <div class="tw">
-      <table class="ptbl">
-        <thead><tr><th>#</th><th>Pos</th><th>Player</th><th>Age</th><th>Club</th><th>Market Value</th></tr></thead>
-        <tbody>
-          ${t.p.map(p=>`<tr>
-            <td style="font-weight:700;color:#aaa">${p.no}</td>
-            <td><span class="pos-b ${p.pos}">${p.pos}</span></td>
-            <td style="font-weight:600">${p.n}</td>
-            <td>${p.age}</td>
-            <td style="font-size:12px;color:#555">${p.club}</td>
-            <td><span class="vt">${p.v}</span></td>
-          </tr>`).join('')}
-        </tbody>
-      </table>
-    </div>
-  </div>`;
+  var t = SQ[code];
+  var wcHtml = '';
+  for (var i = 0; i < t.wc.length; i++) {
+    var w = t.wc[i];
+    wcHtml += '<span class="wcc' + (w.r.indexOf('\uD83C\uDFC6') >= 0 ? ' gold' : '') + '">' + w.y + ': ' + w.r + '</span>';
+  }
+  var playerRows = '';
+  for (var i = 0; i < t.p.length; i++) {
+    var pl = t.p[i];
+    playerRows += '<tr>' +
+      '<td style="font-weight:700;color:#aaa">' + pl.no + '</td>' +
+      '<td><span class="posb ' + pl.pos + '">' + pl.pos + '</span></td>' +
+      '<td style="font-weight:600">' + pl.n + '</td>' +
+      '<td>' + pl.age + '</td>' +
+      '<td style="font-size:11px;color:#555">' + pl.club + '</td>' +
+      '<td><span class="vt">' + pl.v + '</span></td>' +
+    '</tr>';
+  }
+  document.getElementById('sqContent').innerHTML =
+    '<div class="scard">' +
+      '<div class="shdr">' +
+        '<div class="sti"><h3>' + t.f + ' ' + t.n + '</h3><p>Coach: ' + t.coach + '</p></div>' +
+        '<div><div style="font-size:10px;color:#888;margin-bottom:2px;text-transform:uppercase;letter-spacing:1px">Total Squad Value</div><div class="tvbig">' + t.tv + '</div></div>' +
+      '</div>' +
+      '<div class="wch">' + wcHtml + '</div>' +
+      '<div style="font-size:12px;font-weight:700;color:var(--pu);margin-bottom:14px">Best result: ' + t.best + '</div>' +
+      '<div class="tw"><table class="ptbl"><thead><tr><th>#</th><th>Pos</th><th>Player</th><th>Age</th><th>Club</th><th>Market Value</th></tr></thead><tbody>' + playerRows + '</tbody></table></div>' +
+    '</div>';
 }
+
 buildSquadTabs();
-showSq('FRA',document.querySelector('.sqt'));
+showSq('FRA', document.querySelector('.sqt'));
 
-// ============================================================
-// DONATE
-// ============================================================
-function opD(){document.getElementById('dMod').classList.add('op')}
-function clD(){
+// ---- DONATE ----
+function opD() { document.getElementById('dMod').classList.add('op'); }
+function clD() {
   document.getElementById('dMod').classList.remove('op');
-  setTimeout(()=>{document.getElementById('dForm').style.display='block';document.getElementById('dThx').style.display='none';},300);
+  setTimeout(function() {
+    document.getElementById('dForm').style.display = 'block';
+    document.getElementById('dThx').style.display = 'none';
+  }, 300);
 }
-function clDOut(e){if(e.target===document.getElementById('dMod'))clD();}
-function pickA(btn,v){document.querySelectorAll('.ab').forEach(b=>b.classList.remove('on'));btn.classList.add('on');}
+function pickAmt(btn) {
+  document.querySelectorAll('.ab').forEach(function(b) { b.classList.remove('on'); });
+  btn.classList.add('on');
+}
 
-// ============================================================
-// INIT
-// ============================================================
-rSch();rAIPred();
+// Expose globals
+window.setPhase = setPhase;
+window.setAITab = setAITab;
+window.selectAI = selectAI;
+window.buildSchedule = buildSchedule;
+window.buildLive = buildLive;
+window.showSq = showSq;
+window.opD = opD;
+window.clD = clD;
+window.pickAmt = pickAmt;
 
-// Scroll reveal
-const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:.07});
-document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+// ---- INIT ----
+buildSchedule();
+buildAIPred();
+
+// ---- SCROLL REVEAL ----
+var ro = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.06 });
+document.querySelectorAll('.reveal').forEach(function(el) { ro.observe(el); });
 
 // Nav highlight
-window.addEventListener('scroll',()=>{
-  ['live','fixtures','ai','values','squads'].forEach(id=>{
-    const el=document.getElementById(id);
-    if(el){const a=document.querySelector(`.nl[href="#${id}"]`);if(a)a.classList.toggle('on',window.scrollY>=el.offsetTop-80);}
-  });
+window.addEventListener('scroll', function() {
+  var ids = ['live','fixtures','ai','values','squads'];
+  for (var i = 0; i < ids.length; i++) {
+    var el = document.getElementById(ids[i]);
+    var a = document.querySelector('.nl[href="#' + ids[i] + '"]');
+    if (el && a) a.classList.toggle('on', window.scrollY >= el.offsetTop - 80);
+  }
 });
+
+})(); // end IIFE
 </script>
 </body>
 </html>
