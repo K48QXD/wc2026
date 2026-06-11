@@ -312,7 +312,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 14px 1
     </div>
     <nav class="nav">
       <a href="#live" class="nl">🔴 Live</a>
-      <a href="#fixtures" class="nl">📅 Fixtures</a>
+      <a href="#fixtures" class="nl">📅 Group Stage</a>
       <a href="#ai" class="nl">🤖 AI Picks</a>
       <a href="#champions" class="nl">🏆 Odds</a>
       <a href="#values" class="nl">💰 Values</a>
@@ -330,7 +330,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 14px 1
   <div style="position:relative;z-index:1">
     <div class="h-eye"><span class="edot"></span>FIFA World Cup 2026 — Live Coverage</div>
     <h1><span class="hw">WORLD CUP</span><span class="hy">2026</span></h1>
-    <p class="hsub">48 teams · 104 matches · USA · Canada · Mexico · History rewritten</p>
+    <p class="hsub">48 teams · 72 group stage matches · 12 groups · USA · Canada · Mexico</p>
     <div class="hf">
       <div class="hchip">🇺🇸 United States</div>
       <div class="hchip">🇨🇦 Canada</div>
@@ -349,7 +349,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 14px 1
 <div class="pw" style="padding-top:22px">
   <div class="s4 reveal">
     <div class="sbox"><span class="sn">48</span><span class="sl">Teams</span></div>
-    <div class="sbox"><span class="sn">104</span><span class="sl">Matches</span></div>
+    <div class="sbox"><span class="sn">72</span><span class="sl">Group Matches</span></div>
     <div class="sbox"><span class="sn">16</span><span class="sl">Stadiums</span></div>
     <div class="sbox"><span class="sn">€17.6B</span><span class="sl">Squad Value</span></div>
   </div>
@@ -367,7 +367,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 14px 1
 
 <!-- FIXTURES -->
 <section id="fixtures" class="pw sec reveal">
-  <div class="sh"><div class="shline"></div><h2>ALL 104 FIXTURES</h2></div>
+  <div class="sh"><div class="shline"></div><h2>GROUP STAGE — 72 MATCHES</h2></div>
   <div class="tz-wrap">
     <span class="tz-label">🌐 Timezone:</span>
     <select id="tzSel" class="tz-sel" onchange="buildSchedule()">
@@ -404,13 +404,19 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 14px 1
     <span id="tzNow"></span>
   </div>
   <div class="tabs" id="phTabs">
-    <button class="tb on" onclick="setPhase('ALL',this)">All</button>
-    <button class="tb" onclick="setPhase('G',this)">Group Stage</button>
-    <button class="tb" onclick="setPhase('R32',this)">Round of 32</button>
-    <button class="tb" onclick="setPhase('R16',this)">Round of 16</button>
-    <button class="tb" onclick="setPhase('QF',this)">Quarter-finals</button>
-    <button class="tb" onclick="setPhase('SF',this)">Semi-finals</button>
-    <button class="tb" onclick="setPhase('F',this)">Final</button>
+    <button class="tb on" onclick="setPhase('ALL',this)">All 72 Matches</button>
+    <button class="tb" onclick="setPhase('G','A',this)">Group A</button>
+    <button class="tb" onclick="setPhase('G','B',this)">Group B</button>
+    <button class="tb" onclick="setPhase('G','C',this)">Group C</button>
+    <button class="tb" onclick="setPhase('G','D',this)">Group D</button>
+    <button class="tb" onclick="setPhase('G','E',this)">Group E</button>
+    <button class="tb" onclick="setPhase('G','F',this)">Group F</button>
+    <button class="tb" onclick="setPhase('G','G',this)">Group G</button>
+    <button class="tb" onclick="setPhase('G','H',this)">Group H</button>
+    <button class="tb" onclick="setPhase('G','I',this)">Group I</button>
+    <button class="tb" onclick="setPhase('G','J',this)">Group J</button>
+    <button class="tb" onclick="setPhase('G','K',this)">Group K</button>
+    <button class="tb" onclick="setPhase('G','L',this)">Group L</button>
   </div>
   <div class="tw">
     <table class="mt">
@@ -548,7 +554,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 14px 1
   <div class="fig">
     <div class="fg2">
       <div class="fc2"><div class="flogo">LiveAIScore.com</div><p>Free WC2026 coverage. No ads, no paywalls. GitHub Pages forever.</p></div>
-      <div class="fc2"><h4>Sections</h4><a href="#live">🔴 Live Scores</a><a href="#fixtures">📅 Fixtures</a><a href="#ai">🤖 AI Picks</a><a href="#champions">🏆 Odds</a><a href="#values">💰 Values</a></div>
+      <div class="fc2"><h4>Sections</h4><a href="#live">🔴 Live Scores</a><a href="#fixtures">📅 Group Stage</a><a href="#ai">🤖 AI Picks</a><a href="#champions">🏆 Odds</a><a href="#values">💰 Values</a></div>
       <div class="fc2"><h4>Top Teams</h4><a href="#">🇫🇷 France</a><a href="#">🇧🇷 Brazil</a><a href="#">🇦🇷 Argentina</a><a href="#">🏴󠁧󠁢󠁥󠁮󠁧󠁿 England</a><a href="#">🇩🇪 Germany</a><a href="#">🇪🇸 Spain</a></div>
       <div class="fc2"><h4>Support</h4><a href="#" onclick="opD()">❤️ Donate — PayPal</a><a href="https://github.com" target="_blank">📦 GitHub Pages</a></div>
     </div>
@@ -687,47 +693,11 @@ var M=[
   {id:70,g:"K",ph:"G",u:"2026-06-28T06:30:00+07:00",h:{c:"COD",f:"\uD83C\uDDE8\uD83C\uDDE9",n:"DR Congo"},a:{c:"UZB",f:"\uD83C\uDDFA\uD83C\uDDFF",n:"Uzbekistan"},v:"Mercedes-Benz Stadium",ci:"Atlanta, USA",lat:33.75,lon:-84.40},
   {id:71,g:"J",ph:"G",u:"2026-06-28T09:00:00+07:00",h:{c:"DZA",f:"\uD83C\uDDE9\uD83C\uDDFF",n:"Algeria"},a:{c:"AUT",f:"\uD83C\uDDE6\uD83C\uDDF9",n:"Austria"},v:"Arrowhead Stadium",ci:"Kansas City, USA",lat:39.05,lon:-94.48},
   {id:72,g:"J",ph:"G",u:"2026-06-28T09:00:00+07:00",h:{c:"JOR",f:"\uD83C\uDDEF\uD83C\uDDF4",n:"Jordan"},a:{c:"ARG",f:"\uD83C\uDDE6\uD83C\uDDF7",n:"Argentina"},v:"AT&T Stadium",ci:"Arlington, USA",lat:32.75,lon:-97.09},
-  // ROUND OF 32
-  {id:73,g:"",ph:"R32",u:"2026-06-29T03:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"Win A"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"3rd C/E/F"},v:"LA Stadium",ci:"Los Angeles, USA",lat:34.02,lon:-118.29},
-  {id:74,g:"",ph:"R32",u:"2026-06-29T00:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},v:"TBD",ci:"TBD",lat:40.81,lon:-74.07},
-  {id:75,g:"",ph:"R32",u:"2026-06-30T00:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},v:"TBD",ci:"TBD",lat:40.81,lon:-74.07},
-  {id:76,g:"",ph:"R32",u:"2026-06-30T05:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},v:"TBD",ci:"TBD",lat:40.81,lon:-74.07},
-  {id:77,g:"",ph:"R32",u:"2026-07-01T00:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},v:"TBD",ci:"TBD",lat:40.81,lon:-74.07},
-  {id:78,g:"",ph:"R32",u:"2026-07-01T05:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},v:"TBD",ci:"TBD",lat:40.81,lon:-74.07},
-  {id:79,g:"",ph:"R32",u:"2026-07-02T00:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},v:"TBD",ci:"TBD",lat:40.81,lon:-74.07},
-  {id:80,g:"",ph:"R32",u:"2026-07-02T05:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},v:"TBD",ci:"TBD",lat:40.81,lon:-74.07},
-  {id:81,g:"",ph:"R32",u:"2026-07-03T00:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},v:"TBD",ci:"TBD",lat:40.81,lon:-74.07},
-  {id:82,g:"",ph:"R32",u:"2026-07-03T05:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},v:"TBD",ci:"TBD",lat:40.81,lon:-74.07},
-  {id:83,g:"",ph:"R32",u:"2026-07-04T00:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},v:"TBD",ci:"TBD",lat:40.81,lon:-74.07},
-  {id:84,g:"",ph:"R32",u:"2026-07-04T05:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},v:"TBD",ci:"TBD",lat:40.81,lon:-74.07},
-  {id:85,g:"",ph:"R32",u:"2026-07-05T00:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},v:"TBD",ci:"TBD",lat:40.81,lon:-74.07},
-  {id:86,g:"",ph:"R32",u:"2026-07-05T05:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},v:"TBD",ci:"TBD",lat:40.81,lon:-74.07},
-  {id:87,g:"",ph:"R32",u:"2026-07-06T00:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},v:"TBD",ci:"TBD",lat:40.81,lon:-74.07},
-  {id:88,g:"",ph:"R32",u:"2026-07-06T05:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},v:"TBD",ci:"TBD",lat:40.81,lon:-74.07},
-  // ROUND OF 16
-  {id:89,g:"",ph:"R16",u:"2026-07-05T05:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"W73"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"W74"},v:"MetLife Stadium",ci:"New York, USA",lat:40.81,lon:-74.07},
-  {id:90,g:"",ph:"R16",u:"2026-07-08T00:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},v:"TBD",ci:"TBD",lat:40.81,lon:-74.07},
-  {id:91,g:"",ph:"R16",u:"2026-07-08T05:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},v:"TBD",ci:"TBD",lat:40.81,lon:-74.07},
-  {id:92,g:"",ph:"R16",u:"2026-07-09T00:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},v:"TBD",ci:"TBD",lat:40.81,lon:-74.07},
-  {id:93,g:"",ph:"R16",u:"2026-07-09T05:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},v:"TBD",ci:"TBD",lat:40.81,lon:-74.07},
-  {id:94,g:"",ph:"R16",u:"2026-07-10T00:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},v:"TBD",ci:"TBD",lat:40.81,lon:-74.07},
-  {id:95,g:"",ph:"R16",u:"2026-07-10T05:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},v:"TBD",ci:"TBD",lat:40.81,lon:-74.07},
-  {id:96,g:"",ph:"R16",u:"2026-07-11T00:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},v:"TBD",ci:"TBD",lat:40.81,lon:-74.07},
-  // QUARTER-FINALS
-  {id:97,g:"",ph:"QF",u:"2026-07-19T02:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},v:"Hard Rock Stadium",ci:"Miami, USA",lat:25.96,lon:-80.24},
-  {id:98,g:"",ph:"QF",u:"2026-07-19T05:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},v:"Hard Rock Stadium",ci:"Miami, USA",lat:25.96,lon:-80.24},
-  {id:99,g:"",ph:"QF",u:"2026-07-19T08:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},v:"Hard Rock Stadium",ci:"Miami, USA",lat:25.96,lon:-80.24},
-  {id:100,g:"",ph:"QF",u:"2026-07-20T06:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},v:"MetLife Stadium",ci:"New York, USA",lat:40.81,lon:-74.07},
-  // SEMI-FINALS
-  {id:101,g:"",ph:"SF",u:"2026-07-23T02:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},v:"Hard Rock Stadium",ci:"Miami, USA",lat:25.96,lon:-80.24},
-  {id:102,g:"",ph:"SF",u:"2026-07-24T02:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"TBD"},v:"Hard Rock Stadium",ci:"Miami, USA",lat:25.96,lon:-80.24},
-  // 3RD PLACE
-  {id:103,g:"",ph:"3P",u:"2026-07-25T02:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"Loser SF1"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"Loser SF2"},v:"Hard Rock Stadium",ci:"Miami, USA",lat:25.96,lon:-80.24},
-  // FINAL
-  {id:104,g:"",ph:"F",u:"2026-07-26T06:00:00+07:00",h:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"Winner SF1"},a:{c:"TBD",f:"\uD83C\uDFF3\uFE0F",n:"Winner SF2"},v:"MetLife Stadium",ci:"New York, USA",lat:40.81,lon:-74.07}
+
+
 ];
 
-var PHL={G:"Group",R32:"R32",R16:"R16",QF:"QF",SF:"SF","3P":"3rd",F:"FINAL"};
+var PHL={G:"Group"};
 var WTW={MEX:["Televisa","TV Azteca"],USA:["Fox","Telemundo","Peacock"],ENG:["BBC","ITV","TNT"],FRA:["TF1","beIN"],GER:["ARD","ZDF","DAZN"],BRA:["Globo","SporTV"],ESP:["RTVE","DAZN"],ARG:["TyC","DirecTV"],JPN:["NHK","DAZN"],KOR:["MBC","KBS"],POR:["RTP","SportTV"],NED:["NOS","Ziggo"],CAN:["TSN","CTV"],AUS:["SBS","Optus"],ITA:["RAI","Sky"],NOR:["NRK","TV2"],DEFAULT:["Fox","beIN","ESPN"]};
 var WXC={};
 
@@ -825,8 +795,11 @@ function getWx(lat,lon,id,elId){
 // STATE
 var curPh='ALL',curModel='c';
 
-function setPhase(ph,btn){
-  curPh=ph;
+var curGrp='';
+function setPhase(ph,grp,btn){
+  // Handle both old (ph,btn) and new (ph,grp,btn) signatures
+  if(typeof grp === 'object'){btn=grp;grp='';}
+  curPh=ph;curGrp=grp||'';
   document.querySelectorAll('#phTabs .tb').forEach(function(b){b.classList.remove('on');});
   btn.classList.add('on');buildSchedule();
 }
@@ -847,8 +820,8 @@ function selAI(card,clr){
 function buildSchedule(){
   updateTzNow();
   var tz=document.getElementById('tzSel').value;
-  var list=curPh==='ALL'?M:M.filter(function(m){return m.ph===curPh;});
-  var now=new Date(),rows='',phCls={G:'phG',R32:'phR',R16:'phR',QF:'phQ',SF:'phS','3P':'ph3',F:'phF'};
+  var list=curPh==='ALL'?M:M.filter(function(m){return m.ph===curPh&&(curGrp===''||m.g===curGrp);});
+  var now=new Date(),rows='',phCls={G:'phG'};
   for(var i=0;i<list.length;i++){
     var m=list[i];
     var mDate=new Date(m.u),diffMin=(now-mDate)/60000;
@@ -892,7 +865,7 @@ function buildLive(){
     document.getElementById('lgrid').innerHTML='<div style="padding:28px;text-align:center;font-size:12px;color:var(--gy);grid-column:1/-1;font-family:var(--fo);letter-spacing:1px">⚽ NO MATCHES IN NEXT 48H — TOURNAMENT BEGINS JUNE 12</div>';
     return;
   }
-  var html='',phCls={G:'phG',R32:'phR',R16:'phR',QF:'phQ',SF:'phS','3P':'ph3',F:'phF'};
+  var html='',phCls={G:'phG'};
   for(var i=0;i<recent.length;i++){
     var m=recent[i];
     var mDate=new Date(m.u),diffMin=(now-mDate)/60000;
