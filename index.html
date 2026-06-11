@@ -133,7 +133,7 @@ a{color:inherit;text-decoration:none}
 
 /* === MATCH TABLE === */
 .tw{overflow-x:auto;border-radius:12px;border:1px solid var(--bdr)}
-.mt{width:100%;border-collapse:collapse}
+.mt{width:100%;border-collapse:collapse;table-layout:auto}
 .mt thead th{background:var(--card2);color:var(--gy);font-family:var(--fo);font-size:9px;letter-spacing:1.5px;padding:9px 9px;text-align:left;border-bottom:1px solid var(--bdr);text-transform:uppercase;white-space:nowrap}
 .mt tbody tr{border-bottom:1px solid rgba(255,255,255,.04);transition:.1s}
 .mt tbody tr:hover{background:rgba(0,255,135,.04)}
@@ -308,6 +308,31 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 14px 1
 .lang-opt:hover{background:rgba(0,255,135,.1);color:var(--gr)}
 .lang-opt.active{background:rgba(0,255,135,.12);color:var(--gr);font-weight:700}
 .lang-flag{font-size:15px}
+
+/* === RESPONSIVE TEAM NAMES === */
+.tn{word-break:break-word;white-space:normal;line-height:1.2}
+.tc{display:flex;align-items:center;gap:5px;font-weight:700;min-width:0}
+.tc .tn{min-width:0;flex:1}
+/* Match table: responsive columns */
+@media(max-width:900px){
+  .mt thead th:nth-child(7),.mt td:nth-child(7){display:none} /* weather */
+}
+@media(max-width:700px){
+  .mt thead th:nth-child(8),.mt td:nth-child(8){display:none} /* wtw */
+  .mt thead th:nth-child(6),.mt td:nth-child(6){display:none} /* venue */
+  .mt td{padding:7px 6px;font-size:12px}
+  .tn{font-size:11px}
+  .tf{font-size:15px}
+}
+@media(max-width:480px){
+  .mt thead th:nth-child(1),.mt td:nth-child(1){display:none} /* # */
+  .mt thead th:nth-child(2),.mt td:nth-child(2){display:none} /* round — shown as color */
+  .mt td{padding:6px 5px;font-size:11px}
+  .tn{font-size:12px;font-weight:700}
+  .tf{font-size:17px}
+  /* Show round as colored left border on mobile */
+  .mt tbody tr{border-left:3px solid rgba(0,255,135,.3)}
+}
 </style>
 </head>
 <body>
@@ -447,7 +472,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 14px 1
   </div>
   <div class="tw">
     <table class="mt">
-      <thead><tr><th>#</th><th data-i18n="thRound">Round</th><th data-i18n="thDateTime">Date &amp; Time</th><th data-i18n="thHome">Home</th><th data-i18n="thScore">Score</th><th data-i18n="thAway">Away</th><th data-i18n="thVenue">Venue</th><th data-i18n="thWeather">Weather</th><th data-i18n="thWTW">Where to Watch</th><th data-i18n="thAIPick">AI Pick</th></tr></thead>
+      <thead><tr><th>#</th><th data-i18n="thRound">Round</th><th data-i18n="thDateTime">Date &amp; Time</th><th data-i18n="thHome">Home</th><th data-i18n="thAway">Away</th><th data-i18n="thVenue">Venue</th><th data-i18n="thWeather">Weather</th><th data-i18n="thWTW">Where to Watch</th></tr></thead>
       <tbody id="schBody"></tbody>
     </table>
   </div>
@@ -852,11 +877,6 @@ function buildSchedule(){
   for(var i=0;i<list.length;i++){
     var m=list[i];
     var mDate=new Date(m.u),diffMin=(now-mDate)/60000;
-    var sc;
-    if(diffMin>0&&diffMin<105){sc='<span class="sb lv">'+Math.floor(Math.random()*3)+'-'+Math.floor(Math.random()*2)+'</span>';}
-    else if(diffMin>=105){var p0=gp(m.id,'ft');sc='<span class="sb">'+p0.h+'-'+p0.a+'</span>';}
-    else{var tp=fmtT(m.u,tz).split('<br>')[1].replace(/<[^>]+>/g,'');sc='<span class="sb up">'+tp+'</span>';}
-    var p=gp(m.id,curModel);
     var pc=phCls[m.ph]||'phG';
     var rl=m.g?'Grp '+m.g:PHL[m.ph];
     var hws=WTW[m.h.c]||WTW.DEFAULT,aws=WTW[m.a.c]||WTW.DEFAULT;
@@ -869,13 +889,11 @@ function buildSchedule(){
       '<td style="font-family:var(--fo);font-size:11px;color:var(--gy)">'+m.id+'</td>'+
       '<td><span class="pb '+pc+'">'+rl+'</span></td>'+
       '<td style="white-space:nowrap;font-size:11px">'+fmtT(m.u,tz)+'</td>'+
-      '<td><div class="tc"><span class="tf">'+m.h.f+'</span>'+m.h.n+'</div></td>'+
-      '<td style="text-align:center">'+sc+'</td>'+
-      '<td><div class="tc"><span class="tf">'+m.a.f+'</span>'+m.a.n+'</div></td>'+
+      '<td><div class="tc"><span class="tf">'+m.h.f+'</span><span class="tn">'+m.h.n+'</span></div></td>'+
+      '<td><div class="tc"><span class="tf">'+m.a.f+'</span><span class="tn">'+m.a.n+'</span></div></td>'+
       '<td class="vc">'+m.v+'<br><span style="color:rgba(255,255,255,.25);font-size:10px">'+m.ci+'</span></td>'+
       '<td id="'+wxId+'"><span style="font-size:9px;color:var(--gy)">...</span></td>'+
       '<td><div class="wtww">'+wH+'</div></td>'+
-      '<td style="color:var(--gr);font-weight:700;font-size:10px;white-space:nowrap;font-family:var(--fo)">'+p.h+'-'+p.a+'('+p.t+'g)</td>'+
     '</tr>';
   }
   document.getElementById('schBody').innerHTML=rows;
