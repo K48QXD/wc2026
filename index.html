@@ -49,12 +49,7 @@ a{color:inherit;text-decoration:none}
 .dbtn{display:flex;align-items:center;gap:5px;background:linear-gradient(135deg,var(--rd),#C41E1E);color:#fff;font-family:var(--fo);font-size:10px;font-weight:700;padding:8px 14px;border-radius:30px;border:none;cursor:pointer;white-space:nowrap;flex-shrink:0;letter-spacing:1px;box-shadow:0 0 14px rgba(255,59,59,.3);animation:hb 2.5s infinite}
 .dbtn:hover{transform:scale(1.05)}
 @keyframes hb{0%,100%{box-shadow:0 0 8px rgba(255,59,59,.25)}50%{box-shadow:0 0 22px rgba(255,59,59,.55)}}
-
-/* === TICKER === */
-#ticker{background:linear-gradient(90deg,#060D06,#081208,#060D06);border-bottom:1px solid rgba(0,255,135,.12);padding:7px 0;overflow:hidden;display:flex;align-items:center}
-.tl{flex-shrink:0;background:var(--gr);color:#000;font-family:var(--fo);font-size:9px;font-weight:700;letter-spacing:2px;padding:3px 14px;margin-right:14px;clip-path:polygon(0 0,calc(100% - 8px) 0,100% 50%,calc(100% - 8px) 100%,0 100%)}
-.tt{white-space:nowrap;animation:scroll 50s linear infinite;font-size:12px;color:var(--gr);font-weight:600;letter-spacing:.5px}
-@keyframes scroll{0%{transform:translateX(100vw)}100%{transform:translateX(-100%)}}
+100%{transform:translateX(-100%)}}
 
 /* === HERO === */
 #hero{position:relative;min-height:500px;display:flex;align-items:center;justify-content:center;text-align:center;padding:56px 16px 44px;background:radial-gradient(ellipse at 30% 50%,rgba(0,255,135,.06),transparent 60%),radial-gradient(ellipse at 70% 25%,rgba(0,180,255,.06),transparent 50%),linear-gradient(180deg,var(--bg),var(--bg2));overflow:hidden}
@@ -86,7 +81,7 @@ a{color:inherit;text-decoration:none}
 .shline{width:3px;height:26px;background:linear-gradient(180deg,var(--gr),var(--bl));border-radius:2px;flex-shrink:0}
 .sh h2{font-family:var(--fd);font-size:24px;letter-spacing:2px;background:linear-gradient(90deg,var(--wh),rgba(238,242,255,.6));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .pill{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 9px;border-radius:20px;font-family:var(--fo)}
-.plive{background:rgba(255,59,59,.15);color:var(--rd);border:1px solid rgba(255,59,59,.3)}
+
 .pai{background:rgba(184,79,255,.12);color:var(--pu);border:1px solid rgba(184,79,255,.25)}
 .ptm{background:rgba(0,255,135,.08);color:var(--gr);border:1px solid rgba(0,255,135,.2)}
 
@@ -113,23 +108,6 @@ a{color:inherit;text-decoration:none}
 .tz-sel optgroup{color:var(--gr);font-family:var(--fo);font-size:10px;letter-spacing:1px}
 #tzNow{font-family:var(--fo);font-size:10px;color:var(--gr);letter-spacing:1px}
 
-/* === LIVE CARDS === */
-.lg{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px}
-.lc{background:var(--card);border:1px solid var(--bdr);border-radius:13px;padding:15px 16px;display:flex;flex-direction:column;gap:7px;transition:.2s}
-.lc:hover{border-color:rgba(0,255,135,.18);transform:translateY(-2px)}
-.lc.lv{border-color:rgba(255,59,59,.4);box-shadow:0 0 18px rgba(255,59,59,.08)}
-.lctop{display:flex;justify-content:space-between;align-items:center}
-.lcm{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:7px}
-.lct{text-align:center}
-.lfl{font-size:26px;display:block;margin-bottom:2px}
-.lnm{font-size:12px;font-weight:700}
-.lsc{font-family:var(--fo);font-size:34px;letter-spacing:3px;text-align:center;line-height:1;color:var(--wh)}
-.lsc.lv{color:var(--rd);text-shadow:0 0 10px rgba(255,59,59,.45)}
-.ldot{width:7px;height:7px;border-radius:50%;background:var(--rd);animation:blink .9s infinite;display:inline-block;margin-right:3px}
-.lmeta{font-size:10px;color:var(--gy);text-align:center}
-.ltime{color:var(--rd);font-family:var(--fo);font-size:11px;font-weight:700}
-.lupcoming{color:var(--bl);font-family:var(--fo);font-size:11px;font-weight:700}
-.lft{color:var(--gr);font-family:var(--fo);font-size:10px;font-weight:700}
 
 /* === MATCH TABLE === */
 .tw{overflow-x:auto;border-radius:12px;border:1px solid var(--bdr)}
@@ -348,7 +326,6 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 14px 1
       </div>
     </div>
     <nav class="nav">
-      <a href="#live" class="nl">🔴 Live</a>
       <a href="#fixtures" class="nl">📅 Group Stage</a>
       <a href="#ai" class="nl">🤖 AI Picks</a>
       <a href="#champions" class="nl">🏆 Odds</a>
@@ -364,7 +341,6 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 14px 1
   </div>
 </div>
 
-<div id="ticker"><div class="tl">⚽ LIVE</div><span class="tt" id="tkTxt">Loading World Cup 2026...</span></div>
 
 <section id="hero">
   <div class="hero-grid"></div>
@@ -415,23 +391,6 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 14px 1
   </div>
 </div>
 
-<!-- NEXT MATCHES STRIP — before Live -->
-<div class="pw" style="margin-bottom:8px">
-  <div id="nextMatchStrip" style="background:var(--card2);border:1px solid rgba(0,255,135,.15);border-radius:12px;padding:14px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
-    <div style="font-family:var(--fo);font-size:10px;color:var(--gr);letter-spacing:2px;flex-shrink:0">⚡ NEXT</div>
-    <div id="nextMatchCards" style="display:flex;gap:10px;flex-wrap:wrap;flex:1"></div>
-  </div>
-</div>
-
-<!-- LIVE -->
-<section id="live" class="pw sec reveal">
-  <div class="sh">
-    <div class="shline"></div><h2 data-i18n="liveTitle">LIVE SCORES</h2>
-    <span class="pill plive">🔴 LIVE</span>
-    <button onclick="buildLive()" style="margin-left:auto;background:rgba(255,59,59,.12);color:var(--rd);border:1px solid rgba(255,59,59,.25);padding:5px 11px;border-radius:7px;cursor:pointer;font-family:var(--fo);font-size:9px;letter-spacing:1px">↺ REFRESH</button>
-  </div>
-  <div class="lg" id="lgrid"></div>
-</section>
 
 <!-- FIXTURES -->
 <section id="fixtures" class="pw sec reveal">
@@ -622,7 +581,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:32px 14px 1
   <div class="fig">
     <div class="fg2">
       <div class="fc2"><div class="flogo">LiveAIScore.com</div><p>Free WC2026 coverage. No ads, no paywalls. GitHub Pages forever.</p></div>
-      <div class="fc2"><h4>Sections</h4><a href="#live">🔴 Live Scores</a><a href="#fixtures">📅 Group Stage</a><a href="#ai">🤖 AI Picks</a><a href="#champions">🏆 Odds</a><a href="#values">💰 Values</a></div>
+      <div class="fc2"><h4>Sections</h4><a href="#fixtures">📅 Group Stage</a><a href="#ai">🤖 AI Picks</a><a href="#champions">🏆 Odds</a><a href="#values">💰 Values</a></div>
       <div class="fc2"><h4>Top Teams</h4><a href="#">🇫🇷 France</a><a href="#">🇧🇷 Brazil</a><a href="#">🇦🇷 Argentina</a><a href="#">🏴󠁧󠁢󠁥󠁮󠁧󠁿 England</a><a href="#">🇩🇪 Germany</a><a href="#">🇪🇸 Spain</a></div>
       <div class="fc2"><h4>Support</h4><a href="#" onclick="opD()">❤️ Donate — PayPal</a><a href="https://github.com" target="_blank">📦 GitHub Pages</a></div>
     </div>
@@ -918,83 +877,8 @@ function buildSchedule(){
   }
 }
 
-// LIVE
-function buildLive(){
-  var now=new Date();
-  var recent=M.filter(function(m){return Math.abs(new Date(m.u)-now)<172800000;}).slice(0,8);
-  if(!recent.length){
-    document.getElementById('lgrid').innerHTML='<div style="padding:28px;text-align:center;font-size:12px;color:var(--gy);grid-column:1/-1;font-family:var(--fo);letter-spacing:1px">⚽ NO MATCHES IN NEXT 48H — TOURNAMENT BEGINS JUNE 12</div>';
-    return;
-  }
-  var html='',phCls={G:'phG'};
-  for(var i=0;i<recent.length;i++){
-    var m=recent[i];
-    var mDate=new Date(m.u),diffMin=(now-mDate)/60000;
-    var stH,scH,live=false;
-    if(diffMin>0&&diffMin<105){
-      live=true;
-      stH='<span class="ltime"><span class="ldot"></span>'+Math.floor(diffMin)+"'</span>";
-      scH='<div class="lsc lv">'+Math.floor(Math.random()*3)+' - '+Math.floor(Math.random()*2)+'</div>';
-    }else if(diffMin>=105){
-      var p2=gp(m.id,'ft');
-      stH='<span class="lft">FT</span>';
-      scH='<div class="lsc">'+p2.h+' - '+p2.a+'</div>';
-    }else{
-      var tz2=parseFloat(document.getElementById('tzSel').value||7);
-      var d2=new Date(m.u);
-      var loc2=new Date(d2.getTime()+tz2*3600000); // pure UTC arithmetic
-      stH='<span class="lupcoming">'+String(loc2.getUTCHours()).padStart(2,'0')+':'+String(loc2.getUTCMinutes()).padStart(2,'0')+'</span>';
-      scH='<div class="lsc" style="font-size:20px;color:var(--bl)">VS</div>';
-    }
-    var pc2=phCls[m.ph]||'phG';
-    html+='<div class="lc'+(live?' lv':'')+'">'+
-      '<div class="lctop"><span class="pb '+pc2+'">'+(m.g?'Grp '+m.g:PHL[m.ph])+'</span>'+stH+'</div>'+
-      '<div class="lcm"><div class="lct"><span class="lfl">'+m.h.f+'</span><div class="lnm">'+m.h.n+'</div></div>'+scH+'<div class="lct"><span class="lfl">'+m.a.f+'</span><div class="lnm">'+m.a.n+'</div></div></div>'+
-      '<div class="lmeta">'+m.v+'</div></div>';
-  }
-  document.getElementById('lgrid').innerHTML=html;
-}
-buildLive();setInterval(buildLive,60000);
 
-// NEXT MATCHES STRIP
-function buildNextStrip(){
-  var now=new Date();
-  var tz=parseFloat(document.getElementById('tzSel').value||7);
-  var next=M.filter(function(m){return new Date(m.u)>now;}).slice(0,4);
-  if(!next.length){document.getElementById('nextMatchStrip').style.display='none';return;}
-  document.getElementById('nextMatchCards').innerHTML=next.map(function(m){
-    var d=new Date(m.u);
-    var loc=new Date(d.getTime()+tz*3600000);
-    var ts=String(loc.getUTCHours()).padStart(2,'0')+':'+String(loc.getUTCMinutes()).padStart(2,'0');
-    var dd=(loc.getUTCDate()+'/'+(loc.getUTCMonth()+1));
-    var diff=Math.ceil((d-now)/3600000);
-    var eta=diff<24?(diff+'h'):(Math.ceil(diff/24)+'d');
-    return '<div style="background:var(--bg3);border:1px solid var(--bdr);border-radius:9px;padding:8px 12px;display:flex;align-items:center;gap:8px;min-width:0">'+
-      '<span style="font-size:16px">'+m.h.f+'</span>'+
-      '<span style="font-size:10px;font-weight:700;color:var(--wh)">vs</span>'+
-      '<span style="font-size:16px">'+m.a.f+'</span>'+
-      '<div style="min-width:0">'+
-        '<div style="font-family:var(--fo);font-size:9px;color:var(--gr);letter-spacing:.5px">'+dd+' '+ts+'</div>'+
-        '<div style="font-size:9px;color:var(--gy)">in '+eta+'</div>'+
-      '</div>'+
-    '</div>';
-  }).join('');
-}
-buildNextStrip();
 
-// TICKER
-function buildTicker(){
-  var tz=parseFloat(document.getElementById('tzSel').value||7);
-  var up=M.filter(function(m){return new Date(m.u)>new Date();}).slice(0,10);
-  if(!up.length){document.getElementById('tkTxt').textContent='Tournament complete! LiveAIScore.com \u2014 Thank you!';return;}
-  document.getElementById('tkTxt').textContent=up.map(function(m){
-    var d=new Date(m.u);
-    var loc=new Date(d.getTime()+tz*3600000); // pure UTC arithmetic
-    var ts=loc.getUTCDate()+'/'+(loc.getUTCMonth()+1)+' '+String(loc.getUTCHours()).padStart(2,'0')+':'+String(loc.getUTCMinutes()).padStart(2,'0');
-    return m.h.f+' '+m.h.n+' vs '+m.a.f+' '+m.a.n+'   '+ts+'   '+m.v;
-  }).join('      \u26BD      ');
-}
-buildTicker();
 
 // AI PRED TABLE
 var showAll5=false;
@@ -1169,7 +1053,7 @@ var LANG = {
     donateTitle:'❤️ SUPPORT LiveAIScore',
     donateSub:'Free · No ads · No paywalls. Keep this running all World Cup 2026!',
     aiConsensus:'5-AI CONSENSUS', allTab:'All 72 Matches',
-    nowLabel:'Now', navLive:'🔴 Live', navFixtures:'📅 Group Stage',
+    nowLabel:'Now', navFixtures:'📅 Group Stage',
     navAI:'🤖 AI Picks', navOdds:'🏆 Odds', navValues:'💰 Values', navSquads:'👤 Squads',
     rank:'RANK', confidence:'Confidence', predictedChamp:'Predicted Champion',
     top4:'Top 4', bestResult:'BEST', squadValue:'SQUAD VALUE', coach:'Coach',
@@ -1187,7 +1071,7 @@ var LANG = {
     donateTitle:'❤️ ỦNG HỘ LiveAIScore',
     donateSub:'Miễn phí · Không quảng cáo. Ủng hộ để duy trì suốt World Cup 2026!',
     aiConsensus:'ĐỒNG THUẬN 5 AI', allTab:'Tất cả 72 trận',
-    nowLabel:'Hiện tại', navLive:'🔴 Trực tiếp', navFixtures:'📅 Vòng bảng',
+    nowLabel:'Hiện tại', navFixtures:'📅 Vòng bảng',
     navAI:'🤖 Dự đoán AI', navOdds:'🏆 Tỷ lệ', navValues:'💰 Giá trị', navSquads:'👤 Đội hình',
     rank:'HẠNG', confidence:'Độ tin cậy', predictedChamp:'Nhà vô địch dự đoán',
     top4:'Top 4', bestResult:'THÀNH TÍCH TỐT NHẤT', squadValue:'TỔNG GIÁ TRỊ', coach:'HLV',
@@ -1205,7 +1089,7 @@ var LANG = {
     donateTitle:'❤️ APOYA LiveAIScore',
     donateSub:'Gratis · Sin anuncios. ¡Ayúdanos a seguir durante la Copa del Mundo 2026!',
     aiConsensus:'CONSENSO 5-IA', allTab:'72 Partidos',
-    nowLabel:'Ahora', navLive:'🔴 En Vivo', navFixtures:'📅 Fase Grupos',
+    nowLabel:'Ahora', navFixtures:'📅 Fase Grupos',
     navAI:'🤖 IA Picks', navOdds:'🏆 Cuotas', navValues:'💰 Valores', navSquads:'👤 Plantillas',
     rank:'POSICIÓN', confidence:'Confianza', predictedChamp:'Campeón Predicho',
     top4:'Top 4', bestResult:'MEJOR RESULTADO', squadValue:'VALOR PLANTILLA', coach:'Entrenador',
@@ -1223,7 +1107,7 @@ var LANG = {
     donateTitle:'❤️ APOIE LiveAIScore',
     donateSub:'Grátis · Sem anúncios. Ajude a manter durante a Copa do Mundo 2026!',
     aiConsensus:'CONSENSO 5-IA', allTab:'72 Jogos',
-    nowLabel:'Agora', navLive:'🔴 Ao Vivo', navFixtures:'📅 Fase Grupos',
+    nowLabel:'Agora', navFixtures:'📅 Fase Grupos',
     navAI:'🤖 IA Picks', navOdds:'🏆 Odds', navValues:'💰 Valores', navSquads:'👤 Elencos',
     rank:'RANKING', confidence:'Confiança', predictedChamp:'Campeão Previsto',
     top4:'Top 4', bestResult:'MELHOR RESULTADO', squadValue:'VALOR DO ELENCO', coach:'Técnico',
@@ -1241,7 +1125,7 @@ var LANG = {
     donateTitle:'❤️ SOUTENEZ LiveAIScore',
     donateSub:'Gratuit · Sans pub. Aidez-nous pendant la Coupe du Monde 2026!',
     aiConsensus:'CONSENSUS 5-IA', allTab:'72 Matchs',
-    nowLabel:'Maintenant', navLive:'🔴 Direct', navFixtures:'📅 Groupes',
+    nowLabel:'Maintenant', navFixtures:'📅 Groupes',
     navAI:'🤖 IA Picks', navOdds:'🏆 Cotes', navValues:'💰 Valeurs', navSquads:'👤 Effectifs',
     rank:'RANG', confidence:'Confiance', predictedChamp:'Champion Prédit',
     top4:'Top 4', bestResult:'MEILLEUR RÉSULTAT', squadValue:'VALEUR EFFECTIF', coach:'Entraîneur',
@@ -1259,7 +1143,7 @@ var LANG = {
     donateTitle:'❤️ UNTERSTÜTZE LiveAIScore',
     donateSub:'Kostenlos · Keine Werbung. Hilf uns durch die WM 2026!',
     aiConsensus:'5-KI-KONSENS', allTab:'72 Spiele',
-    nowLabel:'Jetzt', navLive:'🔴 Live', navFixtures:'📅 Gruppenphase',
+    nowLabel:'Jetzt', navFixtures:'📅 Gruppenphase',
     navAI:'🤖 KI-Tipps', navOdds:'🏆 Quoten', navValues:'💰 Werte', navSquads:'👤 Kader',
     rank:'RANG', confidence:'Konfidenz', predictedChamp:'Vorhergesagter Sieger',
     top4:'Top 4', bestResult:'BESTES ERGEBNIS', squadValue:'KADERWERT', coach:'Trainer',
@@ -1277,7 +1161,7 @@ var LANG = {
     donateTitle:'❤️ ادعم LiveAIScore',
     donateSub:'مجاني · بدون إعلانات. ساعدنا خلال كأس العالم 2026!',
     aiConsensus:'إجماع ٥ نماذج', allTab:'٧٢ مباراة',
-    nowLabel:'الآن', navLive:'🔴 مباشر', navFixtures:'📅 المجموعات',
+    nowLabel:'الآن', navFixtures:'📅 المجموعات',
     navAI:'🤖 توقعات', navOdds:'🏆 الاحتمالات', navValues:'💰 القيم', navSquads:'👤 التشكيلات',
     rank:'المرتبة', confidence:'الثقة', predictedChamp:'البطل المتوقع',
     top4:'أفضل 4', bestResult:'أفضل نتيجة', squadValue:'قيمة الفريق', coach:'المدرب',
@@ -1295,7 +1179,7 @@ var LANG = {
     donateTitle:'❤️ 支持 LiveAIScore',
     donateSub:'免费 · 无广告。帮助我们在2026世界杯期间持续运营！',
     aiConsensus:'5AI综合预测', allTab:'全部72场',
-    nowLabel:'现在', navLive:'🔴 直播', navFixtures:'📅 小组赛',
+    nowLabel:'现在', navFixtures:'📅 小组赛',
     navAI:'🤖 AI预测', navOdds:'🏆 赔率', navValues:'💰 身价', navSquads:'👤 阵容',
     rank:'排名', confidence:'置信度', predictedChamp:'预测冠军',
     top4:'前4名', bestResult:'最佳成绩', squadValue:'阵容总价', coach:'主教练',
@@ -1313,7 +1197,7 @@ var LANG = {
     donateTitle:'❤️ LiveAIScoreを支援',
     donateSub:'無料 · 広告なし。ワールドカップ2026を通じてサポートをお願いします！',
     aiConsensus:'5AI総合予測', allTab:'全72試合',
-    nowLabel:'現在', navLive:'🔴 ライブ', navFixtures:'📅 グループ',
+    nowLabel:'現在', navFixtures:'📅 グループ',
     navAI:'🤖 AI予測', navOdds:'🏆 オッズ', navValues:'💰 価値', navSquads:'👤 スタメン',
     rank:'ランク', confidence:'信頼度', predictedChamp:'優勝予測',
     top4:'トップ4', bestResult:'最高成績', squadValue:'チーム総額', coach:'監督',
@@ -1331,7 +1215,7 @@ var LANG = {
     donateTitle:'❤️ LiveAIScore 후원',
     donateSub:'무료 · 광고 없음. 2026 월드컵 내내 운영을 도와주세요!',
     aiConsensus:'5AI 종합 예측', allTab:'전체 72경기',
-    nowLabel:'현재', navLive:'🔴 라이브', navFixtures:'📅 조별리그',
+    nowLabel:'현재', navFixtures:'📅 조별리그',
     navAI:'🤖 AI 예측', navOdds:'🏆 확률', navValues:'💰 가치', navSquads:'👤 선수단',
     rank:'순위', confidence:'신뢰도', predictedChamp:'우승 예측',
     top4:'톱 4', bestResult:'최고 성적', squadValue:'팀 총액', coach:'감독',
@@ -1384,7 +1268,6 @@ function setLang(code, e){
 
   // Update nav links
   var navMap = [
-    ['.nl[href="#live"]', 'navLive'],
     ['.nl[href="#fixtures"]', 'navFixtures'],
     ['.nl[href="#ai"]', 'navAI'],
     ['.nl[href="#champions"]', 'navOdds'],
@@ -1434,7 +1317,7 @@ updateTzNow = function(){
 };
 
 // EXPOSE
-window.setPhase=setPhase;window.setAITab=setAITab;window.selAI=selAI;window.buildSchedule=buildSchedule;window.buildLive=buildLive;window.showSq=showSq;window.opD=opD;window.clD=clD;window.pickAmt=pickAmt;window.showAllModels=showAllModels;window.toggleLang=toggleLang;window.setLang=setLang;
+window.setPhase=setPhase;window.setAITab=setAITab;window.selAI=selAI;window.buildSchedule=buildSchedule;window.showSq=showSq;window.opD=opD;window.clD=clD;window.pickAmt=pickAmt;window.showAllModels=showAllModels;window.toggleLang=toggleLang;window.setLang=setLang;
 
 // INIT
 curModel='g'; // GPT is #1 ranked model
@@ -1446,7 +1329,7 @@ document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});
 
 // NAV ACTIVE
 window.addEventListener('scroll',function(){
-  var ids=['live','fixtures','ai','champions','values','squads'];
+  var ids=['fixtures','ai','champions','values','squads'];
   for(var i=0;i<ids.length;i++){
     var el=document.getElementById(ids[i]);
     var a=document.querySelector('.nl[href="#'+ids[i]+'"]');
